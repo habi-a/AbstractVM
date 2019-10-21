@@ -10,7 +10,6 @@ typedef enum            e_var_type
                         T_INT,
                         T_FLOAT,
                         T_DOUBLE,
-                        T_STRING,
                         T_VOID,
                         T_NULL
 }                       t_var_type;
@@ -33,7 +32,7 @@ typedef struct          s_var_list
 
 }                       t_var_list;
 
-void				            init_list_variables(int argc, char **argv, t_var_list *list);
+void				    init_list_variables(t_var_list *list);
 t_var_node              *get_variable(t_var_list *list, const char *var_name);
 void                    free_list_variables(t_var_list *list);
 

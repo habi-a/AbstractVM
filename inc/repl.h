@@ -3,6 +3,6 @@
 
 #include    <stdio.h>
 
-void        launch_repl(int argc, char **argv);
+void        launch_repl();
 
 #endif      /* _REPL_H_ */

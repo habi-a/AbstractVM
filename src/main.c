@@ -1,8 +1,8 @@
 #include <repl.h>
 #include <stdio.h>
 
-int         main(int argc, char **argv)
+int         main()
 {
-    launch_repl(argc, argv);
+    launch_repl();
     return (0);
 }

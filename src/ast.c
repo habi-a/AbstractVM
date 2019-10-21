@@ -53,7 +53,7 @@ t_ast_node*     create_node_number(t_var_type var_type, int value_int, float val
     return (ast_node);
 }
 
-t_ast_node      *create_node_call_func(const char *var_name, t_ast_node *ast_node1, t_ast_node *ast_node2)
+t_ast_node      *create_node_call_func(const char *var_name, t_ast_node *ast_node1)
 {
     t_ast_node* ast_node;
 
@@ -66,7 +66,24 @@ t_ast_node      *create_node_call_func(const char *var_name, t_ast_node *ast_nod
     ast_node->value_int = 0;
     ast_node->value_float = 0;
     ast_node->ast_node_l = ast_node1;
-    ast_node->ast_node_r = ast_node2;
+    ast_node->ast_node_r = NULL;
+    return (ast_node);
+}
+
+t_ast_node      *create_node_instruction(const char *var_name, t_ast_node *ast_node1)
+{
+    t_ast_node* ast_node;
+
+    ast_node = malloc(sizeof(t_ast_node));
+    if (ast_node == NULL)
+        return (NULL);
+    ast_node->node_type = AST_INSTRUCTION;
+    ast_node->var_name = strdup(var_name);
+    ast_node->var_type = T_VOID;
+    ast_node->value_int = 0;
+    ast_node->value_float = 0;
+    ast_node->ast_node_l = ast_node1;
+    ast_node->ast_node_r = NULL;
     return (ast_node);
 }
 

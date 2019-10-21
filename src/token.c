@@ -14,7 +14,7 @@ void    init_token(t_token *token)
     token->value_symbol = '\0';
 }
 
-bool    set_token(t_parse_utils *parse_utils, bool *is_comment)
+bool    set_token(t_parse_utils *parse_utils)
 {
     if (!parse_utils->line[parse_utils->index])
     {
@@ -35,19 +35,11 @@ bool    set_token(t_parse_utils *parse_utils, bool *is_comment)
     }
     else if (parse_utils->line[parse_utils->index] == ';')
     {
-        pop_line(parse_utils, is_comment);
+        pop_line(parse_utils);
         return (true);
     }
     switch (parse_utils->line[parse_utils->index])
     {
-        case '+': parse_utils->current_token.token_type = TOK_PLUS;
-            break;
-        case '-': parse_utils->current_token.token_type = TOK_MINUS;
-            break;
-        case '*': parse_utils->current_token.token_type = TOK_MUL;
-            break;
-        case '/': parse_utils->current_token.token_type = TOK_DIV;
-            break;
         case '(': parse_utils->current_token.token_type = TOK_LEFT_PAREN;
             break;
         case ')': parse_utils->current_token.token_type = TOK_RIGHT_PAREN;
@@ -60,12 +52,12 @@ bool    set_token(t_parse_utils *parse_utils, bool *is_comment)
     return (false);
 }
 
-void    pop_token(t_parse_utils *parse_utils, bool *is_comment)
+void    pop_token(t_parse_utils *parse_utils)
 {
     skip_space(parse_utils);
     init_token(&parse_utils->current_token);
     parse_utils->nb_token++;
-    if (set_token(parse_utils, is_comment))
+    if (set_token(parse_utils))
         return ;
     if (parse_utils->current_token.token_type != TOK_ERROR)
     {

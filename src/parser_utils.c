@@ -13,32 +13,19 @@ void        init_parse_utils(t_parse_utils *parse_utils, const char *line)
     parse_utils->decla_type = T_UNDEFINED;
 }
 
-bool        is_white_line(const char *line, bool *is_comment)
+bool        is_white_line(const char *line)
 {
     size_t  i;
-    bool    is_comment_tmp;
 
     i = 0;
-    is_comment_tmp = *is_comment;
     while (line[i] != '\0')
     {
-        if (line[i] == '/' && line[i + 1] == '*' && !is_comment_tmp)
-        {
-            is_comment_tmp = true;
-            i++;
-        }
-        else if (line[i] == '*' && line[i + 1] == '/' && is_comment_tmp)
-        {
-            is_comment_tmp = false;
-            i++;
-        }
-        else if (line[i] == '/' && line[i + 1] == '/' && !is_comment_tmp)
+        if (line[i] == ';')
             break;
-        else if (!isspace(line[i]) && !is_comment_tmp)
+        else if (!isspace(line[i]))
             return (false);
         i++;
     }
-    *is_comment = is_comment_tmp;
     return (true);
 }
 
@@ -88,26 +75,11 @@ void        get_number(t_parse_utils *parse_utils)
     }
 }
 
-void            pop_line(t_parse_utils *parse_utils, bool *is_comment)
+void            pop_line(t_parse_utils *parse_utils)
 {
     while (parse_utils->line[parse_utils->index] != '\0')
         parse_utils->index++;
-    pop_token(parse_utils, is_comment);
-}
-
-void            pop_line_until_endcomment(t_parse_utils *parse_utils, bool *is_comment)
-{
-    while (parse_utils->line[parse_utils->index] != '\0')
-    {
-        if (parse_utils->line[parse_utils->index] == '*' && parse_utils->line[parse_utils->index + 1] == '/')
-        {
-            *is_comment = false;
-            parse_utils->index += 2;
-            break;
-        }
-        parse_utils->index++;
-    }
-    pop_token(parse_utils, is_comment);
+    pop_token(parse_utils);
 }
 
 const char  *get_variable_name(t_parse_utils *parse_utils)
@@ -117,8 +89,7 @@ const char  *get_variable_name(t_parse_utils *parse_utils)
 
     skip_space(parse_utils);
     old_index = parse_utils->index;
-    while (isalnum(parse_utils->line[parse_utils->index])
-            || parse_utils->line[parse_utils->index] == '_')
+    while (isalnum(parse_utils->line[parse_utils->index]))
         parse_utils->index++;
     if (parse_utils->index - old_index == 0)
     {
@@ -130,13 +101,15 @@ const char  *get_variable_name(t_parse_utils *parse_utils)
     result_buffer[parse_utils->index - old_index] = '\0';
     if (parse_utils->line[parse_utils->index] == '(')
         parse_utils->current_token.token_type = TOK_FUNC_CALL;
+    else
+        parse_utils->current_token.token_type = TOK_INSTRUCTION;
     return (result_buffer);
 }
 
-void        expect(char expected, t_parse_utils *parse_utils, bool *is_comment)
+void        expect(char expected, t_parse_utils *parse_utils)
 {
     if (parse_utils->line[parse_utils->index - 1] == expected)
-        pop_token(parse_utils, is_comment);
+        pop_token(parse_utils);
     else
     {
        fprintf(stderr, "Parse Error: Expected token '%c' at position %lu\n",

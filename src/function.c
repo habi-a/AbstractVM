@@ -1,4 +1,4 @@
-#include <functions.h>
+#include <function.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -23,7 +23,7 @@ t_func_node      *get_function(t_func_list *list, const char *func_name)
     return (NULL);
 }
 
-void            push_back_function(t_func_list *list, const char *func_name, t_ptr_built_in function_b_in)
+void            push_back_function(t_func_list *list, const char *func_name, t_ptr_function function_b_in)
 {
     t_func_node *new_element;
 
@@ -31,8 +31,7 @@ void            push_back_function(t_func_list *list, const char *func_name, t_p
     if (new_element == NULL)
         return ;
     new_element->func_name = func_name;
-    new_element->func_type = FUNC_BUILT_IN;
-    new_element->ptr_built_in = function_b_in;
+    new_element->exec_function = function_b_in;
     new_element->next = NULL;
     list->size++;
     if (list->last != NULL)
@@ -42,13 +41,13 @@ void            push_back_function(t_func_list *list, const char *func_name, t_p
     list->last = new_element;
 }
 
-void            fill_built_int_functions(t_func_list *list)
+void            fill_functions(t_func_list *list)
 {
     push_back_function(list, strdup("int8"), &my_int8);
     push_back_function(list, strdup("int16"), &my_int16);
     push_back_function(list, strdup("int32"), &my_int32);
-    push_back_function(list, strdup("float"), &my_int);
-    push_back_function(list, strdup("double"), &my_int8);
+    push_back_function(list, strdup("float"), &my_float);
+    push_back_function(list, strdup("double"), &my_double);
 }
 
 void			free_list_functions(t_func_list *list)

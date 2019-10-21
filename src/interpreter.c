@@ -3,14 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-static bool     is_compatible_type(t_ast_node *left_result, t_ast_node *right_result)
-{
-    if (left_result->var_type == right_result->var_type)
-        return (true);
-    else if (left_result->var_type == T_INT || right_result->var_type == T_INT)
-        return (true);
-    return (false);
-}
 
 /*static void     push_back_variable(t_var_list *list, t_ast_node *left_result, t_ast_node *right_result)
 {
@@ -38,98 +30,86 @@ static bool     is_compatible_type(t_ast_node *left_result, t_ast_node *right_re
     list->last = new_element;
 }*/
 
-t_ast_node      *interpret(t_ast_node *ast, t_var_list *var_list, t_func_list *func_list)
+t_ast_node      *interpret(t_ast_node *ast, t_var_list *var_list, t_func_list *func_list, t_instruct_list *instruct_list)
 {
     t_ast_node  *left_result;
     t_ast_node  *right_result;
 
     if (ast == NULL)
     {
-        fprintf(stderr, "Syntax error");
+        fprintf(stderr, "Syntax error\n");
         exit(0);
     }
     if (ast->node_type == AST_NUMBER || ast->node_type == AST_NULL)
         return (ast);
-    else if (ast->node_type == AST_UNARY_MIN)
+
+    left_result = interpret(ast->ast_node_l, var_list, func_list, instruct_list);
+    if (ast->node_type == AST_CALL_FUNC)
     {
-        ast->ast_node_l->value_float *= (-1);
-        ast->ast_node_l->value_int *= (-1);
-        return (interpret(ast->ast_node_l, var_list, func_list));
-    }
-    else
-    {
-        left_result = interpret(ast->ast_node_l, var_list, func_list);
-        right_result = interpret(ast->ast_node_r, var_list, func_list);
-        if (ast->node_type == AST_CALL_FUNC)
+        if (!get_function(func_list, ast->var_name))
         {
-            if (!get_function(func_list, ast->var_name))
-            {
-                fprintf(stderr, "Parse Error: Unknown function '%s'\n",
-                        ast->var_name);
-                exit(0);
-            }
-            if (get_function(func_list, ast->var_name)->func_type == FUNC_BUILT_IN)
-                get_function(func_list, ast->var_name)->ptr_built_in(ast, left_result, right_result);
-            return (ast);
-        }
-        if (!is_compatible_type(left_result, right_result))
-        {
-            fprintf(stderr, "Impossible Cast, incompatible type\n");
+            fprintf(stderr, "Parse Error: Unknown type '%s'\n",
+            ast->var_name);
             exit(0);
         }
-        switch (ast->node_type)
+        get_function(func_list, ast->var_name)->exec_function(ast, left_result);
+        return (ast);
+    }
+    if (ast->node_type == AST_INSTRUCTION)
+    {
+        if (!get_instruction(instruct_list, ast->var_name))
         {
-            case AST_PLUS:
-                ast->node_type = AST_VARIABLE;
-                if (right_result->var_type != T_INT)
-                    ast->var_type = right_result->var_type;
-                else
-                    ast->var_type = left_result->var_type;
-                ast->value_float = left_result->value_float + right_result->value_float;
-                ast->value_int = (int)ast->value_float;
-                return (ast);
-            case AST_MINUS:
-                ast->node_type = AST_VARIABLE;
-                if (right_result->var_type != T_INT)
-                    ast->var_type = right_result->var_type;
-                else
-                    ast->var_type = left_result->var_type;
-                ast->value_float = left_result->value_float - right_result->value_float;
-                ast->value_int = (int)ast->value_float;
-                return (ast);
-            case AST_MUL:
-                ast->node_type = AST_VARIABLE;
-                if (right_result->var_type != T_INT)
-                    ast->var_type = right_result->var_type;
-                else
-                    ast->var_type = left_result->var_type;
-                ast->value_float = left_result->value_float * right_result->value_float;
-                ast->value_int = (int)ast->value_float;
-                if (right_result->var_type == T_STRING && left_result->var_type == T_STRING)
-                {
-                    fprintf(stderr, "Operation not permitted for strings\n");
-                    exit(0);
-                }
-                return (ast);
-            case AST_DIV:
-                ast->node_type = AST_VARIABLE;
-                if (right_result->var_type != T_INT)
-                    ast->var_type = right_result->var_type;
-                else
-                    ast->var_type = left_result->var_type;
-                if (right_result->value_float)
-                {
-                    ast->value_float = left_result->value_float / right_result->value_float;
-                    ast->value_int = (int)ast->value_float;
-                }
-                else
-                {
-                    ast->value_float = 0;
-                    ast->value_int = 0;
-                }
-                return (ast);
-            default: break;
+            fprintf(stderr, "Parse Error: Unknown instruction '%s'\n",
+            ast->var_name);
+            exit(0);
         }
+        get_instruction(instruct_list, ast->var_name)->exec_function(ast, left_result);
+        return (ast);
+    }
+    right_result = interpret(ast->ast_node_r, var_list, func_list, instruct_list);
+    switch (ast->node_type)
+    {
+        case AST_PLUS:
+            if (right_result->var_type != T_INT)
+                ast->var_type = right_result->var_type;
+            else
+                ast->var_type = left_result->var_type;
+            ast->value_float = left_result->value_float + right_result->value_float;
+            ast->value_int = (int)ast->value_float;
+            return (ast);
+        case AST_MINUS:
+            if (right_result->var_type != T_INT)
+                ast->var_type = right_result->var_type;
+            else
+                ast->var_type = left_result->var_type;
+            ast->value_float = left_result->value_float - right_result->value_float;
+            ast->value_int = (int)ast->value_float;
+            return (ast);
+        case AST_MUL:
+            if (right_result->var_type != T_INT)
+                ast->var_type = right_result->var_type;
+            else
+                ast->var_type = left_result->var_type;
+            ast->value_float = left_result->value_float * right_result->value_float;
+            ast->value_int = (int)ast->value_float;
+            return (ast);
+        case AST_DIV:
+            if (right_result->var_type != T_INT)
+                ast->var_type = right_result->var_type;
+            else
+                ast->var_type = left_result->var_type;
+            if (right_result->value_float)
+            {
+                ast->value_float = left_result->value_float / right_result->value_float;
+                ast->value_int = (int)ast->value_float;
+            }
+            else
+            {
+                ast->value_float = 0;
+                ast->value_int = 0;
+            }
+            return (ast);
+        default: break;
     }
     fprintf(stderr, "Syntax error\n");
     exit(0);

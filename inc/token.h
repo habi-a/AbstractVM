@@ -6,14 +6,11 @@
 typedef enum        e_token_type
 {
                     TOK_NUMBER,
-                    TOK_PLUS,
-                    TOK_MINUS,
-                    TOK_MUL,
-                    TOK_DIV,
                     TOK_LEFT_PAREN,
                     TOK_RIGHT_PAREN,
                     TOK_COMMA,
                     TOK_FUNC_CALL,
+                    TOK_INSTRUCTION,
                     TOK_END_TEXT,
                     TOK_ERROR
 }                   t_token_type;
