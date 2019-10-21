@@ -45,28 +45,10 @@ void            push_back_function(t_func_list *list, const char *func_name, t_p
 void            fill_built_int_functions(t_func_list *list)
 {
     push_back_function(list, strdup("int8"), &my_int8);
-    push_back_function(list, strdup("min"), &my_min);
-    push_back_function(list, strdup("max"), &my_max);
-    push_back_function(list, strdup("rand"), &my_rand);
-    push_back_function(list, strdup("at"), &my_at);
-    push_back_function(list, strdup("len"), &my_len);
-    push_back_function(list, strdup("int_to_string"), &my_int_to_string);
-    push_back_function(list, strdup("float_to_string"), &my_float_to_string);
-    push_back_function(list, strdup("string_to_int"), &my_string_to_int);
-    push_back_function(list, strdup("string_to_float"), &my_string_to_float);
-    push_back_function(list, strdup("print"), &my_print);
-    push_back_function(list, strdup("putchar"), &my_putchar);
-    push_back_function(list, strdup("putnbr"), &my_putnbr);
-    push_back_function(list, strdup("putnbr_float"), &my_putnbr_float);
-    push_back_function(list, strdup("putbool"), &my_putbool);
-    push_back_function(list, strdup("scan"), &my_scan);
-    push_back_function(list, strdup("open"), &my_open);
-    push_back_function(list, strdup("read"), &my_read);
-    push_back_function(list, strdup("readline"), &my_readline);
-    push_back_function(list, strdup("write"), &my_write);
-    push_back_function(list, strdup("close"), &my_close);
-    push_back_function(list, strdup("is_open"), &my_is_open);
-    push_back_function(list, strdup("br"), &my_br);
+    push_back_function(list, strdup("int16"), &my_int16);
+    push_back_function(list, strdup("int32"), &my_int32);
+    push_back_function(list, strdup("float"), &my_int);
+    push_back_function(list, strdup("double"), &my_int8);
 }
 
 void			free_list_functions(t_func_list *list)

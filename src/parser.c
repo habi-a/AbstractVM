@@ -148,10 +148,5 @@ t_ast_node            *parse(const char *line, t_var_list *var_list, bool *is_co
         pop_line_until_endcomment(&parse_utils, is_comment);
     else
         pop_token(&parse_utils, is_comment);
-    if (parse_utils.current_token.token_type == TOK_DECLARATION)
-    {
-        parse_utils.decla_type = parse_utils.current_token.var_type;
-        pop_token(&parse_utils, is_comment);
-    }
     return (expression(&parse_utils, var_list, is_comment));
 }

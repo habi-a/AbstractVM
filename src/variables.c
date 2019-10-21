@@ -19,10 +19,6 @@ void			init_list_variables(int argc, char **argv, t_var_list *list)
     new_element->var_type = T_INT;
     new_element->value_float = argc;
     new_element->value_int = argc;
-    new_element->value_bool = (bool)argc;
-    new_element->value_char = (char)argc;
-    new_element->value_string = NULL;
-    new_element->value_file = NULL;
     new_element->next = NULL;
     list->size++;
     if (list->last != NULL)
@@ -60,8 +56,6 @@ void			free_list_variables(t_var_list *list)
         tmp = p_elem;
         p_elem = p_elem->next;
         free((char *)tmp->var_name);
-        if (tmp->var_type == T_STRING && tmp->value_string != NULL)
-            free(tmp->value_string);
         free(tmp);
     }
     list->first = NULL;

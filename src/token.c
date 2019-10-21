@@ -25,12 +25,11 @@ bool    set_token(t_parse_utils *parse_utils, bool *is_comment)
     {
         parse_utils->current_token.token_type = TOK_NUMBER;
         get_number(parse_utils);
-        parse_utils->current_token.value_char = (char)parse_utils->current_token.value_int;
         return (true);
     }
     else if (isalpha(parse_utils->line[parse_utils->index]))
     {
-        parse_utils->current_token.token_type = TOK_VARIABLE;
+        parse_utils->current_token.token_type = TOK_ERROR;
         parse_utils->current_token.var_name = get_variable_name(parse_utils);
         return (true);
     }
