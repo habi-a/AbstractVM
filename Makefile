@@ -6,17 +6,16 @@ CFLAGS	+= 	-I ./inc
 NAME	=	abstractvm
 
 SRC		= 	src/main.c \
-			src/ast.c \
-			src/func-in.c \
-			src/function.c \
-			src/instruct-in.c \
-			src/instruction.c \
-			src/interpreter.c \
-			src/parser.c\
-			src/parser_utils.c\
-			src/repl.c \
-			src/token.c \
-			src/variables.c
+			src/instructions/instructions.c \
+			src/instructions/instruction.c \
+			src/interpreter/ast_node.c \
+			src/interpreter/interpreter.c \
+			src/lexer_parser/parser.c\
+			src/lexer_parser/parser_utils.c\
+			src/lexer_parser/token.c \
+			src/stack/variables.c \
+			src/types/types.c \
+			src/types/type.c
 
 OBJ		= 	$(SRC:.c=.o)
 

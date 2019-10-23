@@ -1,9 +1,9 @@
 #ifndef                 _AST_H_
 # define                _AST_H_
 
+# include               <variables.h>
 # include               <stdbool.h>
 # include               <stdio.h>
-# include               <variables.h>
 
 typedef enum            e_ast_nodetype
 {

@@ -6,27 +6,27 @@
 #include <variables.h>
 
 
-t_ast_node            *expression(t_parse_utils *parse_utils, t_var_list *var_list)
+t_ast_node          *expression(t_parse_utils *parse_utils, t_var_list *var_list)
 {
-    t_ast_node        *expr1_ast_node;
-    t_ast_node        *term_ast_node;
+    t_ast_node      *expr1_ast_node;
+    t_ast_node      *term_ast_node;
 
-    term_ast_node = term(parse_utils, var_list);
-    expr1_ast_node = create_node_number(T_INT, 0, 0);
+    term_ast_node   = term(parse_utils, var_list);
+    expr1_ast_node  = create_node_number(T_INT, 0, 0);
     return (create_node_binary(AST_PLUS, term_ast_node, expr1_ast_node));
 }
 
-t_ast_node              *term(t_parse_utils *parse_utils, t_var_list *var_list)
+t_ast_node          *term(t_parse_utils *parse_utils, t_var_list *var_list)
 {
-    t_ast_node        *fact_ast_node;
-    t_ast_node        *term1_ast_node;
+    t_ast_node      *fact_ast_node;
+    t_ast_node      *term1_ast_node;
 
-    fact_ast_node = factor(parse_utils, var_list);
-    term1_ast_node = create_node_number(T_INT, 1, 1);
+    fact_ast_node   = factor(parse_utils, var_list);
+    term1_ast_node  = create_node_number(T_INT, 1, 1);
     return (create_node_binary(AST_MUL, fact_ast_node, term1_ast_node));
 }
 
-t_ast_node            *factor(t_parse_utils *parse_utils, t_var_list *var_list)
+t_ast_node          *factor(t_parse_utils *parse_utils, t_var_list *var_list)
 {
     int             tmp_value_int;
     float           tmp_value_float;
@@ -49,15 +49,15 @@ t_ast_node            *factor(t_parse_utils *parse_utils, t_var_list *var_list)
             pop_token(parse_utils);
             return (create_node_number(tmp_var_type, tmp_value_int, tmp_value_float));
         case TOK_INSTRUCTION:
-                tmp_var_name = strdup(parse_utils->current_token.var_name);
-                pop_token(parse_utils);
-                if (parse_utils->current_token.token_type == TOK_END_TEXT)
-                    ast_node1 = create_node_null();
-                else
-                    ast_node1 = factor(parse_utils, var_list);
-                ast_node = create_node_instruction(tmp_var_name, ast_node1);
-                free((char *)tmp_var_name);
-                return (ast_node);
+            tmp_var_name = strdup(parse_utils->current_token.var_name);
+            pop_token(parse_utils);
+            if (parse_utils->current_token.token_type == TOK_END_TEXT)
+                ast_node1 = create_node_null();
+            else
+                ast_node1 = factor(parse_utils, var_list);
+            ast_node = create_node_instruction(tmp_var_name, ast_node1);
+            free((char *)tmp_var_name);
+            return (ast_node);
         case TOK_FUNC_CALL:
             tmp_var_name = strdup(parse_utils->current_token.var_name);
             pop_token(parse_utils);
