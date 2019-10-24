@@ -8,18 +8,18 @@
 #include <types.h>
 #include <variables.h>
 
-static void     execute(const char *cin, t_var_list *var_list,
+static void     execute(const char *cin, t_stack_node *stack,
                         t_type type_list[NB_TYPES],
                         t_instruct instruct_list[NB_INSTRUCTIONS])
 {
     t_ast_node  *ast_node;
 
-    ast_node = parse(cin, var_list);
-    interpret(ast_node, var_list, type_list, instruct_list);
+    ast_node = parse(cin, stack);
+    interpret(ast_node, stack, type_list, instruct_list);
     destruct_astnode(ast_node);
 }
 
-static void     loop_reader(t_var_list *var_list, t_type type_list[NB_TYPES],
+static void     loop_reader(t_stack_node *stack, t_type type_list[NB_TYPES],
                         t_instruct instruct_list[NB_INSTRUCTIONS])
 {
     char        *cin;
@@ -37,7 +37,7 @@ static void     loop_reader(t_var_list *var_list, t_type type_list[NB_TYPES],
         if (!strcmp(cin, "exit"))
             repl_exit = true;
         else if (!is_white_line(cin))
-            execute(cin, var_list, type_list, instruct_list);
+            execute(cin, stack, type_list, instruct_list);
         free(cin);
         cin = NULL;
         size_cin = 0;
@@ -48,19 +48,18 @@ static void     loop_reader(t_var_list *var_list, t_type type_list[NB_TYPES],
     free(cin);
 }
 
-static void     abstractvm(t_var_list *var_list, t_type type_list[NB_TYPES],
+static void     abstractvm(t_stack_node *stack, t_type type_list[NB_TYPES],
                         t_instruct instruct_list[NB_INSTRUCTIONS])
 {
-    init_list_variables(var_list);
-    loop_reader(var_list, type_list, instruct_list);
-    free_list_variables(var_list);
-    free_list_instructions(instruct_list);
-    free_list_types(type_list);
+    loop_reader(stack, type_list, instruct_list);
+    //free_stack(&stack);
+    //free_list_instructions(instruct_list);
+    //free_list_types(type_list);
 }
 
 int             main()
 {
-    t_var_list  var_list;
+    t_stack_node  *stack = NULL;
     t_instruct  instruct_list[NB_INSTRUCTIONS] = {
         {strdup("push"),    T_VOID,     &instruct_push},
         {strdup("pop"),     T_VOID,     &instruct_pop},
@@ -81,6 +80,6 @@ int             main()
         {strdup("double"),  T_DOUBLE,   &my_double}
     };
 
-    abstractvm(&var_list, type_list, instruct_list);
+    abstractvm(stack, type_list, instruct_list);
     return (0);
 }

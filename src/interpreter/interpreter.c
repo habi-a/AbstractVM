@@ -3,34 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-/*static void     push_back_variable(t_var_list *list, t_ast_node *left_result, t_ast_node *right_result)
-{
-    t_var_node  *new_element;
-
-    new_element = malloc(sizeof(t_var_node));
-    if (new_element == NULL)
-        return ;
-    new_element->var_name = strdup(left_result->var_name);
-    if (new_element->var_name == NULL)
-        return ;
-    new_element->var_type = left_result->var_type;
-    new_element->value_float = right_result->value_float;
-    if (new_element->var_type == T_INT)
-        new_element->value_float = (int)right_result->value_float;
-    else
-        new_element->value_float = right_result->value_float;
-    new_element->value_int = (int)right_result->value_float;
-    new_element->next = NULL;
-    list->size++;
-    if (list->last != NULL)
-        list->last->next = new_element;
-    else
-        list->first = new_element;
-    list->last = new_element;
-}*/
-
-t_ast_node      *interpret(t_ast_node *ast, t_var_list *var_list,
+t_ast_node      *interpret(t_ast_node *ast, t_stack_node *stack,
                             t_type type_list[NB_TYPES],
                             t_instruct instruct_list[NB_INSTRUCTIONS])
 {
@@ -45,7 +18,7 @@ t_ast_node      *interpret(t_ast_node *ast, t_var_list *var_list,
     if (ast->node_type == AST_NUMBER || ast->node_type == AST_NULL)
         return (ast);
 
-    left_result = interpret(ast->ast_node_l, var_list, type_list, instruct_list);
+    left_result = interpret(ast->ast_node_l, stack, type_list, instruct_list);
     if (ast->node_type == AST_CALL_FUNC)
     {
         if (!get_type(type_list, ast->var_name))
@@ -65,10 +38,10 @@ t_ast_node      *interpret(t_ast_node *ast, t_var_list *var_list,
             ast->var_name);
             exit(0);
         }
-        get_instruction(instruct_list, ast->var_name)->exec_instruction(ast, left_result);
+        stack = get_instruction(instruct_list, ast->var_name)->exec_instruction(ast, left_result, stack);
         return (ast);
     }
-    right_result = interpret(ast->ast_node_r, var_list, type_list, instruct_list);
+    right_result = interpret(ast->ast_node_r, stack, type_list, instruct_list);
     switch (ast->node_type)
     {
         case AST_PLUS:

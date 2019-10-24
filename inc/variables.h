@@ -25,14 +25,15 @@ typedef struct          s_stack_data
 typedef struct          s_stack_node
 {
     struct s_stack_data data;
-    struct s_var_node   *next;
+    struct s_stack_node *next;
 }                       t_stack_node;
 
-unsigned short          isEmpty(t_stack_node *stack)
-void                    push(t_stack_node **stack, t_stack_data data)
-t_stack_data            pop(t_stack_node **stack)
-t_stack_data            peek(t_stack_node *stack)
-void                    free_stack(t_stack_node *stack)
+unsigned short          isEmpty(t_stack_node *stack);
+t_stack_node            *push(t_stack_node *stack, t_stack_data data);
+t_stack_data            pop(t_stack_node *stack);
+t_stack_data            peek(t_stack_node *stack);
+void display(t_stack_node* head);
+void                    free_stack(t_stack_node *stack);
 
 
 #endif                  /* _VARIABLES_H_ */
