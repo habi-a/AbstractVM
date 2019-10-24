@@ -13,7 +13,7 @@ SRC		= 	src/main.c \
 			src/lexer_parser/parser.c\
 			src/lexer_parser/parser_utils.c\
 			src/lexer_parser/token.c \
-			src/stack/variables.c \
+			src/stack/stack.c \
 			src/types/types.c \
 			src/types/type.c
 

@@ -12,7 +12,7 @@ t_type              *get_type(t_type type_list[NB_TYPES], const char *type_name)
     return (NULL);
 }
 
-void			free_list_types(t_type type_list[NB_TYPES])
+void			    free_list_types(t_type type_list[NB_TYPES])
 {
     unsigned short  i = 0;
 

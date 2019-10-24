@@ -14,26 +14,25 @@ typedef enum            e_var_type
                         T_NULL
 }                       t_var_type;
 
-typedef struct          s_var_node
+typedef struct          s_stack_data
 {
-    const char          *var_name;
     t_var_type          var_type;
     int                 value_int;
     float               value_float;
     double              value_double;
-    struct s_var_node   *next;
-}                       t_var_node;
+}                       t_stack_data;
 
-typedef struct          s_var_list
+typedef struct          s_stack_node
 {
-    size_t              size;
-    t_var_node          *first;
-    t_var_node          *last;
+    struct s_stack_data data;
+    struct s_var_node   *next;
+}                       t_stack_node;
 
-}                       t_var_list;
+unsigned short          isEmpty(t_stack_node *stack)
+void                    push(t_stack_node **stack, t_stack_data data)
+t_stack_data            pop(t_stack_node **stack)
+t_stack_data            peek(t_stack_node *stack)
+void                    free_stack(t_stack_node *stack)
 
-void				    init_list_variables(t_var_list *list);
-t_var_node              *get_variable(t_var_list *list, const char *var_name);
-void                    free_list_variables(t_var_list *list);
 
 #endif                  /* _VARIABLES_H_ */
