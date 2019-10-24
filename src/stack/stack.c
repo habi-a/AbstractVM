@@ -1,4 +1,4 @@
-#include <variables.h>
+#include <stack.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -17,20 +17,18 @@ t_stack_node        *push(t_stack_node *stack, t_stack_data data)
     return (stack);
 }
 
-t_stack_data        pop(t_stack_node *stack)
+t_stack_node        *pop(t_stack_node *stack, t_stack_data *data)
 {
-    t_stack_data    popped = {T_VOID, 0, 0, 0};
     t_stack_node    *tmp = NULL;
 
     if (isEmpty(stack))
-        return (popped);
+        return (NULL);
     tmp = stack;
-    popped = tmp->data;
+    *data = tmp->data;
     stack = stack->next;
-    printf("%d popped\n", popped.value_int);
+    printf("%d popped from the stack\n", data->value_int);
     free(tmp);
-    printf("test3\n");
-    return (popped);
+    return (stack);
 }
 
 t_stack_data        peek(t_stack_node *stack)

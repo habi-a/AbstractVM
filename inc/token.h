@@ -1,7 +1,7 @@
 #ifndef             _TOKEN_H_
 # define            _TOKEN_H_
 
-# include           <variables.h>
+# include           <stack.h>
 
 typedef enum        e_token_type
 {
@@ -9,7 +9,7 @@ typedef enum        e_token_type
                     TOK_LEFT_PAREN,
                     TOK_RIGHT_PAREN,
                     TOK_COMMA,
-                    TOK_FUNC_CALL,
+                    TOK_TYPE,
                     TOK_INSTRUCTION,
                     TOK_END_TEXT,
                     TOK_ERROR

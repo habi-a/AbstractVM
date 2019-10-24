@@ -100,7 +100,7 @@ const char  *get_variable_name(t_parse_utils *parse_utils)
     strncpy(result_buffer, parse_utils->line + old_index, parse_utils->index - old_index);
     result_buffer[parse_utils->index - old_index] = '\0';
     if (parse_utils->line[parse_utils->index] == '(')
-        parse_utils->current_token.token_type = TOK_FUNC_CALL;
+        parse_utils->current_token.token_type = TOK_TYPE;
     else
         parse_utils->current_token.token_type = TOK_INSTRUCTION;
     return (result_buffer);

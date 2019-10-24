@@ -30,9 +30,9 @@ typedef struct          s_stack_node
 
 unsigned short          isEmpty(t_stack_node *stack);
 t_stack_node            *push(t_stack_node *stack, t_stack_data data);
-t_stack_data            pop(t_stack_node *stack);
+t_stack_node            *pop(t_stack_node *stack, t_stack_data *data);
 t_stack_data            peek(t_stack_node *stack);
-void display(t_stack_node* head);
+void                    display(t_stack_node* head);
 void                    free_stack(t_stack_node *stack);
 
 

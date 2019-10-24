@@ -60,7 +60,7 @@ t_ast_node      *create_node_call_func(const char *var_name, t_ast_node *ast_nod
     ast_node = malloc(sizeof(t_ast_node));
     if (ast_node == NULL)
         return (NULL);
-    ast_node->node_type = AST_CALL_FUNC;
+    ast_node->node_type = AST_TYPE;
     ast_node->var_name = strdup(var_name);
     ast_node->var_type = T_VOID;
     ast_node->value_int = 0;

@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-t_ast_node      *interpret(t_ast_node *ast, t_stack_node *stack,
+t_ast_node      *interpret(t_ast_node *ast, t_stack_node **stack,
                             t_type type_list[NB_TYPES],
                             t_instruct instruct_list[NB_INSTRUCTIONS])
 {
@@ -19,7 +19,7 @@ t_ast_node      *interpret(t_ast_node *ast, t_stack_node *stack,
         return (ast);
 
     left_result = interpret(ast->ast_node_l, stack, type_list, instruct_list);
-    if (ast->node_type == AST_CALL_FUNC)
+    if (ast->node_type == AST_TYPE)
     {
         if (!get_type(type_list, ast->var_name))
         {
@@ -27,6 +27,7 @@ t_ast_node      *interpret(t_ast_node *ast, t_stack_node *stack,
             ast->var_name);
             exit(0);
         }
+        ast->var_type = get_type(type_list, ast->var_name)->return_type;
         get_type(type_list, ast->var_name)->exec_type(ast, left_result);
         return (ast);
     }
@@ -38,7 +39,8 @@ t_ast_node      *interpret(t_ast_node *ast, t_stack_node *stack,
             ast->var_name);
             exit(0);
         }
-        stack = get_instruction(instruct_list, ast->var_name)->exec_instruction(ast, left_result, stack);
+        ast->var_type = get_instruction(instruct_list, ast->var_name)->return_type;
+        *stack = get_instruction(instruct_list, ast->var_name)->exec_instruction(left_result, *stack);
         return (ast);
     }
     right_result = interpret(ast->ast_node_r, stack, type_list, instruct_list);

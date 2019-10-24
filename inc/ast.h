@@ -1,7 +1,7 @@
 #ifndef                 _AST_H_
 # define                _AST_H_
 
-# include               <variables.h>
+# include               <stack.h>
 # include               <stdbool.h>
 # include               <stdio.h>
 
@@ -13,7 +13,7 @@ typedef enum            e_ast_nodetype
                         AST_MUL,
                         AST_DIV,
                         AST_MOD,
-                        AST_CALL_FUNC,
+                        AST_TYPE,
                         AST_INSTRUCTION,
                         AST_UNARY_MIN,
                         AST_NULL
