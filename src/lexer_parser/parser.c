@@ -6,27 +6,27 @@
 #include <stack.h>
 
 
-t_ast_node          *expression(t_parse_utils *parse_utils)
+t_ast_node          *expression(t_parse_utils *parse_utils, unsigned short *is_instruction)
 {
     t_ast_node      *expr1_ast_node;
     t_ast_node      *term_ast_node;
 
-    term_ast_node   = term(parse_utils);
+    term_ast_node   = term(parse_utils, is_instruction);
     expr1_ast_node  = create_node_number(T_INT, 0, 0);
     return (create_node_binary(AST_PLUS, term_ast_node, expr1_ast_node));
 }
 
-t_ast_node          *term(t_parse_utils *parse_utils)
+t_ast_node          *term(t_parse_utils *parse_utils, unsigned short *is_instruction)
 {
     t_ast_node      *fact_ast_node;
     t_ast_node      *term1_ast_node;
 
-    fact_ast_node   = factor(parse_utils);
+    fact_ast_node   = factor(parse_utils, is_instruction);
     term1_ast_node  = create_node_number(T_INT, 1, 1);
     return (create_node_binary(AST_MUL, fact_ast_node, term1_ast_node));
 }
 
-t_ast_node          *factor(t_parse_utils *parse_utils)
+t_ast_node          *factor(t_parse_utils *parse_utils, unsigned short *is_instruction)
 {
     int             tmp_value_int;
     float           tmp_value_float;
@@ -39,7 +39,7 @@ t_ast_node          *factor(t_parse_utils *parse_utils)
     {
         case TOK_LEFT_PAREN:
             pop_token(parse_utils);
-            ast_node = expression(parse_utils);
+            ast_node = expression(parse_utils, is_instruction);
             expect(')', parse_utils);
             return (ast_node);
         case TOK_NUMBER:
@@ -49,12 +49,13 @@ t_ast_node          *factor(t_parse_utils *parse_utils)
             pop_token(parse_utils);
             return (create_node_number(tmp_var_type, tmp_value_int, tmp_value_float));
         case TOK_INSTRUCTION:
+            *is_instruction = 1;
             tmp_var_name = strdup(parse_utils->current_token.var_name);
             pop_token(parse_utils);
             if (parse_utils->current_token.token_type == TOK_END_TEXT)
                 ast_node1 = create_node_null();
             else
-                ast_node1 = factor(parse_utils);
+                ast_node1 = factor(parse_utils, is_instruction);
             ast_node = create_node_instruction(tmp_var_name, ast_node1);
             free((char *)tmp_var_name);
             return (ast_node);
@@ -67,8 +68,13 @@ t_ast_node          *factor(t_parse_utils *parse_utils)
                 fprintf(stderr, "Parse error, expected TOK_NUMBER at position %ld\n", parse_utils->index);
                 exit(0);
             }
-            ast_node1 = expression(parse_utils);
+            ast_node1 = expression(parse_utils, is_instruction);
             expect(')', parse_utils);
+            if (parse_utils->current_token.token_type != TOK_END_TEXT || !*is_instruction) {
+                fprintf(stderr, "Parse Error: Unexpected token '%c' at position %lu\n",
+                    parse_utils->current_token.value_symbol, parse_utils->index);
+                exit(0);
+            }
             ast_node = create_node_call_func(tmp_var_name, ast_node1);
             free((char *)tmp_var_name);
             return (ast_node);
@@ -81,12 +87,13 @@ t_ast_node          *factor(t_parse_utils *parse_utils)
     }
 }
 
-t_ast_node            *parse(const char *line)
+t_ast_node          *parse(const char *line)
 {
     t_parse_utils   parse_utils;
+    unsigned short  is_instruction = 0;
 
     init_parse_utils(&parse_utils, line);
     parse_utils.current_token.var_name = NULL;
     pop_token(&parse_utils);
-    return (expression(&parse_utils));
+    return (expression(&parse_utils, &is_instruction));
 }
