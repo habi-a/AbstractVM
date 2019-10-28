@@ -52,25 +52,3 @@ void                free_stack(t_stack_node *stack)
         free(tmp);
     }
 }
-
-void display(t_stack_node* head)
-{
-    t_stack_node *current;
-    current = head;
-    if (current!= NULL)
-    {
-        printf("Stack: ");
-        do
-        {
-            printf("%d ",current->data.value_int);
-            current = current->next;
-        }
-        while (current!= NULL);
-        printf("\n");
-    }
-    else
-    {
-        printf("The Stack is empty\n");
-    }
-
-}

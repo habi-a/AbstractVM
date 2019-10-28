@@ -6,8 +6,17 @@ CFLAGS	+= 	-I ./inc
 NAME	=	abstractvm
 
 SRC		= 	src/main.c \
-			src/instructions/instructions.c \
+			src/instructions/add.c \
+			src/instructions/assert.c \
+			src/instructions/div.c \
+			src/instructions/dump.c \
 			src/instructions/instruction.c \
+			src/instructions/mod.c \
+			src/instructions/mul.c \
+			src/instructions/pop.c \
+			src/instructions/print.c \
+			src/instructions/push.c \
+			src/instructions/sub.c \
 			src/interpreter/ast_node.c \
 			src/interpreter/interpreter.c \
 			src/lexer_parser/parser.c\
