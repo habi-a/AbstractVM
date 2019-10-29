@@ -47,44 +47,22 @@ t_ast_node      *interpret(t_ast_node *ast, t_stack_node **stack,
     switch (ast->node_type)
     {
         case AST_PLUS:
-            if (right_result->var_type != T_INT)
-                ast->var_type = right_result->var_type;
-            else
-                ast->var_type = left_result->var_type;
+            ast->node_type = left_result->node_type;
+            ast->var_type = left_result->var_type;
+            ast->value_int8 = left_result->value_int8 + right_result->value_int8;
+            ast->value_int16 = left_result->value_int16 + right_result->value_int16;
+            ast->value_int32 = left_result->value_int32 + right_result->value_int32;
             ast->value_float = left_result->value_float + right_result->value_float;
-            ast->value_int = (int)ast->value_float;
-            return (ast);
-        case AST_MINUS:
-            if (right_result->var_type != T_INT)
-                ast->var_type = right_result->var_type;
-            else
-                ast->var_type = left_result->var_type;
-            ast->value_float = left_result->value_float - right_result->value_float;
-            ast->value_int = (int)ast->value_float;
+            ast->value_double = left_result->value_double + right_result->value_double;
             return (ast);
         case AST_MUL:
-            if (right_result->var_type != T_INT)
-                ast->var_type = right_result->var_type;
-            else
-                ast->var_type = left_result->var_type;
-            ast->value_float = left_result->value_float * right_result->value_float;
-            ast->value_int = (int)ast->value_float;
-            return (ast);
-        case AST_DIV:
-            if (right_result->var_type != T_INT)
-                ast->var_type = right_result->var_type;
-            else
-                ast->var_type = left_result->var_type;
-            if (right_result->value_float)
-            {
-                ast->value_float = left_result->value_float / right_result->value_float;
-                ast->value_int = (int)ast->value_float;
-            }
-            else
-            {
-                ast->value_float = 0;
-                ast->value_int = 0;
-            }
+            ast->node_type = left_result->node_type;
+            ast->var_type = left_result->var_type;
+            ast->value_int8 = left_result->value_int8 + right_result->value_int8;
+            ast->value_int16 = left_result->value_int16 + right_result->value_int16;
+            ast->value_int32 = left_result->value_int32 + right_result->value_int32;
+            ast->value_float = left_result->value_float + right_result->value_float;
+            ast->value_double = left_result->value_double + right_result->value_double;
             return (ast);
         default: break;
     }

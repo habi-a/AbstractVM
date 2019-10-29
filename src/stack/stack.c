@@ -26,14 +26,13 @@ t_stack_node        *pop(t_stack_node *stack, t_stack_data *data)
     tmp = stack;
     *data = tmp->data;
     stack = stack->next;
-    printf("%d popped from the stack\n", data->value_int);
     free(tmp);
     return (stack);
 }
 
 t_stack_data        peek(t_stack_node *stack)
 {
-    t_stack_data    empty_data = {T_VOID, 0, 0, 0};
+    t_stack_data    empty_data = {T_VOID, 0, 0, 0, 0, 0};
 
     if (isEmpty(stack))
         return (empty_data);

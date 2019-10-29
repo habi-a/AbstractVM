@@ -3,11 +3,14 @@
 
 # include               <stddef.h>
 # include               <stdio.h>
+# include               <stdint.h>
 
 typedef enum            e_var_type
 {
                         T_UNDEFINED,
-                        T_INT,
+                        T_INT8,
+                        T_INT16,
+                        T_INT32,
                         T_FLOAT,
                         T_DOUBLE,
                         T_VOID,
@@ -16,10 +19,12 @@ typedef enum            e_var_type
 
 typedef struct          s_stack_data
 {
-    t_var_type          var_type;
-    int                 value_int;
+    int8_t              value_int8;
+    int16_t             value_int16;
+    int32_t             value_int32;
     float               value_float;
     double              value_double;
+    t_var_type          var_type;
 }                       t_stack_data;
 
 typedef struct          s_stack_node

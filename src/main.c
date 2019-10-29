@@ -73,9 +73,9 @@ int             main()
         {strdup("print"),   T_VOID,     &instruct_print}
     };
     t_type      type_list[NB_TYPES] = {
-        {strdup("int8"),    T_INT,      &my_int8},
-        {strdup("int16"),   T_INT,      &my_int16},
-        {strdup("int32"),   T_INT,      &my_int32},
+        {strdup("int8"),    T_INT8,     &my_int8},
+        {strdup("int16"),   T_INT16,    &my_int16},
+        {strdup("int32"),   T_INT32,    &my_int32},
         {strdup("float"),   T_FLOAT,    &my_float},
         {strdup("double"),  T_DOUBLE,   &my_double}
     };

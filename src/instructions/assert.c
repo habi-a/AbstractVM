@@ -4,8 +4,12 @@
 static unsigned short assert_helper(t_ast_node *ast_node1, t_stack_data *data1)
 {
     switch (data1->var_type) {
-        case T_INT:
-            return ((data1->value_int == ast_node1->value_int) ? 1 : 0);
+        case T_INT32:
+            return ((data1->value_int32 == ast_node1->value_int32) ? 1 : 0);
+        case T_INT16:
+            return ((data1->value_int16 == ast_node1->value_int16) ? 1 : 0);
+        case T_INT8:
+            return ((data1->value_int8 == ast_node1->value_int8) ? 1 : 0);
         case T_FLOAT:
             return ((data1->value_float == ast_node1->value_float) ? 1 : 0);
         case T_DOUBLE:
@@ -35,6 +39,5 @@ t_stack_node        *instruct_assert(t_ast_node *ast_node1, t_stack_node *stack)
         fprintf(stderr, "assert: values not equals\n");
         exit(0);
     }
-    printf("assert\n");
     return (stack);
 }

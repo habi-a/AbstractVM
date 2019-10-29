@@ -11,12 +11,21 @@ static void         mod_helper(t_stack_data *data1, t_stack_data *data2)
         fprintf(stderr, "mod: modulo with T_FLOAT forbidden\n");
         exit(0);
     }
-    data2->var_type = T_INT;
-    if (!data1->value_int) {
+    if (data1->var_type == T_INT32 || data2->var_type == T_INT32)
+        data2->var_type = T_INT32;
+    else if (data1->var_type == T_INT16 || data2->var_type == T_INT16)
+        data2->var_type = T_INT16;
+    else
+        data2->var_type = T_INT8;
+    if (!data1->value_int32) {
         fprintf(stderr, "mod: modulo by 0 forbidden\n");
         exit(0);
     }
-    data2->value_int %= data1->value_int;
+    data2->value_int8 %= data1->value_int8;
+    data2->value_int16 %= data1->value_int16;
+    data2->value_int32 %= data1->value_int32;
+    data2->value_float = data1->value_int32;
+    data2->value_double = data1->value_int32;
 }
 
 t_stack_node        *instruct_mod(t_ast_node *ast_node1, t_stack_node *stack)
@@ -33,6 +42,5 @@ t_stack_node        *instruct_mod(t_ast_node *ast_node1, t_stack_node *stack)
     stack = pop(stack, &data2);
     mod_helper(&data1, &data2);
     stack = push(stack, data2);
-    printf("mod\n");
     return (stack);
 }

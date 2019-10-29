@@ -54,24 +54,30 @@ void        get_number(t_parse_utils *parse_utils)
             parse_utils->index++;
     }
     else
-        parse_utils->current_token.var_type = T_INT;
+        parse_utils->current_token.var_type = T_INT32;
     if (parse_utils->index - old_index == 0)
     {
         fprintf(stderr, "Parse Error: Expected number at position %lu\n", old_index);
         exit(0);
     }
     strncpy(result_buffer, parse_utils->line + old_index, parse_utils->index - old_index);
-    if (parse_utils->current_token.var_type == T_INT)
+    if (parse_utils->current_token.var_type == T_INT32)
     {
         result_int = atoi(result_buffer);
-        parse_utils->current_token.value_int = result_int;
+        parse_utils->current_token.value_int8 = result_int;
+        parse_utils->current_token.value_int16 = result_int;
+        parse_utils->current_token.value_int32 = result_int;
         parse_utils->current_token.value_float = result_int;
+        parse_utils->current_token.value_double = result_int;
     }
     else
     {
         result_float = (float)atof(result_buffer);
+        parse_utils->current_token.value_int8 = (int)result_float;
+        parse_utils->current_token.value_int16 = (int)result_float;
+        parse_utils->current_token.value_int32 = (int)result_float;
         parse_utils->current_token.value_float = result_float;
-        parse_utils->current_token.value_int = (int)result_float;
+        parse_utils->current_token.value_double = (double)result_float;
     }
 }
 

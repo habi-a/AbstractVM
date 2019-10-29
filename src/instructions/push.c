@@ -16,10 +16,11 @@ t_stack_node        *instruct_push(t_ast_node *ast_node1, t_stack_node *stack)
         exit(0);
     }
     data_to_push.var_type = ast_node1->var_type;
-    data_to_push.value_int = ast_node1->value_int;
+    data_to_push.value_int8 = ast_node1->value_int8;
+    data_to_push.value_int16 = ast_node1->value_int16;
+    data_to_push.value_int32 = ast_node1->value_int32;
     data_to_push.value_float = ast_node1->value_float;
     data_to_push.value_double = ast_node1->value_double;
     stack = push(stack, data_to_push);
-    printf("%d pushed to stack\n", stack->data.value_int);
     return (stack);
 }

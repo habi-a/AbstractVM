@@ -2,6 +2,7 @@
 # define            _TOKEN_H_
 
 # include           <stack.h>
+# include           <stdint.h>
 
 typedef enum        e_token_type
 {
@@ -20,7 +21,9 @@ typedef struct      s_token
     t_token_type    token_type;
     const char      *var_name;
     t_var_type      var_type;
-    int             value_int;
+    int8_t          value_int8;
+    int16_t         value_int16;
+    int32_t         value_int32;
     float           value_float;
     double          value_double;
     char            value_symbol;

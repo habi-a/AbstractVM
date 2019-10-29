@@ -9,7 +9,9 @@ void    init_token(t_token *token)
         free((char *)token->var_name);
     token->var_name = NULL;
     token->var_type = T_UNDEFINED;
-    token->value_int = 0;
+    token->value_int8 = 0;
+    token->value_int16 = 0;
+    token->value_int32 = 0;
     token->value_float = 0;
     token->value_symbol = '\0';
 }

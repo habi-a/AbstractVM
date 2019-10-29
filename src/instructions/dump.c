@@ -4,8 +4,14 @@
 static void         print_value_by_type(t_stack_data *data)
 {
     switch (data->var_type) {
-        case T_INT:
-            printf("%d\n", data->value_int);
+        case T_INT8:
+            printf("%d\n", data->value_int8);
+            break;
+        case T_INT16:
+            printf("%d\n", data->value_int16);
+            break;
+        case T_INT32:
+            printf("%d\n", data->value_int32);
             break;
         case T_FLOAT:
             printf("%f\n", data->value_float);

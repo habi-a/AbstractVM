@@ -9,10 +9,7 @@ typedef enum            e_ast_nodetype
 {
                         AST_NUMBER,
                         AST_PLUS,
-                        AST_MINUS,
                         AST_MUL,
-                        AST_DIV,
-                        AST_MOD,
                         AST_TYPE,
                         AST_INSTRUCTION,
                         AST_UNARY_MIN,
@@ -24,7 +21,9 @@ typedef struct          s_ast_node
     t_ast_nodetype      node_type;
     const char          *var_name;
     t_var_type          var_type;
-    int                 value_int;
+    int8_t              value_int8;
+    int16_t             value_int16;
+    int32_t             value_int32;
     float               value_float;
     double              value_double;
     struct s_ast_node   *ast_node_l;
@@ -33,7 +32,7 @@ typedef struct          s_ast_node
 
 t_ast_node*             create_node_binary(t_ast_nodetype type, t_ast_node *left, t_ast_node *right);
 t_ast_node*             create_node_unary(t_ast_node* left);
-t_ast_node*             create_node_number(t_var_type var_type, int value_int, float value_float);
+t_ast_node*             create_node_number(t_stack_data *tmp_stack_node);
 t_ast_node              *create_node_instruction(const char *var_name, t_ast_node *ast_node1);
 t_ast_node              *create_node_call_func(const char *var_name, t_ast_node *ast_node1);
 t_ast_node              *create_node_null();

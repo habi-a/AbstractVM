@@ -8,29 +8,29 @@
 
 t_ast_node          *expression(t_parse_utils *parse_utils, unsigned short *is_instruction)
 {
+    t_stack_data    tmp_stack_node = {T_INT8, 0, 0, 0, 0, 0};
     t_ast_node      *expr1_ast_node;
     t_ast_node      *term_ast_node;
 
     term_ast_node   = term(parse_utils, is_instruction);
-    expr1_ast_node  = create_node_number(T_INT, 0, 0);
+    expr1_ast_node  = create_node_number(&tmp_stack_node);
     return (create_node_binary(AST_PLUS, term_ast_node, expr1_ast_node));
 }
 
 t_ast_node          *term(t_parse_utils *parse_utils, unsigned short *is_instruction)
 {
+    t_stack_data    tmp_stack_node = {T_INT8, 1, 1, 1, 1, 1};
     t_ast_node      *fact_ast_node;
     t_ast_node      *term1_ast_node;
 
     fact_ast_node   = factor(parse_utils, is_instruction);
-    term1_ast_node  = create_node_number(T_INT, 1, 1);
+    term1_ast_node  = create_node_number(&tmp_stack_node);
     return (create_node_binary(AST_MUL, fact_ast_node, term1_ast_node));
 }
 
 t_ast_node          *factor(t_parse_utils *parse_utils, unsigned short *is_instruction)
 {
-    int             tmp_value_int;
-    float           tmp_value_float;
-    t_var_type      tmp_var_type;
+    t_stack_data    tmp_stack_node;
     const char      *tmp_var_name;
     t_ast_node      *ast_node;
     t_ast_node      *ast_node1;
@@ -43,11 +43,14 @@ t_ast_node          *factor(t_parse_utils *parse_utils, unsigned short *is_instr
             expect(')', parse_utils);
             return (ast_node);
         case TOK_NUMBER:
-            tmp_var_type = parse_utils->current_token.var_type;
-            tmp_value_int = parse_utils->current_token.value_int;
-            tmp_value_float = parse_utils->current_token.value_float;
+            tmp_stack_node.var_type = parse_utils->current_token.var_type;
+            tmp_stack_node.value_int8 = parse_utils->current_token.value_int8;
+            tmp_stack_node.value_int16 = parse_utils->current_token.value_int16;
+            tmp_stack_node.value_int32 = parse_utils->current_token.value_int32;
+            tmp_stack_node.value_float = parse_utils->current_token.value_float;
+            tmp_stack_node.value_double = parse_utils->current_token.value_double;
             pop_token(parse_utils);
-            return (create_node_number(tmp_var_type, tmp_value_int, tmp_value_float));
+            return (create_node_number(&tmp_stack_node));
         case TOK_INSTRUCTION:
             *is_instruction = 1;
             tmp_var_name = strdup(parse_utils->current_token.var_name);

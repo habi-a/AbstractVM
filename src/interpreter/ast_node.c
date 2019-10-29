@@ -12,8 +12,11 @@ t_ast_node*     create_node_binary(t_ast_nodetype type, t_ast_node *left, t_ast_
     ast_node->node_type = type;
     ast_node->var_name = NULL;
     ast_node->var_type = T_UNDEFINED;
-    ast_node->value_int = 0;
+    ast_node->value_int8 = 0;
+    ast_node->value_int16 = 0;
+    ast_node->value_int32 = 0;
     ast_node->value_float = 0;
+    ast_node->value_double = 0;
     ast_node->ast_node_l = left;
     ast_node->ast_node_r = right;
     return (ast_node);
@@ -29,14 +32,17 @@ t_ast_node*     create_node_unary(t_ast_node* left)
     ast_node->node_type = AST_UNARY_MIN;
     ast_node->var_name = NULL;
     ast_node->var_type = T_UNDEFINED;
-    ast_node->value_int = 0;
+    ast_node->value_int8 = 0;
+    ast_node->value_int16 = 0;
+    ast_node->value_int32 = 0;
     ast_node->value_float = 0;
+    ast_node->value_double = 0;
     ast_node->ast_node_l = left;
     ast_node->ast_node_r = NULL;
     return (ast_node);
 }
 
-t_ast_node*     create_node_number(t_var_type var_type, int value_int, float value_float)
+t_ast_node*     create_node_number(t_stack_data *tmp_stack_node)
 {
     t_ast_node* ast_node;
 
@@ -45,9 +51,11 @@ t_ast_node*     create_node_number(t_var_type var_type, int value_int, float val
         return (NULL);
     ast_node->node_type = AST_NUMBER;
     ast_node->var_name = NULL;
-    ast_node->var_type = var_type;
-    ast_node->value_int = value_int;
-    ast_node->value_float = value_float;
+    ast_node->var_type = tmp_stack_node->var_type;
+    ast_node->value_int16 = tmp_stack_node->value_int16;
+    ast_node->value_int32 = tmp_stack_node->value_int32;
+    ast_node->value_float = tmp_stack_node->value_float;
+    ast_node->value_double = tmp_stack_node->value_double;
     ast_node->ast_node_l = NULL;
     ast_node->ast_node_r = NULL;
     return (ast_node);
@@ -63,8 +71,11 @@ t_ast_node      *create_node_call_func(const char *var_name, t_ast_node *ast_nod
     ast_node->node_type = AST_TYPE;
     ast_node->var_name = strdup(var_name);
     ast_node->var_type = T_VOID;
-    ast_node->value_int = 0;
+    ast_node->value_int8 = 0;
+    ast_node->value_int16 = 0;
+    ast_node->value_int32 = 0;
     ast_node->value_float = 0;
+    ast_node->value_double = 0;
     ast_node->ast_node_l = ast_node1;
     ast_node->ast_node_r = NULL;
     return (ast_node);
@@ -80,8 +91,11 @@ t_ast_node      *create_node_instruction(const char *var_name, t_ast_node *ast_n
     ast_node->node_type = AST_INSTRUCTION;
     ast_node->var_name = strdup(var_name);
     ast_node->var_type = T_VOID;
-    ast_node->value_int = 0;
+    ast_node->value_int8 = 0;
+    ast_node->value_int16 = 0;
+    ast_node->value_int32 = 0;
     ast_node->value_float = 0;
+    ast_node->value_double = 0;
     ast_node->ast_node_l = ast_node1;
     ast_node->ast_node_r = NULL;
     return (ast_node);
@@ -97,8 +111,11 @@ t_ast_node      *create_node_null()
     ast_node->node_type = AST_NULL;
     ast_node->var_name = NULL;
     ast_node->var_type = T_NULL;
-    ast_node->value_int = 0;
+    ast_node->value_int8 = 0;
+    ast_node->value_int16 = 0;
+    ast_node->value_int32 = 0;
     ast_node->value_float = 0;
+    ast_node->value_double = 0;
     ast_node->ast_node_l = NULL;
     ast_node->ast_node_r = NULL;
     return (ast_node);
