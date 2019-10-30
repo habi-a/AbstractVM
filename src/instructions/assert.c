@@ -1,7 +1,7 @@
 #include <instructions.h>
 #include <stdlib.h>
 
-static unsigned short assert_helper(t_ast_node *ast_node1, t_stack_data *data1)
+static unsigned short assert_helper(ast_node_t *ast_node1, stack_data_t *data1)
 {
     switch (data1->var_type) {
         case T_INT32:
@@ -20,17 +20,14 @@ static unsigned short assert_helper(t_ast_node *ast_node1, t_stack_data *data1)
     return (0);
 }
 
-t_stack_node        *instruct_assert(t_ast_node *ast_node1, t_stack_node *stack)
+stack_node_t        *instruct_assert(ast_node_t *ast_node1, stack_node_t *stack)
 {
-    t_stack_data    data1;
+    stack_data_t    data1;
 
-    if (ast_node1->node_type == AST_NULL)
-    {
+    if (ast_node1->node_type == AST_NULL) {
         fprintf(stderr, "assert: too few arguments\n");
         exit(0);
-    }
-    else if (ast_node1->node_type != AST_TYPE)
-    {
+    } else if (ast_node1->node_type != AST_TYPE) {
         fprintf(stderr, "assert: argument of type AST_TYPE expected\n");
         exit(0);
     }

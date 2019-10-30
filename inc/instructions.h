@@ -1,5 +1,5 @@
-#ifndef                     _INSTRUCTION_H_
-# define                    _INSTRUCTION_H_
+#ifndef                     _INSTRUCTIONS_H_
+# define                    _INSTRUCTIONS_H_
 
 # include                   <ast.h>
 # include                   <stdbool.h>
@@ -8,29 +8,28 @@
 
 # define                    NB_INSTRUCTIONS     10
 
-typedef t_stack_node *                (*t_ptr_instruction)(t_ast_node *ast_node1, t_stack_node *stack);
+typedef stack_node_t        *(*t_ptr_instruction)(ast_node_t *ast_node1, stack_node_t *stack);
 
-typedef struct              s_instruct
-{
+typedef struct              s_instruct {
     const char              *instruct_name;
-    t_var_type              return_type;
+    var_type_t              return_type;
     t_ptr_instruction       exec_instruction;
-}                           t_instruct;
+}                           instruct_t;
 
 
-t_instruct                  *get_instruction(t_instruct instruct_list[NB_INSTRUCTIONS], const char *instruct_name);
-void        free_list_instructions(t_instruct instruct_list[NB_INSTRUCTIONS]);
+instruct_t                  *get_instruction(instruct_t instruct_list[NB_INSTRUCTIONS], const char *instruct_name);
+void                        free_list_instructions(instruct_t instruct_list[NB_INSTRUCTIONS]);
 
-t_stack_node *instruct_push(t_ast_node *ast_node1, t_stack_node *stack);
-t_stack_node *instruct_pop(t_ast_node *ast_node1, t_stack_node *stack);
-t_stack_node *instruct_add(t_ast_node *ast_node1, t_stack_node *stack);
-t_stack_node *instruct_sub(t_ast_node *ast_node1, t_stack_node *stack);
-t_stack_node *instruct_mul(t_ast_node *ast_node1, t_stack_node *stack);
-t_stack_node *instruct_div(t_ast_node *ast_node1, t_stack_node *stack);
-t_stack_node *instruct_mod(t_ast_node *ast_node1, t_stack_node *stack);
-t_stack_node *instruct_assert(t_ast_node *ast_node1, t_stack_node *stack);
-t_stack_node *instruct_dump(t_ast_node *ast_node1, t_stack_node *stack);
-t_stack_node *instruct_print(t_ast_node *ast_node1, t_stack_node *stack);
+stack_node_t                *instruct_push(ast_node_t *ast_node1, stack_node_t *stack);
+stack_node_t                *instruct_pop(ast_node_t *ast_node1, stack_node_t *stack);
+stack_node_t                *instruct_add(ast_node_t *ast_node1, stack_node_t *stack);
+stack_node_t                *instruct_sub(ast_node_t *ast_node1, stack_node_t *stack);
+stack_node_t                *instruct_mul(ast_node_t *ast_node1, stack_node_t *stack);
+stack_node_t                *instruct_div(ast_node_t *ast_node1, stack_node_t *stack);
+stack_node_t                *instruct_mod(ast_node_t *ast_node1, stack_node_t *stack);
+stack_node_t                *instruct_assert(ast_node_t *ast_node1, stack_node_t *stack);
+stack_node_t                *instruct_dump(ast_node_t *ast_node1, stack_node_t *stack);
+stack_node_t                *instruct_print(ast_node_t *ast_node1, stack_node_t *stack);
 
 
-#endif                  /* _INSTRUCTION_H_ */
+#endif                      /* _INSTRUCTIONS_H_ */

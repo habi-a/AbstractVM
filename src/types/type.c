@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-t_type              *get_type(t_type type_list[NB_TYPES], const char *type_name)
+type_t              *get_type(type_t type_list[NB_TYPES], const char *type_name)
 {
     unsigned short  i = 0;
 
@@ -12,7 +12,7 @@ t_type              *get_type(t_type type_list[NB_TYPES], const char *type_name)
     return (NULL);
 }
 
-void			    free_list_types(t_type type_list[NB_TYPES])
+void			    free_list_types(type_t type_list[NB_TYPES])
 {
     unsigned short  i = 0;
 

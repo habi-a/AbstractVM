@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-t_instruct          *get_instruction(t_instruct instruct_list[NB_INSTRUCTIONS],
+instruct_t          *get_instruction(instruct_t instruct_list[NB_INSTRUCTIONS],
                                         const char *instruct_name)
 {
     unsigned short  i = 0;
@@ -13,7 +13,7 @@ t_instruct          *get_instruction(t_instruct instruct_list[NB_INSTRUCTIONS],
     return (NULL);
 }
 
-void                free_list_instructions(t_instruct instruct_list[NB_INSTRUCTIONS])
+void                free_list_instructions(instruct_t instruct_list[NB_INSTRUCTIONS])
 {
     unsigned short  i = 0;
 

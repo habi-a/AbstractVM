@@ -2,6 +2,12 @@ CC		= 	gcc
 CFLAGS	+= 	-Wall -Wextra -Werror -Wpedantic
 CFLAGS 	+= 	-lm
 CFLAGS	+= 	-I ./inc
+CFLAGS 	+= 	-I $(LIBPATH)inc
+LDFLAGS	=	$(LIBMY)
+
+LIBMY	= 	-L ./ -lmy
+LIBNAME	= 	libmy
+LIBPATH	= 	./libmy/
 
 NAME	=	abstractvm
 
@@ -31,17 +37,26 @@ OBJ		= 	$(SRC:.c=.o)
 RM		= 	rm -f
 LN		= 	ln -s
 
-all:		$(NAME)
+all:		$(LIBNAME) $(NAME)
 
 $(NAME):	$(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) -o $(NAME)
+
+
+$(LIBNAME):	$(OBJ)
+	make -C $(LIBPATH)
+	$(LN)  $(LIBPATH)$(LIBNAME).so ./$(LIBNAME).so
+	$(LN)  $(LIBPATH)$(LIBNAME).a ./$(LIBNAME).a
 
 clean:
 	$(RM) $(OBJ)
+	make -C $(LIBPATH) clean
 
 fclean: 	clean
 	$(RM) $(NAME)
+	$(RM) ./$(LIBNAME).so ./$(LIBNAME).a
+	make -C $(LIBPATH) fclean
 
 re:			fclean all
 
-.PHONY	= 	all $(NAME) clean fclean re
+.PHONY	= 	all $(NAME) $(LIBNAME) clean fclean re

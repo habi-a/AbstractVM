@@ -5,8 +5,7 @@
 # include               <stdbool.h>
 # include               <stdio.h>
 
-typedef enum            e_ast_nodetype
-{
+typedef enum            e_ast_nodetype {
                         AST_NUMBER,
                         AST_PLUS,
                         AST_MUL,
@@ -14,13 +13,12 @@ typedef enum            e_ast_nodetype
                         AST_INSTRUCTION,
                         AST_UNARY_MIN,
                         AST_NULL
-}                       t_ast_nodetype;
+}                       ast_nodetype_t;
 
-typedef struct          s_ast_node
-{
-    t_ast_nodetype      node_type;
+typedef struct          s_ast_node {
+    ast_nodetype_t      node_type;
     const char          *var_name;
-    t_var_type          var_type;
+    var_type_t          var_type;
     int8_t              value_int8;
     int16_t             value_int16;
     int32_t             value_int32;
@@ -28,14 +26,14 @@ typedef struct          s_ast_node
     double              value_double;
     struct s_ast_node   *ast_node_l;
     struct s_ast_node   *ast_node_r;
-}                       t_ast_node;
+}                       ast_node_t;
 
-t_ast_node*             create_node_binary(t_ast_nodetype type, t_ast_node *left, t_ast_node *right);
-t_ast_node*             create_node_unary(t_ast_node* left);
-t_ast_node*             create_node_number(t_stack_data *tmp_stack_node);
-t_ast_node              *create_node_instruction(const char *var_name, t_ast_node *ast_node1);
-t_ast_node              *create_node_call_func(const char *var_name, t_ast_node *ast_node1);
-t_ast_node              *create_node_null();
-void                    destruct_astnode(t_ast_node *ast_node);
+ast_node_t*             create_node_binary(ast_nodetype_t type, ast_node_t *left, ast_node_t *right);
+ast_node_t*             create_node_unary(ast_node_t* left);
+ast_node_t*             create_node_number(stack_data_t *tmp_stack_node);
+ast_node_t              *create_node_instruction(const char *var_name, ast_node_t *ast_node1);
+ast_node_t              *create_node_call_func(const char *var_name, ast_node_t *ast_node1);
+ast_node_t              *create_node_null();
+void                    destruct_astnode(ast_node_t *ast_node);
 
 #endif                  /* _AST_H_ */

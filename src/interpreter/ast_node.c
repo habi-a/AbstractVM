@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-t_ast_node*     create_node_binary(t_ast_nodetype type, t_ast_node *left, t_ast_node *right)
+ast_node_t*     create_node_binary(ast_nodetype_t type, ast_node_t *left, ast_node_t *right)
 {
-    t_ast_node* ast_node;
+    ast_node_t* ast_node;
 
-    ast_node = malloc(sizeof(t_ast_node));
+    ast_node = malloc(sizeof(ast_node_t));
     if (ast_node == NULL)
         return (NULL);
     ast_node->node_type = type;
@@ -22,11 +22,11 @@ t_ast_node*     create_node_binary(t_ast_nodetype type, t_ast_node *left, t_ast_
     return (ast_node);
 }
 
-t_ast_node*     create_node_unary(t_ast_node* left)
+ast_node_t*     create_node_unary(ast_node_t* left)
 {
-    t_ast_node* ast_node;
+    ast_node_t* ast_node;
 
-    ast_node = malloc(sizeof(t_ast_node));
+    ast_node = malloc(sizeof(ast_node_t));
     if (ast_node == NULL)
         return (NULL);
     ast_node->node_type = AST_UNARY_MIN;
@@ -42,16 +42,17 @@ t_ast_node*     create_node_unary(t_ast_node* left)
     return (ast_node);
 }
 
-t_ast_node*     create_node_number(t_stack_data *tmp_stack_node)
+ast_node_t*     create_node_number(stack_data_t *tmp_stack_node)
 {
-    t_ast_node* ast_node;
+    ast_node_t* ast_node;
 
-    ast_node = malloc(sizeof(t_ast_node));
+    ast_node = malloc(sizeof(ast_node_t));
     if (ast_node == NULL)
         return (NULL);
     ast_node->node_type = AST_NUMBER;
     ast_node->var_name = NULL;
     ast_node->var_type = tmp_stack_node->var_type;
+    ast_node->value_int8 = tmp_stack_node->value_int8;
     ast_node->value_int16 = tmp_stack_node->value_int16;
     ast_node->value_int32 = tmp_stack_node->value_int32;
     ast_node->value_float = tmp_stack_node->value_float;
@@ -61,11 +62,11 @@ t_ast_node*     create_node_number(t_stack_data *tmp_stack_node)
     return (ast_node);
 }
 
-t_ast_node      *create_node_call_func(const char *var_name, t_ast_node *ast_node1)
+ast_node_t      *create_node_call_func(const char *var_name, ast_node_t *ast_node1)
 {
-    t_ast_node* ast_node;
+    ast_node_t* ast_node;
 
-    ast_node = malloc(sizeof(t_ast_node));
+    ast_node = malloc(sizeof(ast_node_t));
     if (ast_node == NULL)
         return (NULL);
     ast_node->node_type = AST_TYPE;
@@ -81,11 +82,11 @@ t_ast_node      *create_node_call_func(const char *var_name, t_ast_node *ast_nod
     return (ast_node);
 }
 
-t_ast_node      *create_node_instruction(const char *var_name, t_ast_node *ast_node1)
+ast_node_t      *create_node_instruction(const char *var_name, ast_node_t *ast_node1)
 {
-    t_ast_node* ast_node;
+    ast_node_t* ast_node;
 
-    ast_node = malloc(sizeof(t_ast_node));
+    ast_node = malloc(sizeof(ast_node_t));
     if (ast_node == NULL)
         return (NULL);
     ast_node->node_type = AST_INSTRUCTION;
@@ -101,11 +102,11 @@ t_ast_node      *create_node_instruction(const char *var_name, t_ast_node *ast_n
     return (ast_node);
 }
 
-t_ast_node      *create_node_null()
+ast_node_t      *create_node_null()
 {
-    t_ast_node* ast_node;
+    ast_node_t* ast_node;
 
-    ast_node = malloc(sizeof(t_ast_node));
+    ast_node = malloc(sizeof(ast_node_t));
     if (ast_node == NULL)
         return (NULL);
     ast_node->node_type = AST_NULL;
@@ -121,7 +122,7 @@ t_ast_node      *create_node_null()
     return (ast_node);
 }
 
-void    destruct_astnode(t_ast_node *ast_node)
+void    destruct_astnode(ast_node_t *ast_node)
 {
     if (ast_node == NULL)
         return ;

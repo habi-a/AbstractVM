@@ -1,7 +1,7 @@
 #include <instructions.h>
 #include <stdlib.h>
 
-static void         mod_helper(t_stack_data *data1, t_stack_data *data2)
+static void         mod_helper(stack_data_t *data1, stack_data_t *data2)
 {
     if (data1->var_type == T_DOUBLE || data2->var_type == T_DOUBLE) {
         fprintf(stderr, "mod: modulo with T_DOUBLE forbidden\n");
@@ -11,12 +11,8 @@ static void         mod_helper(t_stack_data *data1, t_stack_data *data2)
         fprintf(stderr, "mod: modulo with T_FLOAT forbidden\n");
         exit(0);
     }
-    if (data1->var_type == T_INT32 || data2->var_type == T_INT32)
-        data2->var_type = T_INT32;
-    else if (data1->var_type == T_INT16 || data2->var_type == T_INT16)
-        data2->var_type = T_INT16;
-    else
-        data2->var_type = T_INT8;
+    if (data1->var_type > data2->var_type)
+        data2->var_type = data1->var_type;
     if (!data1->value_int32) {
         fprintf(stderr, "mod: modulo by 0 forbidden\n");
         exit(0);
@@ -28,13 +24,12 @@ static void         mod_helper(t_stack_data *data1, t_stack_data *data2)
     data2->value_double = data1->value_int32;
 }
 
-t_stack_node        *instruct_mod(t_ast_node *ast_node1, t_stack_node *stack)
+stack_node_t        *instruct_mod(ast_node_t *ast_node1, stack_node_t *stack)
 {
-    t_stack_data    data1;
-    t_stack_data    data2;
+    stack_data_t    data1;
+    stack_data_t    data2;
 
-    if (ast_node1->node_type != AST_NULL)
-    {
+    if (ast_node1->node_type != AST_NULL) {
         fprintf(stderr, "mod: too many arguments\n");
         exit(0);
     }

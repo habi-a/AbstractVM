@@ -1,7 +1,7 @@
 #include <instructions.h>
 #include <stdlib.h>
 
-static void         print_value_by_type(t_stack_data *data)
+static void         print_value_by_type(stack_data_t *data)
 {
     switch (data->var_type) {
         case T_INT8:
@@ -24,16 +24,14 @@ static void         print_value_by_type(t_stack_data *data)
     }
 }
 
-static void         dump_helper(t_stack_node* head)
+static void         dump_helper(stack_node_t* head)
 {
-    t_stack_node    *current;
+    stack_node_t    *current;
 
     current = head;
-    if (current!= NULL)
-    {
+    if (current!= NULL) {
         printf("Stack:\n");
-        do
-        {
+        do {
             print_value_by_type(&(current->data));
             current = current->next;
         }
@@ -44,10 +42,9 @@ static void         dump_helper(t_stack_node* head)
 
 }
 
-t_stack_node        *instruct_dump(t_ast_node *ast_node1, t_stack_node *stack)
+stack_node_t        *instruct_dump(ast_node_t *ast_node1, stack_node_t *stack)
 {
-    if (ast_node1->node_type != AST_NULL)
-    {
+    if (ast_node1->node_type != AST_NULL) {
         fprintf(stderr, "dump: too many arguments\n");
         exit(0);
     }

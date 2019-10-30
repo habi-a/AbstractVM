@@ -7,23 +7,22 @@
 
 # define                NB_TYPES        5
 
-typedef void            (*t_ptr_type)(t_ast_node *ast_node, t_ast_node *ast_node1);
+typedef void            (*t_ptr_type)(ast_node_t *ast_node, ast_node_t *ast_node1);
 
-typedef struct          s_type
-{
+typedef struct          s_type {
     const char          *type_name;
-    t_var_type          return_type;
+    var_type_t          return_type;
     t_ptr_type          exec_type;
-}                       t_type;
+}                       type_t;
 
-t_type                  *get_type(t_type type_list[NB_TYPES], const char *type_name);
-void                    free_list_types(t_type type_list[NB_TYPES]);
+type_t                  *get_type(type_t type_list[NB_TYPES], const char *type_name);
+void                    free_list_types(type_t type_list[NB_TYPES]);
 
-void                    my_int8(t_ast_node *ast_node, t_ast_node *ast_node1);
-void                    my_int16(t_ast_node *ast_node, t_ast_node *ast_node1);
-void                    my_int32(t_ast_node *ast_node, t_ast_node *ast_node1);
-void                    my_float(t_ast_node *ast_node, t_ast_node *ast_node1);
-void                    my_double(t_ast_node *ast_node, t_ast_node *ast_node1);
+void                    my_int8(ast_node_t *ast_node, ast_node_t *ast_node1);
+void                    my_int16(ast_node_t *ast_node, ast_node_t *ast_node1);
+void                    my_int32(ast_node_t *ast_node, ast_node_t *ast_node1);
+void                    my_float(ast_node_t *ast_node, ast_node_t *ast_node1);
+void                    my_double(ast_node_t *ast_node, ast_node_t *ast_node1);
 
 
 #endif                  /* _TYPE_H_ */

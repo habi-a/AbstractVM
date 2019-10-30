@@ -1,12 +1,11 @@
 #include <instructions.h>
 #include <stdlib.h>
 
-t_stack_node        *instruct_pop(t_ast_node *ast_node1, t_stack_node *stack)
+stack_node_t        *instruct_pop(ast_node_t *ast_node1, stack_node_t *stack)
 {
-    t_stack_data    data_popped;
+    stack_data_t    data_popped;
 
-    if (ast_node1->node_type != AST_NULL)
-    {
+    if (ast_node1->node_type != AST_NULL) {
         fprintf(stderr, "pop: too many arguments\n");
         exit(0);
     }

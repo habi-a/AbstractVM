@@ -1,17 +1,14 @@
 #include <instructions.h>
 #include <stdlib.h>
 
-t_stack_node        *instruct_push(t_ast_node *ast_node1, t_stack_node *stack)
+stack_node_t        *instruct_push(ast_node_t *ast_node1, stack_node_t *stack)
 {
-    t_stack_data    data_to_push;
+    stack_data_t    data_to_push;
 
-    if (ast_node1->node_type == AST_NULL)
-    {
+    if (ast_node1->node_type == AST_NULL) {
         fprintf(stderr, "push: too few arguments\n");
         exit(0);
-    }
-    else if (ast_node1->node_type != AST_TYPE)
-    {
+    } else if (ast_node1->node_type != AST_TYPE) {
         fprintf(stderr, "push: argument of type AST_TYPE expected\n");
         exit(0);
     }

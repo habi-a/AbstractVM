@@ -6,43 +6,42 @@
 #include <stack.h>
 
 
-t_ast_node          *expression(t_parse_utils *parse_utils, unsigned short *is_instruction)
+ast_node_t          *expression(parse_utils_t *parse_utils, unsigned short *is_instruction)
 {
-    t_stack_data    tmp_stack_node = {T_INT8, 0, 0, 0, 0, 0};
-    t_ast_node      *expr1_ast_node;
-    t_ast_node      *term_ast_node;
+    stack_data_t    tmp_stack_node = {T_INT8, 0, 0, 0, 0, 0};
+    ast_node_t      *expr1_ast_node;
+    ast_node_t      *term_ast_node;
 
     term_ast_node   = term(parse_utils, is_instruction);
     expr1_ast_node  = create_node_number(&tmp_stack_node);
     return (create_node_binary(AST_PLUS, term_ast_node, expr1_ast_node));
 }
 
-t_ast_node          *term(t_parse_utils *parse_utils, unsigned short *is_instruction)
+ast_node_t          *term(parse_utils_t *parse_utils, unsigned short *is_instruction)
 {
-    t_stack_data    tmp_stack_node = {T_INT8, 1, 1, 1, 1, 1};
-    t_ast_node      *fact_ast_node;
-    t_ast_node      *term1_ast_node;
+    stack_data_t    tmp_stack_node = {T_INT8, 1, 1, 1, 1, 1};
+    ast_node_t      *fact_ast_node;
+    ast_node_t      *term1_ast_node;
 
     fact_ast_node   = factor(parse_utils, is_instruction);
     term1_ast_node  = create_node_number(&tmp_stack_node);
     return (create_node_binary(AST_MUL, fact_ast_node, term1_ast_node));
 }
 
-t_ast_node          *factor(t_parse_utils *parse_utils, unsigned short *is_instruction)
+ast_node_t          *factor(parse_utils_t *parse_utils, unsigned short *is_instruction)
 {
-    t_stack_data    tmp_stack_node;
+    stack_data_t    tmp_stack_node;
     const char      *tmp_var_name;
-    t_ast_node      *ast_node;
-    t_ast_node      *ast_node1;
+    ast_node_t      *ast_node;
+    ast_node_t      *ast_node1;
 
-    switch (parse_utils->current_token.token_type)
-    {
-        case TOK_LEFT_PAREN:
-            pop_token(parse_utils);
-            ast_node = expression(parse_utils, is_instruction);
-            expect(')', parse_utils);
-            return (ast_node);
+    switch (parse_utils->current_token.token_type) {
         case TOK_NUMBER:
+            if (!*is_instruction) {
+                fprintf(stderr, "Parse Error: Unexpected number at position %lu\n",
+                    parse_utils->index);
+                exit(0);
+            }
             tmp_stack_node.var_type = parse_utils->current_token.var_type;
             tmp_stack_node.value_int8 = parse_utils->current_token.value_int8;
             tmp_stack_node.value_int16 = parse_utils->current_token.value_int16;
@@ -66,8 +65,7 @@ t_ast_node          *factor(t_parse_utils *parse_utils, unsigned short *is_instr
             tmp_var_name = strdup(parse_utils->current_token.var_name);
             pop_token(parse_utils);
             pop_token(parse_utils);
-            if (parse_utils->current_token.token_type != TOK_NUMBER)
-            {
+            if (parse_utils->current_token.token_type != TOK_NUMBER) {
                 fprintf(stderr, "Parse error, expected TOK_NUMBER at position %ld\n", parse_utils->index);
                 exit(0);
             }
@@ -81,8 +79,7 @@ t_ast_node          *factor(t_parse_utils *parse_utils, unsigned short *is_instr
             ast_node = create_node_call_func(tmp_var_name, ast_node1);
             free((char *)tmp_var_name);
             return (ast_node);
-        default:
-        {
+        default: {
             fprintf(stderr, "Parse Error: Unexpected token '%c' at position %lu\n",
                 parse_utils->current_token.value_symbol, parse_utils->index);
             exit(0);
@@ -90,9 +87,9 @@ t_ast_node          *factor(t_parse_utils *parse_utils, unsigned short *is_instr
     }
 }
 
-t_ast_node          *parse(const char *line)
+ast_node_t          *parse(const char *line)
 {
-    t_parse_utils   parse_utils;
+    parse_utils_t   parse_utils;
     unsigned short  is_instruction = 0;
 
     init_parse_utils(&parse_utils, line);
