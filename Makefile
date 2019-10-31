@@ -1,3 +1,10 @@
+##
+## ETNA PROJECT, 31/10/2019 by courta_f & habi_a
+## c:\Users\Fr4nck\Desktop\group-716039
+## File description:
+##      Makefile Générique
+##
+
 CC		= 	gcc
 CFLAGS	+= 	-Wall -Wextra -Werror -Wpedantic
 CFLAGS 	+= 	-lm

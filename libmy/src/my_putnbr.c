@@ -1,12 +1,10 @@
 /*
-** my_putnbr.c for libmy in /Users/habi_a/Documents
-**
-** Made by HABI Açal
-** Login   <habi_a@etna-alternance.net>
-**
-** Started on  Fri Apr  6 10:01:48 2018 HABI Açal
-** Last update Tue Jul 24 09:50:15 2018 HABI Açal
+** ETNA PROJECT, 31/10/2019 by courta_f & habi_a
+** c:\Users\Fr4nck\Desktop\group-716039
+** File description:
+**      
 */
+
 #include <my.h>
 
 void                my_put_un_long_nbr(const unsigned long n)

@@ -1,12 +1,10 @@
 /*
-** my_nbrlen.c for libmy in /Users/habi_a/Documents
-**
-** Made by HABI Açal
-** Login   <habi_a@etna-alternance.net>
-**
-** Started on  Tue Dec 26 13:18:38 2017 HABI Açal
-** Last update Sat Jan  6 22:34:59 2018 HABI Açal
+** ETNA PROJECT, 31/10/2019 by courta_f & habi_a
+** c:\Users\Fr4nck\Desktop\group-716039
+** File description:
+**      
 */
+
 unsigned int        my_long_nbrlen(long n)
 {
     unsigned int    i;

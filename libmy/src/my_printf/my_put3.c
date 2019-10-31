@@ -1,11 +1,8 @@
 /*
-** my_put_next_bis.c for my_printf in /Users/habi_a/Documents
-**
-** Made by HABI Açal
-** Login   <habi_a@etna-alternance.net>
-**
-** Started on  Mon Jul 23 16:16:53 2018 HABI Açal
-** Last update Mon Jul 23 16:37:43 2018 HABI Açal
+** ETNA PROJECT, 31/10/2019 by courta_f & habi_a
+** c:\Users\Fr4nck\Desktop\group-716039
+** File description:
+**      
 */
 
 #include <my.h>

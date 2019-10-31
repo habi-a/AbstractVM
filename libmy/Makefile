@@ -1,12 +1,10 @@
 ##
-## Makefile for libmy in /Users/habi_a/Documents
+## ETNA PROJECT, 31/10/2019 by courta_f & habi_a
+## c:\Users\Fr4nck\Desktop\group-716039
+## File description:
+##      Makefile pour la Libmy
 ##
-## Made by HABI Açal
-## Login   <habi_a@etna-alternance.net>
-##
-## Started on  Thu Jul 12 14:25:31 2018 HABI Açal
-## Last update Mon Jul 16 11:29:50 2018 HABI Açal
-##
+
 CC	=	gcc
 CFLAGS	+=	-Wall -Wextra -Wpedantic -Werror
 CFLAGS	+=	-fPIC

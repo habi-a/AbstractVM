@@ -1,12 +1,10 @@
 /*
-** my_putnbr_base.c for libmy in /Users/habi_a/Documents
-**
-** Made by HABI Açal
-** Login   <habi_a@etna-alternance.net>
-**
-** Started on  Thu Jul 19 10:37:47 2018 HABI Açal
-** Last update Tue Jul 24 09:51:02 2018 HABI Açal
+** ETNA PROJECT, 31/10/2019 by courta_f & habi_a
+** c:\Users\Fr4nck\Desktop\group-716039
+** File description:
+**      
 */
+
 #include <my.h>
 
 void        my_put_long_nbr_base(long n, const char *base)

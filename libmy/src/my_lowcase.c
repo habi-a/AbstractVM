@@ -1,12 +1,10 @@
 /*
-** my_lowcase.c for libmy in /Users/habi_a/Documents
-**
-** Made by HABI Açal
-** Login   <habi_a@etna-alternance.net>
-**
-** Started on  Fri Apr  6 09:59:59 2018 HABI Açal
-** Last update Thu Jul 12 17:46:16 2018 HABI Açal
+** ETNA PROJECT, 31/10/2019 by courta_f & habi_a
+** c:\Users\Fr4nck\Desktop\group-716039
+** File description:
+**      
 */
+
 char my_lowcase(char c)
 {
     if (c >= 'A' && c <= 'Z')
