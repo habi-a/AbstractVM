@@ -11,13 +11,14 @@
 # define _MY_H_
 
 typedef enum    e_bool {
-                false,
-                true
+                e_false,
+                e_true
 }               bool_t;
 
 int             my_getnbr(const char *str);
 unsigned int    my_isalnum(char c);
 unsigned int    my_isprintable(char c);
+unsigned int    my_isspace(char c);
 unsigned int    my_long_nbrlen(long n);
 void            my_long_nbrlen_base(long n, const char *base,
                                     unsigned int *buffer);

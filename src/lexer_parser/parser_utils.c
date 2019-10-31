@@ -1,4 +1,5 @@
 #include <ctype.h>
+#include <my.h>
 #include <parser.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -21,7 +22,7 @@ bool        is_white_line(const char *line)
     while (line[i] != '\0') {
         if (line[i] == ';')
             break;
-        else if (!isspace(line[i]))
+        else if (!my_isspace(line[i]))
             return (false);
         i++;
     }
@@ -30,7 +31,7 @@ bool        is_white_line(const char *line)
 
 void        skip_space(parse_utils_t *parse_utils)
 {
-    while (isspace(parse_utils->line[parse_utils->index]))
+    while (my_isspace(parse_utils->line[parse_utils->index]))
         parse_utils->index++;
 }
 
@@ -57,7 +58,7 @@ void                get_number(parse_utils_t *parse_utils)
         fprintf(stderr, "Parse Error: Expected number at position %lu\n", old_index);
         exit(0);
     }
-    strncpy(result_buffer, parse_utils->line + old_index, parse_utils->index - old_index);
+    my_strncpy(result_buffer, parse_utils->line + old_index, parse_utils->index - old_index);
     if (parse_utils->current_token.var_type == T_INT32) {
         result_int = atoll(result_buffer);
         if (result_int >= -128 && result_int <= 127)
@@ -97,14 +98,14 @@ const char  *get_variable_name(parse_utils_t *parse_utils)
 
     skip_space(parse_utils);
     old_index = parse_utils->index;
-    while (isalnum(parse_utils->line[parse_utils->index]))
+    while (my_isalnum(parse_utils->line[parse_utils->index]))
         parse_utils->index++;
     if (parse_utils->index - old_index == 0) {
         fprintf(stderr, "Parse Error: Expected variable name at position %lu\n", old_index);
         exit(0);
     }
     result_buffer = malloc((parse_utils->index - old_index + 1) * (sizeof(char)));
-    strncpy(result_buffer, parse_utils->line + old_index, parse_utils->index - old_index);
+    my_strncpy(result_buffer, parse_utils->line + old_index, parse_utils->index - old_index);
     result_buffer[parse_utils->index - old_index] = '\0';
     if (parse_utils->line[parse_utils->index] == '(')
         parse_utils->current_token.token_type = TOK_TYPE;

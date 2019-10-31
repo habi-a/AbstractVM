@@ -1,6 +1,6 @@
 #include <ast.h>
+#include <my.h>
 #include <stdlib.h>
-#include <string.h>
 
 ast_node_t*     create_node_binary(ast_nodetype_t type, ast_node_t *left, ast_node_t *right)
 {
@@ -70,7 +70,7 @@ ast_node_t      *create_node_call_func(const char *var_name, ast_node_t *ast_nod
     if (ast_node == NULL)
         return (NULL);
     ast_node->node_type = AST_TYPE;
-    ast_node->var_name = strdup(var_name);
+    ast_node->var_name = my_strdup(var_name);
     ast_node->var_type = T_VOID;
     ast_node->value_int8 = 0;
     ast_node->value_int16 = 0;
@@ -90,7 +90,7 @@ ast_node_t      *create_node_instruction(const char *var_name, ast_node_t *ast_n
     if (ast_node == NULL)
         return (NULL);
     ast_node->node_type = AST_INSTRUCTION;
-    ast_node->var_name = strdup(var_name);
+    ast_node->var_name = my_strdup(var_name);
     ast_node->var_type = T_VOID;
     ast_node->value_int8 = 0;
     ast_node->value_int16 = 0;

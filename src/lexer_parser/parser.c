@@ -1,8 +1,8 @@
 #include <ast.h>
 #include <parser.h>
+#include <my.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <stack.h>
 
 
@@ -52,7 +52,7 @@ ast_node_t          *factor(parse_utils_t *parse_utils, unsigned short *is_instr
             return (create_node_number(&tmp_stack_node));
         case TOK_INSTRUCTION:
             *is_instruction = 1;
-            tmp_var_name = strdup(parse_utils->current_token.var_name);
+            tmp_var_name = my_strdup(parse_utils->current_token.var_name);
             pop_token(parse_utils);
             if (parse_utils->current_token.token_type == TOK_END_TEXT)
                 ast_node1 = create_node_null();
@@ -62,7 +62,7 @@ ast_node_t          *factor(parse_utils_t *parse_utils, unsigned short *is_instr
             free((char *)tmp_var_name);
             return (ast_node);
         case TOK_TYPE:
-            tmp_var_name = strdup(parse_utils->current_token.var_name);
+            tmp_var_name = my_strdup(parse_utils->current_token.var_name);
             pop_token(parse_utils);
             pop_token(parse_utils);
             if (parse_utils->current_token.token_type != TOK_NUMBER) {

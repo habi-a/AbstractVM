@@ -15,6 +15,7 @@ CFLAGS	+=	-I ./inc -I ./inc/my_printf
 SRC	=	src/my_getnbr.c \
 		src/my_isalnum.c \
 		src/my_isprintable.c \
+		src/my_isspace.c \
 		src/my_lowcase.c \
 		src/my_nbrlen.c \
 		src/my_nbrlen_base.c \

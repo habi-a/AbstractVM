@@ -1,6 +1,7 @@
 #include <ast.h>
 #include <instructions.h>
 #include <interpreter.h>
+#include <my.h>
 #include <parser.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -53,23 +54,23 @@ static void     abstractvm(type_t type_list[NB_TYPES],
 int             main()
 {
     instruct_t  instruct_list[NB_INSTRUCTIONS] = {
-        {strdup("push"),    T_VOID,     &instruct_push},
-        {strdup("pop"),     T_VOID,     &instruct_pop},
-        {strdup("add"),     T_VOID,     &instruct_add},
-        {strdup("sub"),     T_VOID,     &instruct_sub},
-        {strdup("mul"),     T_VOID,     &instruct_mul},
-        {strdup("div"),     T_VOID,     &instruct_div},
-        {strdup("mod"),     T_VOID,     &instruct_mod},
-        {strdup("assert"),  T_VOID,     &instruct_assert},
-        {strdup("dump"),    T_VOID,     &instruct_dump},
-        {strdup("print"),   T_VOID,     &instruct_print}
+        {my_strdup("push"),    T_VOID,     &instruct_push},
+        {my_strdup("pop"),     T_VOID,     &instruct_pop},
+        {my_strdup("add"),     T_VOID,     &instruct_add},
+        {my_strdup("sub"),     T_VOID,     &instruct_sub},
+        {my_strdup("mul"),     T_VOID,     &instruct_mul},
+        {my_strdup("div"),     T_VOID,     &instruct_div},
+        {my_strdup("mod"),     T_VOID,     &instruct_mod},
+        {my_strdup("assert"),  T_VOID,     &instruct_assert},
+        {my_strdup("dump"),    T_VOID,     &instruct_dump},
+        {my_strdup("print"),   T_VOID,     &instruct_print}
     };
     type_t      type_list[NB_TYPES] = {
-        {strdup("int8"),    T_INT8,     &my_int8},
-        {strdup("int16"),   T_INT16,    &my_int16},
-        {strdup("int32"),   T_INT32,    &my_int32},
-        {strdup("float"),   T_FLOAT,    &my_float},
-        {strdup("double"),  T_DOUBLE,   &my_double}
+        {my_strdup("int8"),    T_INT8,     &my_int8},
+        {my_strdup("int16"),   T_INT16,    &my_int16},
+        {my_strdup("int32"),   T_INT32,    &my_int32},
+        {my_strdup("float"),   T_FLOAT,    &my_float},
+        {my_strdup("double"),  T_DOUBLE,   &my_double}
     };
 
     abstractvm(type_list, instruct_list);

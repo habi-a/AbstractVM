@@ -1,7 +1,6 @@
 #include <interpreter.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 ast_node_t      *interpret(ast_node_t *ast, stack_node_t **stack,
                             type_t type_list[NB_TYPES],
