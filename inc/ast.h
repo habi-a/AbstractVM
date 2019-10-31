@@ -1,9 +1,10 @@
 /*
-** ETNA PROJECT, 31/10/2019 by courta_f & habi_a
+** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
 **      
 */
+
 
 #ifndef                 _AST_H_
 # define                _AST_H_
