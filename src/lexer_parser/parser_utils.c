@@ -44,12 +44,12 @@ void                get_number(parse_utils_t *parse_utils)
 
     skip_space(parse_utils);
     old_index = parse_utils->index;
-    while (isdigit(parse_utils->line[parse_utils->index]))
+    while (my_isdigit(parse_utils->line[parse_utils->index]))
         parse_utils->index++;
     if (parse_utils->line[parse_utils->index] == '.') {
         parse_utils->current_token.var_type = T_FLOAT;
         parse_utils->index++;
-        while (isdigit(parse_utils->line[parse_utils->index]))
+        while (my_isdigit(parse_utils->line[parse_utils->index]))
             parse_utils->index++;
     }
     else
@@ -60,7 +60,7 @@ void                get_number(parse_utils_t *parse_utils)
     }
     my_strncpy(result_buffer, parse_utils->line + old_index, parse_utils->index - old_index);
     if (parse_utils->current_token.var_type == T_INT32) {
-        result_int = atoll(result_buffer);
+        result_int = my_getnbrll(result_buffer);
         if (result_int >= -128 && result_int <= 127)
             parse_utils->current_token.var_type = T_INT8;
         else if (result_int >= -32768 && result_int <= 32767)
