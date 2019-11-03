@@ -2,12 +2,12 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
+#include <my.h>
 #include <instructions.h>
 #include <stdlib.h>
-#include <my.h>
 
 instruct_t          *get_instruction(instruct_t instruct_list[NB_INSTRUCTIONS],
                                         const char *instruct_name)

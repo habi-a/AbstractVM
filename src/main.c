@@ -10,13 +10,9 @@
 #include <interpreter.h>
 #include <my.h>
 #include <parser.h>
-#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <types.h>
 #include <stack.h>
-#include <unistd.h>
-#include <fcntl.h>
 
 static void     execute(const char *cin, stack_node_t **stack,
                         type_t type_list[NB_TYPES],

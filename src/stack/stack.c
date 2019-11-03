@@ -7,7 +7,6 @@
 
 #include <stack.h>
 #include <stdlib.h>
-#include <string.h>
 
 unsigned short      isEmpty(stack_node_t *stack)
 {

@@ -8,7 +8,6 @@
 #include <ast.h>
 #include <parser.h>
 #include <my.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <stack.h>
 
