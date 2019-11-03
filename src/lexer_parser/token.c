@@ -2,10 +2,10 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
-#include <ctype.h>
+#include <my.h>
 #include <parser.h>
 #include <stdlib.h>
 #include <token.h>
@@ -28,11 +28,13 @@ bool    set_token(parse_utils_t *parse_utils)
     if (!parse_utils->line[parse_utils->index]) {
         parse_utils->current_token.token_type = TOK_END_TEXT;
         return (true);
-    } else if (isdigit(parse_utils->line[parse_utils->index])) {
+    } else if (my_isdigit(parse_utils->line[parse_utils->index])
+                || parse_utils->line[parse_utils->index] == '+'
+                || parse_utils->line[parse_utils->index] == '-') {
         parse_utils->current_token.token_type = TOK_NUMBER;
         get_number(parse_utils);
         return (true);
-    } else if (isalpha(parse_utils->line[parse_utils->index])) {
+    } else if (my_isalpha(parse_utils->line[parse_utils->index])) {
         parse_utils->current_token.token_type = TOK_ERROR;
         parse_utils->current_token.var_name = get_variable_name(parse_utils);
         return (true);

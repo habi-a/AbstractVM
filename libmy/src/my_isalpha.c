@@ -5,11 +5,9 @@
 **
 */
 
-unsigned int my_isalnum(const char c)
+unsigned int my_isalpha(const char c)
 {
-    if (c >= '0' && c <= '9')
-        return (1);
-    else if (c >= 'A' && c <= 'Z')
+    if (c >= 'A' && c <= 'Z')
         return (1);
     else if (c >= 'a' && c <= 'z')
         return (1);

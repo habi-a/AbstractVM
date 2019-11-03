@@ -49,6 +49,9 @@ void                get_number(parse_utils_t *parse_utils)
 
     skip_space(parse_utils);
     old_index = parse_utils->index;
+    while (parse_utils->line[parse_utils->index] == '-'
+            || parse_utils->line[parse_utils->index] == '+')
+        parse_utils->index++;
     while (my_isdigit(parse_utils->line[parse_utils->index]))
         parse_utils->index++;
     if (parse_utils->line[parse_utils->index] == '.') {
@@ -57,7 +60,11 @@ void                get_number(parse_utils_t *parse_utils)
         while (my_isdigit(parse_utils->line[parse_utils->index]))
             parse_utils->index++;
     }
-    else
+    else if (parse_utils->line[parse_utils->index] == '+'
+            || parse_utils->line[parse_utils->index] == '-') {
+        fprintf(stderr, "Parse Error: Expected number at position %lu\n", old_index);
+        exit(0);
+    } else
         parse_utils->current_token.var_type = T_INT32;
     if (parse_utils->index - old_index == 0) {
         fprintf(stderr, "Parse Error: Expected number at position %lu\n", old_index);

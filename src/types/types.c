@@ -73,7 +73,6 @@ void    my_float(ast_node_t *ast_node, ast_node_t *ast_node1)
     ast_node->value_int32 = ast_node1->value_int32;
     ast_node->value_float = ast_node1->value_float;
     ast_node->value_double = ast_node1->value_double;
-    printf("float(): %f\n", ast_node->value_float);
 }
 
 void    my_double(ast_node_t *ast_node, ast_node_t *ast_node1)

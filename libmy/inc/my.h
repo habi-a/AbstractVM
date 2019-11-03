@@ -17,6 +17,7 @@ int             my_getnbr(const char *str);
 long long       my_getnbrll(const char *str);
 float           my_getnbr_float(const char *str);
 unsigned int    my_isalnum(char c);
+unsigned int    my_isalpha(char c);
 unsigned int    my_isdigit(char c);
 unsigned int    my_isprintable(char c);
 unsigned int    my_isspace(char c);

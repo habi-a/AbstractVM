@@ -27,7 +27,7 @@ float           my_getnbr_float(const char *str)
     char        *str_after_point = get_str_after_point(str);
     float       decimal = (float)my_getnbr(str_after_point);
 
-    if (nbr > 0)
+    if (nbr >= 0)
         multiplicator = 1;
     decimal = decimal / my_pow(10, my_strlen(str_after_point)) * multiplicator;
     nbr += decimal;
