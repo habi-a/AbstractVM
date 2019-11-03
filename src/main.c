@@ -16,26 +16,26 @@
 
 static void     execute(const char *cin, stack_node_t **stack,
                         type_t type_list[NB_TYPES],
-                        instruct_t instruct_list[NB_INSTRUCTIONS])
+                        instruct_t instruct_list[NB_INSTRUCT])
 {
     ast_node_t  *ast_node;
 
     ast_node = parse(cin);
-    interpret(ast_node, stack, type_list, instruct_list);
+    interpreter(ast_node, stack, type_list, instruct_list);
     destruct_astnode(ast_node);
 }
 
 static void     loop_reader(stack_node_t **stack, type_t type_list[NB_TYPES],
-                        instruct_t instruct_list[NB_INSTRUCTIONS])
+                        instruct_t instruct_list[NB_INSTRUCT])
 {
     char        *cin = NULL;
     bool        repl_exit = false;
     size_t      size_cin = 0;
 
     while (getline(&cin, &size_cin, stdin) != -1 && cin && !repl_exit) {
-        if (!my_strcmp(cin, "exit"))
+        if (!my_strcmp(cin, "exit\n"))
             repl_exit = true;
-        else if (!is_white_line(cin))
+        else if (!is_white_line(cin) && !repl_exit)
             execute(cin, stack, type_list, instruct_list);
         free(cin);
         cin = NULL;
@@ -45,18 +45,18 @@ static void     loop_reader(stack_node_t **stack, type_t type_list[NB_TYPES],
 }
 
 static void     abstractvm(type_t type_list[NB_TYPES],
-                        instruct_t instruct_list[NB_INSTRUCTIONS])
+                        instruct_t instruct_list[NB_INSTRUCT])
 {
     stack_node_t  *stack = NULL;
     loop_reader(&stack, type_list, instruct_list);
-    //free_stack(&stack);
-    //free_list_instructions(instruct_list);
-    //free_list_types(type_list);
+    free_stack(stack);
+    free_list_instructions(instruct_list);
+    free_list_types(type_list);
 }
 
 int             main()
 {
-    instruct_t  instruct_list[NB_INSTRUCTIONS] = {
+    instruct_t  instruct_list[NB_INSTRUCT] = {
         {my_strdup("push"),    T_VOID,     &instruct_push},
         {my_strdup("pop"),     T_VOID,     &instruct_pop},
         {my_strdup("add"),     T_VOID,     &instruct_add},
