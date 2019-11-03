@@ -2,15 +2,13 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
-#include <ctype.h>
 #include <my.h>
 #include <parser.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <token.h>
 
 void        init_parse_utils(parse_utils_t *parse_utils, const char *line)
@@ -82,7 +80,7 @@ void                get_number(parse_utils_t *parse_utils)
         parse_utils->current_token.value_float = result_int;
         parse_utils->current_token.value_double = result_int;
     } else {
-        result_float = (float)atof(result_buffer);
+        result_float = (float)my_getnbr_float(result_buffer);
         parse_utils->current_token.value_int8 = (int)result_float;
         parse_utils->current_token.value_int16 = (int)result_float;
         parse_utils->current_token.value_int32 = (int)result_float;
