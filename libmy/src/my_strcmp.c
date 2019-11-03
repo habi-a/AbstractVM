@@ -1,12 +1,10 @@
 /*
-** my_strcmp.c for libmy in /Users/habi_a/Documents
-**
-** Made by HABI Açal
-** Login   <habi_a@etna-alternance.net>
-**
-** Started on  Fri Apr  6 10:04:03 2018 HABI Açal
-** Last update Fri Apr  6 10:04:18 2018 HABI Açal
+** ETNA PROJECT, 31/10/2019 by courta_f
+** c:\Users\Fr4nck\Desktop\group-716039
+** File description:
+**      
 */
+
 #include <stdlib.h>
 
 int                 my_strcmp(const char *s1, const char *s2)

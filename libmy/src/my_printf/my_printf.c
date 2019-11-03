@@ -1,11 +1,8 @@
 /*
-** my_printf.c for my_printf in /Users/habi_a/Documents
-**
-** Made by HABI Açal
-** Login   <habi_a@etna-alternance.net>
-**
-** Started on  Thu Jul 19 09:52:11 2018 HABI Açal
-** Last update Thu Jul 19 10:03:46 2018 HABI Açal
+** ETNA PROJECT, 31/10/2019 by courta_f
+** c:\Users\Fr4nck\Desktop\group-716039
+** File description:
+**      
 */
 
 #include <flags.h>

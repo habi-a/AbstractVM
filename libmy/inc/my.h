@@ -1,12 +1,10 @@
 /*
-** my.h for libmy in /Users/habi_a/Documents
-**
-** Made by HABI Açal
-** Login   <habi_a@etna-alternance.net>
-**
-** Started on  Thu Jul 12 14:28:06 2018 HABI Açal
-** Last update Mon Jul 23 17:37:39 2018 HABI Açal
+** ETNA PROJECT, 31/10/2019 by courta_f
+** c:\Users\Fr4nck\Desktop\group-716039
+** File description:
+**      
 */
+
 #ifndef  _MY_H_
 # define _MY_H_
 

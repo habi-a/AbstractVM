@@ -1,11 +1,8 @@
 /*
-** my_puts.h for my_printf in /Users/habi_a/Documents
-**
-** Made by HABI Açal
-** Login   <habi_a@etna-alternance.net>
-**
-** Started on  Thu Jul 19 09:48:54 2018 HABI Açal
-** Last update Mon Jul 23 16:40:22 2018 HABI Açal
+** ETNA PROJECT, 31/10/2019 by courta_f
+** c:\Users\Fr4nck\Desktop\group-716039
+** File description:
+**      
 */
 
 #ifndef     _MY_PUTS_H_

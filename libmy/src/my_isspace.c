@@ -1,12 +1,10 @@
 /*
-** my_isspace.c for libmy in /Users/habi_a/Documents
-**
-** Made by HABI Açal
-** Login   <habi_a@etna-alternance.net>
-**
-** Started on  Fri Apr  6 10:01:31 2018 HABI Açal
-** Last update Fri Apr  6 10:01:33 2018 HABI Açal
+** ETNA PROJECT, 31/10/2019 by courta_f
+** c:\Users\Fr4nck\Desktop\group-716039
+** File description:
+**      
 */
+
 unsigned int my_isspace(const char c)
 {
     switch (c) {

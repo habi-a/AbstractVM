@@ -1,12 +1,10 @@
 /*
-** my_putchar.c for libmy in /Users/habi_a/Documents
-**
-** Made by HABI Açal
-** Login   <habi_a@etna-alternance.net>
-**
-** Started on  Fri Apr  6 10:03:24 2018 HABI Açal
-** Last update Fri Apr  6 10:03:29 2018 HABI Açal
+** ETNA PROJECT, 31/10/2019 by courta_f
+** c:\Users\Fr4nck\Desktop\group-716039
+** File description:
+**      
 */
+
 #include <unistd.h>
 
 void my_putchar(const char c)

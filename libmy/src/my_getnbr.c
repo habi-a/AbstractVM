@@ -1,12 +1,10 @@
 /*
-** my_getnbr.c for libmy in /Users/habi_a/Documents
-**
-** Made by HABI Açal
-** Login   <habi_a@etna-alternance.net>
-**
-** Started on  Fri Apr  6 09:59:59 2018 HABI Açal
-** Last update Fri Apr  6 10:00:28 2018 HABI Açal
+** ETNA PROJECT, 31/10/2019 by courta_f
+** c:\Users\Fr4nck\Desktop\group-716039
+** File description:
+**      
 */
+
 static int          my_getsigne(const char *str, unsigned int *pointeur)
 {
     int             pos_neg;
