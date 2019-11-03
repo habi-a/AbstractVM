@@ -18,7 +18,7 @@ unsigned int my_isspace(const char c)
         case '\f':
             return (1);
         default:
-            return (0);
-        return (0);
+            break;
     }
+    return (0);
 }
