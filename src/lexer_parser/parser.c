@@ -2,7 +2,7 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
 #include <ast.h>
@@ -45,7 +45,7 @@ ast_node_t          *factor(parse_utils_t *parse_utils, unsigned short *is_instr
     switch (parse_utils->current_token.token_type) {
         case TOK_NUMBER:
             if (!*is_instruction) {
-                fprintf(stderr, "Parse Error: Unexpected number at position %lu\n",
+                my_printf("Parse Error: Unexpected number at position %lu\n",
                     parse_utils->index);
                 exit(0);
             }
@@ -73,13 +73,13 @@ ast_node_t          *factor(parse_utils_t *parse_utils, unsigned short *is_instr
             pop_token(parse_utils);
             pop_token(parse_utils);
             if (parse_utils->current_token.token_type != TOK_NUMBER) {
-                fprintf(stderr, "Parse error, expected TOK_NUMBER at position %ld\n", parse_utils->index);
+                my_printf("Parse error, expected TOK_NUMBER at position %ld\n", parse_utils->index);
                 exit(0);
             }
             ast_node1 = expression(parse_utils, is_instruction);
             expect(')', parse_utils);
             if (parse_utils->current_token.token_type != TOK_END_TEXT || !*is_instruction) {
-                fprintf(stderr, "Parse Error: Unexpected token '%c' at position %lu\n",
+                my_printf("Parse Error: Unexpected token '%c' at position %lu\n",
                     parse_utils->current_token.value_symbol, parse_utils->index);
                 exit(0);
             }
@@ -87,7 +87,7 @@ ast_node_t          *factor(parse_utils_t *parse_utils, unsigned short *is_instr
             free((char *)tmp_var_name);
             return (ast_node);
         default: {
-            fprintf(stderr, "Parse Error: Unexpected token '%c' at position %lu\n",
+            my_printf("Parse Error: Unexpected token '%c' at position %lu\n",
                 parse_utils->current_token.value_symbol, parse_utils->index);
             exit(0);
         }

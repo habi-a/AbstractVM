@@ -2,26 +2,27 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
+#include <my.h>
 #include <instructions.h>
 #include <stdlib.h>
 
 static void         mod_helper(stack_data_t *data1, stack_data_t *data2)
 {
     if (data1->var_type == T_DOUBLE || data2->var_type == T_DOUBLE) {
-        fprintf(stderr, "mod: modulo with T_DOUBLE forbidden\n");
+        my_printf("mod: modulo with T_DOUBLE forbidden\n");
         exit(0);
     }
     if (data1->var_type == T_FLOAT || data2->var_type == T_FLOAT) {
-        fprintf(stderr, "mod: modulo with T_FLOAT forbidden\n");
+        my_printf("mod: modulo with T_FLOAT forbidden\n");
         exit(0);
     }
     if (data1->var_type > data2->var_type)
         data2->var_type = data1->var_type;
     if (!data1->value_int32) {
-        fprintf(stderr, "mod: modulo by 0 forbidden\n");
+        my_printf("mod: modulo by 0 forbidden\n");
         exit(0);
     }
     data2->value_int8 %= data1->value_int8;
@@ -37,7 +38,7 @@ stack_node_t        *instruct_mod(ast_node_t *ast_node1, stack_node_t *stack)
     stack_data_t    data2;
 
     if (ast_node1->node_type != AST_NULL) {
-        fprintf(stderr, "mod: too many arguments\n");
+        my_printf("mod: too many arguments\n");
         exit(0);
     }
     stack = pop(stack, &data1);

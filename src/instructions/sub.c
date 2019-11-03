@@ -2,9 +2,10 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
+#include <my.h>
 #include <instructions.h>
 #include <stdlib.h>
 
@@ -25,7 +26,7 @@ stack_node_t        *instruct_sub(ast_node_t *ast_node1, stack_node_t *stack)
     stack_data_t    data2;
 
     if (ast_node1->node_type != AST_NULL) {
-        fprintf(stderr, "sub: too many arguments\n");
+        my_printf("sub: too many arguments\n");
         exit(0);
     }
     stack = pop(stack, &data1);

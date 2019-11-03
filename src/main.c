@@ -37,7 +37,7 @@ static void     loop_reader(stack_node_t **stack, type_t type_list[NB_TYPES],
     size_t      size_cin = 0;
 
     while (getline(&cin, &size_cin, stdin) != -1 && cin && !repl_exit) {
-        if (!strcmp(cin, "exit"))
+        if (!my_strcmp(cin, "exit"))
             repl_exit = true;
         else if (!is_white_line(cin))
             execute(cin, stack, type_list, instruct_list);

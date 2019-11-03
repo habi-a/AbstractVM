@@ -65,7 +65,7 @@ void    pop_token(parse_utils_t *parse_utils)
             parse_utils->line[parse_utils->index];
         parse_utils->index++;
     } else {
-        fprintf(stderr, "Parse Error: Unexpected token '%c' at position %lu\n",
+        my_printf("Parse Error: Unexpected token '%c' at position %lu\n",
             parse_utils->line[parse_utils->index], parse_utils->index);
         exit(0);
     }

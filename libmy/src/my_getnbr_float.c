@@ -34,3 +34,18 @@ float           my_getnbr_float(const char *str)
     free(str_after_point);
     return (nbr);
 }
+
+double          my_getnbr_double(const char *str)
+{
+    signed char multiplicator = (-1);
+    double      nbr = (double)my_getnbr(str);
+    char        *str_after_point = get_str_after_point(str);
+    double      decimal = (double)my_getnbr(str_after_point);
+
+    if (nbr >= 0)
+        multiplicator = 1;
+    decimal = decimal / my_pow(10, my_strlen(str_after_point)) * multiplicator;
+    nbr += decimal;
+    free(str_after_point);
+    return (nbr);
+}

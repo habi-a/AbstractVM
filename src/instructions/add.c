@@ -2,10 +2,11 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
 #include <instructions.h>
+#include <my.h>
 #include <stdlib.h>
 
 static void         add_helper(stack_data_t *data1, stack_data_t *data2)
@@ -25,7 +26,7 @@ stack_node_t        *instruct_add(ast_node_t *ast_node1, stack_node_t *stack)
     stack_data_t    data2;
 
     if (ast_node1->node_type != AST_NULL) {
-        fprintf(stderr, "add: too many arguments\n");
+        my_printf("add: too many arguments\n");
         exit(0);
     }
     stack = pop(stack, &data1);

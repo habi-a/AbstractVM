@@ -62,12 +62,12 @@ void                get_number(parse_utils_t *parse_utils)
     }
     else if (parse_utils->line[parse_utils->index] == '+'
             || parse_utils->line[parse_utils->index] == '-') {
-        fprintf(stderr, "Parse Error: Expected number at position %lu\n", old_index);
+        my_printf("Parse Error: Expected number at position %lu\n", old_index);
         exit(0);
     } else
         parse_utils->current_token.var_type = T_INT32;
     if (parse_utils->index - old_index == 0) {
-        fprintf(stderr, "Parse Error: Expected number at position %lu\n", old_index);
+        my_printf("Parse Error: Expected number at position %lu\n", old_index);
         exit(0);
     }
     my_strncpy(result_buffer, parse_utils->line + old_index, parse_utils->index - old_index);
@@ -87,7 +87,7 @@ void                get_number(parse_utils_t *parse_utils)
         parse_utils->current_token.value_float = result_int;
         parse_utils->current_token.value_double = result_int;
     } else {
-        result_float = (float)my_getnbr_float(result_buffer);
+        result_float = (float)my_getnbr_double(result_buffer);
         parse_utils->current_token.value_int8 = (int)result_float;
         parse_utils->current_token.value_int16 = (int)result_float;
         parse_utils->current_token.value_int32 = (int)result_float;
@@ -113,7 +113,7 @@ const char  *get_variable_name(parse_utils_t *parse_utils)
     while (my_isalnum(parse_utils->line[parse_utils->index]))
         parse_utils->index++;
     if (parse_utils->index - old_index == 0) {
-        fprintf(stderr, "Parse Error: Expected variable name at position %lu\n", old_index);
+        my_printf("Parse Error: Expected variable name at position %lu\n", old_index);
         exit(0);
     }
     result_buffer = malloc((parse_utils->index - old_index + 1) * (sizeof(char)));
@@ -131,7 +131,7 @@ void        expect(char expected, parse_utils_t *parse_utils)
     if (parse_utils->line[parse_utils->index - 1] == expected)
         pop_token(parse_utils);
     else {
-       fprintf(stderr, "Parse Error: Expected token '%c' at position %lu\n",
+       my_printf("Parse Error: Expected token '%c' at position %lu\n",
            expected, parse_utils->index);
        exit(0);
     }

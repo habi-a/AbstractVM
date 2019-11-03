@@ -2,13 +2,13 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
 #ifndef         _FLAGS_H_
 # define        _FLAGS_H_
 
-# define        NB_FLAGS 13
+# define        NB_FLAGS 15
 # include       <my_puts.h>
 
 typedef struct      s_flags {

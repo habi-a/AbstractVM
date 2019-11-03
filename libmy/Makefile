@@ -22,10 +22,12 @@ SRC	=	src/my_getnbr.c \
 		src/my_nbrlen.c \
 		src/my_nbrlen_base.c \
 		src/my_pow.c \
+		src/my_put_nbr_float.c \
 		src/my_printf/my_printf.c \
 		src/my_printf/my_put1.c \
 		src/my_printf/my_put2.c \
 		src/my_printf/my_put3.c \
+		src/my_printf/my_put4.c \
 		src/my_putchar.c \
 		src/my_putnbr.c \
 		src/my_putnbr_base.c \

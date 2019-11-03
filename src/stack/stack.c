@@ -2,7 +2,7 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
 #include <stack.h>
@@ -45,7 +45,6 @@ stack_data_t        peek(stack_node_t *stack)
         return (empty_data);
     return (stack->data);
 }
-
 
 void                free_stack(stack_node_t *stack)
 {

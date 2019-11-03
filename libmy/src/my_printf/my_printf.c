@@ -2,7 +2,7 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
 #include <flags.h>
@@ -23,7 +23,9 @@ static const flags_t g_flags[] = {
     {'p', &my_put_p},
     {'b', &my_put_b},
     {'S', &my_put_S},
-    {'l', &my_put_l}
+    {'l', &my_put_l},
+    {'f', &my_put_f},
+    {'t', &my_put_t}
 };
 
 static flags_t      get_flag(char key)

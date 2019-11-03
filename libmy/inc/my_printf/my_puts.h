@@ -2,7 +2,7 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
 #ifndef     _MY_PUTS_H_
@@ -25,5 +25,7 @@ unsigned int    my_put_p(va_list variables, unsigned int count);
 unsigned int    my_put_b(va_list variables, unsigned int count);
 unsigned int    my_put_S(va_list variables, unsigned int count);
 unsigned int    my_put_l(va_list variables, unsigned int count);
+unsigned int    my_put_f(va_list variables, unsigned int count);
+unsigned int    my_put_t(va_list variables, unsigned int count);
 
 #endif   /* _MY_PUTS_H_ */

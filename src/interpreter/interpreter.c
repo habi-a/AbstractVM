@@ -2,11 +2,11 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
+#include <my.h>
 #include <interpreter.h>
-#include <stdio.h>
 #include <stdlib.h>
 
 ast_node_t      *interpret(ast_node_t *ast, stack_node_t **stack,
@@ -17,7 +17,7 @@ ast_node_t      *interpret(ast_node_t *ast, stack_node_t **stack,
     ast_node_t  *right_result;
 
     if (ast == NULL) {
-        fprintf(stderr, "Syntax error\n");
+        my_printf("Syntax error\n");
         exit(0);
     }
     if (ast->node_type == AST_NUMBER || ast->node_type == AST_NULL)
@@ -26,7 +26,7 @@ ast_node_t      *interpret(ast_node_t *ast, stack_node_t **stack,
     left_result = interpret(ast->ast_node_l, stack, type_list, instruct_list);
     if (ast->node_type == AST_TYPE) {
         if (!get_type(type_list, ast->var_name)) {
-            fprintf(stderr, "Parse Error: Unknown type '%s'\n",
+            my_printf("Parse Error: Unknown type '%s'\n",
             ast->var_name);
             exit(0);
         }
@@ -36,7 +36,7 @@ ast_node_t      *interpret(ast_node_t *ast, stack_node_t **stack,
     }
     if (ast->node_type == AST_INSTRUCTION) {
         if (!get_instruction(instruct_list, ast->var_name)) {
-            fprintf(stderr, "Parse Error: Unknown instruction '%s'\n",
+            my_printf("Parse Error: Unknown instruction '%s'\n",
             ast->var_name);
             exit(0);
         }
@@ -70,6 +70,6 @@ ast_node_t      *interpret(ast_node_t *ast, stack_node_t **stack,
             return (ast);
         default: break;
     }
-    fprintf(stderr, "Syntax error\n");
+    my_printf("Syntax error\n");
     exit(0);
 }

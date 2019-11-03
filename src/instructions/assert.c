@@ -2,9 +2,10 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
+#include <my.h>
 #include <instructions.h>
 #include <stdlib.h>
 
@@ -32,15 +33,15 @@ stack_node_t        *instruct_assert(ast_node_t *ast_node1, stack_node_t *stack)
     stack_data_t    data1;
 
     if (ast_node1->node_type == AST_NULL) {
-        fprintf(stderr, "assert: too few arguments\n");
+        my_printf("assert: too few arguments\n");
         exit(0);
     } else if (ast_node1->node_type != AST_TYPE) {
-        fprintf(stderr, "assert: argument of type AST_TYPE expected\n");
+        my_printf("assert: argument of type AST_TYPE expected\n");
         exit(0);
     }
     data1 = peek(stack);
     if (data1.var_type != ast_node1->var_type || !assert_helper(ast_node1, &data1)) {
-        fprintf(stderr, "assert: values not equals\n");
+        my_printf("assert: values not equals\n");
         exit(0);
     }
     return (stack);
