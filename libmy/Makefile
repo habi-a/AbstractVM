@@ -10,7 +10,8 @@ CFLAGS	+=	-Wall -Wextra -Wpedantic -Werror
 CFLAGS	+=	-fPIC
 CFLAGS	+=	-I ./inc -I ./inc/my_printf
 
-SRC	=	src/my_getnbr.c \
+SRC	=	src/my_getline.c \
+		src/my_getnbr.c \
 		src/my_getnbrll.c \
 		src/my_getnbr_float.c \
 		src/my_isalnum.c \

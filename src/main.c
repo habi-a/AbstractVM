@@ -6,13 +6,15 @@
 */
 
 #include <ast.h>
+#include <fcntl.h>
 #include <instructions.h>
 #include <interpreter.h>
 #include <my.h>
 #include <parser.h>
+#include <stack.h>
 #include <stdlib.h>
 #include <types.h>
-#include <stack.h>
+#include <unistd.h>
 
 static void     execute(const char *cin, stack_node_t **stack,
                         type_t type_list[NB_TYPES],
@@ -26,35 +28,44 @@ static void     execute(const char *cin, stack_node_t **stack,
 }
 
 static void     loop_reader(stack_node_t **stack, type_t type_list[NB_TYPES],
-                        instruct_t instruct_list[NB_INSTRUCT])
+                        instruct_t instruct_list[NB_INSTRUCT], int fd)
 {
     char        *cin = NULL;
-    bool        repl_exit = false;
-    size_t      size_cin = 0;
+    bool_t      repl_exit = e_false;
 
-    while (getline(&cin, &size_cin, stdin) != -1 && cin && !repl_exit) {
-        if (!my_strcmp(cin, "exit\n"))
+    while ((cin = my_getline(fd)) != NULL && !repl_exit) {
+        if (!my_strcmp(cin, "exit"))
             repl_exit = true;
         else if (!is_white_line(cin) && !repl_exit)
             execute(cin, stack, type_list, instruct_list);
         free(cin);
         cin = NULL;
-        size_cin = 0;
     }
     free(cin);
 }
 
 static void     abstractvm(type_t type_list[NB_TYPES],
-                        instruct_t instruct_list[NB_INSTRUCT])
+                            instruct_t instruct_list[NB_INSTRUCT],
+                            int argc, char **argv)
 {
+    int filedescriptor;
+
+    if (argc != 2) {
+        my_printf("USAGE: ./abstractvm <path_program.avm>\n");
+        return ;
+    }
+    filedescriptor = open(argv[1], O_RDONLY);
+    if (filedescriptor < 0)
+        return ;
     stack_node_t  *stack = NULL;
-    loop_reader(&stack, type_list, instruct_list);
+    loop_reader(&stack, type_list, instruct_list, filedescriptor);
     free_stack(stack);
     free_list_instructions(instruct_list);
     free_list_types(type_list);
+    close(filedescriptor);
 }
 
-int             main()
+int             main(int argc, char **argv)
 {
     instruct_t  instruct_list[NB_INSTRUCT] = {
         {my_strdup("push"),    T_VOID,     &instruct_push},
@@ -76,6 +87,6 @@ int             main()
         {my_strdup("double"),  T_DOUBLE,   &my_double}
     };
 
-    abstractvm(type_list, instruct_list);
+    abstractvm(type_list, instruct_list, argc, argv);
     return (0);
 }

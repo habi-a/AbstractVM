@@ -13,6 +13,7 @@ typedef enum    e_bool {
                 e_true
 }               bool_t;
 
+char            *my_getline(int fd);
 int             my_getnbr(const char *str);
 long long       my_getnbrll(const char *str);
 double          my_getnbr_double(const char *str);
