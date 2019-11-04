@@ -54,7 +54,7 @@ stack_node_t        *instruct_dump(ast_node_t *ast_node1, stack_node_t *stack)
 {
     if (ast_node1->node_type != AST_NULL) {
         my_printf("dump: too many arguments\n");
-        exit(0);
+        return (NULL);
     }
     dump_helper(stack);
     return (stack);

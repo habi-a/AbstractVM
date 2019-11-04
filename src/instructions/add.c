@@ -27,7 +27,7 @@ stack_node_t        *instruct_add(ast_node_t *ast_node1, stack_node_t *stack)
 
     if (ast_node1->node_type != AST_NULL) {
         my_printf("add: too many arguments\n");
-        exit(0);
+        return (NULL);
     }
     stack = pop(stack, &data1);
     stack = pop(stack, &data2);

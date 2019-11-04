@@ -15,10 +15,10 @@ stack_node_t        *instruct_push(ast_node_t *ast_node1, stack_node_t *stack)
 
     if (ast_node1->node_type == AST_NULL) {
         my_printf("push: too few arguments\n");
-        exit(0);
+        return (NULL);
     } else if (ast_node1->node_type != AST_TYPE) {
         my_printf("push: argument of type AST_TYPE expected\n");
-        exit(0);
+        return (NULL);
     }
     data_to_push.var_type = ast_node1->var_type;
     data_to_push.value_int8 = ast_node1->value_int8;

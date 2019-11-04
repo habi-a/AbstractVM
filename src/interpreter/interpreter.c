@@ -15,7 +15,7 @@ ast_node_t      *interpreter(ast_node_t *ast, stack_node_t **stack,
 {
     if (ast == NULL) {
         my_printf("Syntax error\n");
-        exit(0);
+        return (NULL);
     }
     return (interpret_node(ast, stack, type_list, instruct_list));
 }

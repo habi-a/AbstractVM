@@ -34,7 +34,9 @@ SRC		= 	src/main.c \
 			src/interpreter/ast_node_extra.c \
 			src/interpreter/interpreter.c \
 			src/interpreter/interpret_node.c \
+			src/lexer_parser/get_tokens.c \
 			src/lexer_parser/parser.c\
+			src/lexer_parser/parser_factor.c\
 			src/lexer_parser/parser_utils.c\
 			src/lexer_parser/token.c \
 			src/stack/stack.c \
@@ -49,7 +51,7 @@ LN		= 	ln -s
 all:		$(LIBNAME) $(NAME)
 
 $(NAME):	$(OBJ)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o $(NAME)
 
 
 $(LIBNAME):	$(OBJ)

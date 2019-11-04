@@ -11,7 +11,7 @@
 
 ast_node_t      *create_node_null()
 {
-    ast_node_t* ast_node;
+    ast_node_t  *ast_node;
 
     ast_node = malloc(sizeof(ast_node_t));
     if (ast_node == NULL)

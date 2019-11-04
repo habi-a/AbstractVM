@@ -15,7 +15,7 @@ static ast_node_t *interpret_type(ast_node_t *ast, ast_node_t *left_result,
     if (!get_type(type_list, ast->var_name)) {
         my_printf("Parse Error: Unknown type '%s'\n",
         ast->var_name);
-        exit(0);
+        return (NULL);
     }
     ast->var_type = get_type(type_list, ast->var_name)->return_type;
     get_type(type_list, ast->var_name)->exec_type(ast, left_result);
@@ -30,7 +30,7 @@ static ast_node_t *interpret_instruction(ast_node_t *ast,
     if (!get_instruction(instruct_list, ast->var_name)) {
         my_printf("Parse Error: Unknown instruction '%s'\n",
         ast->var_name);
-        exit(0);
+        return (NULL);
     }
     ast->var_type = get_instruction(instruct_list, ast->var_name)->return_type;
     *stack = get_instruction(instruct_list, ast->var_name)
@@ -72,25 +72,24 @@ ast_node_t      *interpret_node(ast_node_t *ast, stack_node_t **stack,
                             type_t type_list[NB_TYPES],
                             instruct_t instruct_list[NB_INSTRUCT])
 {
-    ast_node_t  *left_result;
-    ast_node_t  *right_result;
+    ast_node_t  *left;
+    ast_node_t  *right;
 
     if (ast->node_type == AST_NUMBER || ast->node_type == AST_NULL)
         return (ast);
-    left_result = interpreter(ast->ast_node_l, stack, type_list, instruct_list);
+    left = interpreter(ast->ast_node_l, stack, type_list, instruct_list);
     if (ast->node_type == AST_TYPE)
-        return (interpret_type(ast, left_result, type_list));
+        return (interpret_type(ast, left, type_list));
     if (ast->node_type == AST_INSTRUCTION)
-        return (interpret_instruction(ast, left_result, stack, instruct_list));
-    right_result = interpreter(ast->ast_node_r, stack, type_list,
-                                instruct_list);
+        return (interpret_instruction(ast, left, stack, instruct_list));
+    right = interpreter(ast->ast_node_r, stack, type_list, instruct_list);
     switch (ast->node_type) {
         case AST_PLUS:
-            return (interpret_plus(ast, left_result, right_result));
+            return (interpret_plus(ast, left, right));
         case AST_MUL:
-            return (interpret_mul(ast, left_result, right_result));
+            return (interpret_mul(ast, left, right));
         default: break;
     }
     my_printf("Syntax error\n");
-    exit(0);
+    return (NULL);
 }

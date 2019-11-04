@@ -20,10 +20,10 @@ instruct_t          *get_instruction(instruct_t instruct_list[NB_INSTRUCT],
     return (NULL);
 }
 
-void                free_list_instructions(instruct_t instruct_list[NB_INSTRUCT])
+void                free_list_instructions(instruct_t instrct_list[NB_INSTRUCT])
 {
-    unsigned short  i = 0;
+    unsigned short i = 0;
 
     for (i = 0; i < NB_INSTRUCT; i++)
-        free((char *)instruct_list[i].instruct_name);
+        free((char *)instrct_list[i].instruct_name);
 }
