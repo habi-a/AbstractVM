@@ -50,26 +50,25 @@ static ast_node_t   *factor_instruction(parse_utils_t *parse_utils,
     return (ast_node);
 }
 
-static ast_node_t   *factor_type(parse_utils_t *parse_utils,
-                                    unsigned short *is_instrct,
-                                    ast_node_t *ast_node,
-                                    ast_node_t *ast_node1)
+static ast_node_t *factor_type(parse_utils_t *parse_utils,
+                                unsigned short *is_instrct,
+                                ast_node_t *ast_node, ast_node_t *ast_node1)
 {
-    const char      *tmp_var_name;
+    const char *tmp_var_name = my_strdup(parse_utils->current_token.var_name);
 
-    tmp_var_name = my_strdup(parse_utils->current_token.var_name);
     pop_token(parse_utils);
     pop_token(parse_utils);
     if (parse_utils->current_token.token_type != TOK_NUMBER) {
-        my_printf("Parse error, expected TOK_NUMBER at position %ld\n",
-                    parse_utils->index);
+        my_printf("Parse error, expected TOK_NUMBER\n");
+        free((char *)tmp_var_name);
         return (NULL);
     }
     ast_node1 = expression(parse_utils, is_instrct);
     expect(')', parse_utils);
     if (parse_utils->current_token.token_type != TOK_END_TEXT || !*is_instrct) {
-        my_printf("Parse Error: Unexpected token '%c' at position %lu\n",
-            parse_utils->current_token.value_symbol, parse_utils->index);
+        my_printf("Parse Error: Unexpected token '%c'\n");
+        free((char *)tmp_var_name);
+        destruct_astnode(ast_node1);
         return (NULL);
     }
     ast_node = create_node_call_func(tmp_var_name, ast_node1);

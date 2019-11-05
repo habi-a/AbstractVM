@@ -27,8 +27,10 @@ stack_node_t        *pop(stack_node_t *stack, stack_data_t *data)
 {
     stack_node_t    *tmp = NULL;
 
-    if (isEmpty(stack))
+    if (isEmpty(stack)) {
+        data->var_type = T_NULL;
         return (NULL);
+    }
     tmp = stack;
     *data = tmp->data;
     stack = stack->next;

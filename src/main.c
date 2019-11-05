@@ -39,7 +39,6 @@ static void     loop_reader(stack_node_t **stack, type_t type_list[NB_TYPES],
         else if (!is_white_line(cin) && !repl_exit)
             execute(cin, stack, type_list, instruct_list);
         free(cin);
-        cin = NULL;
     }
     free(cin);
 }

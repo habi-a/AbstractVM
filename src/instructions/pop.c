@@ -15,7 +15,7 @@ stack_node_t        *instruct_pop(ast_node_t *ast_node1, stack_node_t *stack)
 
     if (ast_node1->node_type != AST_NULL) {
         my_printf("pop: too many arguments\n");
-        return (NULL);
+        return (stack);
     }
     stack = pop(stack, &data_popped);
     return (stack);

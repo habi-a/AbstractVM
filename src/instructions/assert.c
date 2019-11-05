@@ -34,16 +34,16 @@ stack_node_t        *instruct_assert(ast_node_t *ast_node1, stack_node_t *stack)
 
     if (ast_node1->node_type == AST_NULL) {
         my_printf("assert: too few arguments\n");
-        return (NULL);
+        return (stack);
     } else if (ast_node1->node_type != AST_TYPE) {
         my_printf("assert: argument of type AST_TYPE expected\n");
-        return (NULL);
+        return (stack);
     }
     data1 = peek(stack);
     if (data1.var_type != ast_node1->var_type
         || !assert_helper(ast_node1, &data1)) {
         my_printf("assert: values not equals\n");
-        return (NULL);
+        return (stack);
     }
     return (stack);
 }

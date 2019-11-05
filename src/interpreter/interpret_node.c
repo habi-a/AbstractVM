@@ -12,6 +12,8 @@
 static ast_node_t *interpret_type(ast_node_t *ast, ast_node_t *left_result,
                                     type_t type_list[NB_TYPES])
 {
+    if (ast == NULL || left_result == NULL )
+        return (NULL);
     if (!get_type(type_list, ast->var_name)) {
         my_printf("Parse Error: Unknown type '%s'\n",
         ast->var_name);
@@ -27,6 +29,8 @@ static ast_node_t *interpret_instruction(ast_node_t *ast,
                                         stack_node_t **stack,
                                         instruct_t instruct_list[NB_INSTRUCT])
 {
+    if (ast == NULL || left_result == NULL )
+        return (NULL);
     if (!get_instruction(instruct_list, ast->var_name)) {
         my_printf("Parse Error: Unknown instruction '%s'\n",
         ast->var_name);
@@ -41,6 +45,8 @@ static ast_node_t *interpret_instruction(ast_node_t *ast,
 static ast_node_t *interpret_plus(ast_node_t *ast, ast_node_t *left_result,
                                     ast_node_t *right_result)
 {
+    if (ast == NULL || left_result == NULL || right_result == NULL)
+        return (NULL);
     if (left_result->var_type > right_result->var_type)
         ast->var_type = left_result->var_type;
     else
@@ -56,6 +62,8 @@ static ast_node_t *interpret_plus(ast_node_t *ast, ast_node_t *left_result,
 static ast_node_t *interpret_mul(ast_node_t *ast, ast_node_t *left_result,
                                     ast_node_t *right_result)
 {
+    if (ast == NULL || left_result == NULL || right_result == NULL)
+        return (NULL);
     if (left_result->var_type > right_result->var_type)
         ast->var_type = left_result->var_type;
     else
