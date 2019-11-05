@@ -31,7 +31,8 @@ static void         get_int(parse_utils_t *parse_utils, char result_buffer[64])
 
 static void get_float(parse_utils_t *parse_utils, char result_buffer[64])
 {
-    float   result_float = (float)my_getnbr_double(result_buffer);
+    float   result_float = (float)atof(result_buffer);
+
     parse_utils->current_token.value_int8 = (int)result_float;
     parse_utils->current_token.value_int16 = (int)result_float;
     parse_utils->current_token.value_int32 = (int)result_float;

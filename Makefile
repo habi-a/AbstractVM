@@ -46,7 +46,7 @@ SRC		= 	src/main.c \
 OBJ		= 	$(SRC:.c=.o)
 
 RM		= 	rm -f
-LN		= 	ln -s
+LN		= 	ln -sf
 
 all:		$(LIBNAME) $(NAME)
 

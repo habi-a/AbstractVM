@@ -9,8 +9,6 @@
 # define                _TYPE_H_
 
 # include               <ast.h>
-# include               <stdbool.h>
-# include               <stddef.h>
 
 # define                NB_TYPES        5
 

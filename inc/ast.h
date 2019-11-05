@@ -9,7 +9,6 @@
 # define                _AST_H_
 
 # include               <stack.h>
-# include               <stdio.h>
 
 typedef enum            e_ast_nodetype {
                         AST_NUMBER,

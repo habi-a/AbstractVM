@@ -10,7 +10,6 @@
 
 # include                   <ast.h>
 # include                   <stdbool.h>
-# include                   <stddef.h>
 # include                   <stack.h>
 
 # define                    NB_INSTRUCT     10

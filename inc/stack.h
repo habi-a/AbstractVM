@@ -2,14 +2,12 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
 #ifndef                 _VARIABLES_H_
 # define                _VARIABLES_H_
 
-# include               <stddef.h>
-# include               <stdio.h>
 # include               <stdint.h>
 
 typedef enum            e_var_type {
