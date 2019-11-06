@@ -64,7 +64,8 @@ static void     abstractvm(type_t type_list[NB_TYPES],
     close(filedescriptor);
 }
 
-int             main(int argc, char **argv)
+static void     main_helper(type_t type_list[NB_TYPES],
+                            int argc, char **argv)
 {
     instruct_t  instruct_list[NB_INSTRUCT] = {
         {my_strdup("push"),    T_VOID,     &instruct_push},
@@ -78,6 +79,12 @@ int             main(int argc, char **argv)
         {my_strdup("dump"),    T_VOID,     &instruct_dump},
         {my_strdup("print"),   T_VOID,     &instruct_print}
     };
+
+    abstractvm(type_list, instruct_list, argc, argv);
+}
+
+int             main(int argc, char **argv)
+{
     type_t      type_list[NB_TYPES] = {
         {my_strdup("int8"),    T_INT8,     &my_int8},
         {my_strdup("int16"),   T_INT16,    &my_int16},
@@ -86,6 +93,6 @@ int             main(int argc, char **argv)
         {my_strdup("double"),  T_DOUBLE,   &my_double}
     };
 
-    abstractvm(type_list, instruct_list, argc, argv);
+    main_helper(type_list, argc, argv);
     return (0);
 }
