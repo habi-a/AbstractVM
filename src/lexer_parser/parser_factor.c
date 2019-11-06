@@ -84,12 +84,12 @@ ast_node_t          *factor(parse_utils_t *parse_utils,
 
     switch (parse_utils->current_token.token_type) {
         case TOK_NUMBER:
-            return(factor_number(parse_utils, is_instruction));
+            return (factor_number(parse_utils, is_instruction));
         case TOK_INSTRUCTION:
-            return(factor_instruction(parse_utils, is_instruction,
+            return (factor_instruction(parse_utils, is_instruction,
                                         ast_node, ast_node1));
         case TOK_TYPE:
-            return(factor_type(parse_utils, is_instruction,
+            return (factor_type(parse_utils, is_instruction,
                                 ast_node, ast_node1));
         default:
             my_printf("Parse Error: Unexpected token '%c' at position %lu\n",

@@ -9,14 +9,14 @@
 #include <interpreter.h>
 #include <stdlib.h>
 
-static ast_node_t *interpret_type(ast_node_t *ast, ast_node_t *left_result,
-                                    type_t type_list[NB_TYPES])
+static ast_node_t *interpret_type(ast_node_t *ast, ast_node_t *left_result
+                                , type_t type_list[NB_TYPES])
 {
     if (ast == NULL || left_result == NULL )
         return (NULL);
     if (!get_type(type_list, ast->var_name)) {
-        my_printf("Parse Error: Unknown type '%s'\n",
-        ast->var_name);
+        my_printf("Parse Error: Unknown type '%s'\n"
+                    , ast->var_name);
         return (NULL);
     }
     ast->var_type = get_type(type_list, ast->var_name)->return_type;

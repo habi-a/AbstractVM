@@ -8,7 +8,7 @@
 #include <stack.h>
 #include <stdlib.h>
 
-unsigned short      isEmpty(stack_node_t *stack)
+unsigned short      is_empty(stack_node_t *stack)
 {
     return (!stack);
 }
@@ -27,7 +27,7 @@ stack_node_t        *pop(stack_node_t *stack, stack_data_t *data)
 {
     stack_node_t    *tmp = NULL;
 
-    if (isEmpty(stack)) {
+    if (is_empty(stack)) {
         data->var_type = T_NULL;
         return (NULL);
     }
@@ -42,7 +42,7 @@ stack_data_t        peek(stack_node_t *stack)
 {
     stack_data_t    empty_data = {T_VOID, 0, 0, 0, 0, 0};
 
-    if (isEmpty(stack))
+    if (is_empty(stack))
         return (empty_data);
     return (stack->data);
 }

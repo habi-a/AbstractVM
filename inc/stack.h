@@ -35,7 +35,7 @@ typedef struct          s_stack_node {
     struct s_stack_node *next;
 }                       stack_node_t;
 
-unsigned short          isEmpty(stack_node_t *stack);
+unsigned short          is_empty(stack_node_t *stack);
 stack_node_t            *push(stack_node_t *stack, stack_data_t data);
 stack_node_t            *pop(stack_node_t *stack, stack_data_t *data);
 stack_data_t            peek(stack_node_t *stack);

@@ -9,7 +9,7 @@
 #include <my.h>
 #include <stdlib.h>
 
-ast_node_t      *create_node_null()
+ast_node_t      *create_node_null(void)
 {
     ast_node_t  *ast_node;
 
