@@ -1,35 +1,32 @@
-# Groupe de courta_f & habi_a
+# AbstractVM
 #
-## Nécessité
-
-#### _Afin de faire fonctionner notre programme, nous avons besoin de :_
-
+## Required
 - **Build-essential**
 - **Make**
 
-## Sujet 
+## What is AbstractVM ?
 
-AbstractVM est une machine à pile qui permet d'évaluer des expressions arithmétiques simples. Ces expressions sont fournies à la machine par le biais de programmes écrits dans un langage s'apparentant à l'assembleur.
+AbstractVM is a stack machine that evaluates simple arithmetic expressions. These expressions are supplied to the machine by programs written in a language similar to the assembler.
 
 ## Les Instructions
 
-| Instruction          |  Description                                                                       |
-| -------------------- | ---------------------------------------------------------------------------------- |
-| push "Value"         | Empile la valeur "Value"                                                           |
-| pop                  | Dépile une valeur                                                                  |
-| add                  | Dépile deux valeurs, calcule leur somme, et empile le résultat                     |
-| sub                  | Dépile deux valeurs a et b, calcule la différence b - a, et empile le résultat     |
-| mul                  | Dépile deux valeurs, calcule leur produit, et empile le résultat                   |
-| div                  | Dépile deux valeurs a et b, calcule le quotient b / a, et empile le résultat       |
-| mod                  | Dépile deux valeurs a et b, calcule le modulo b % a, et empile le résultat         |
-| assert "Value"       | Vérifie que la valeur située en haut de la pile est égale à la valeur "Value"      |
-| dump                 | Affiche le contenu de la pile, du haut vers le bas, en séparant chaque valeur par un retour à la ligne |
-| print                | Vérifie que la valeur située en haut de la pile est bien de type int8, et affiche le code ASCII correspondant sur la sortie standard |
-| exit                 | Termine l'exécution du programme en cours |
+| Instruction          |  Description                                                                                             |
+| -------------------- | -------------------------------------------------------------------------------------------------------- |
+| push "Value"         | Push the value "Value"                                                                                   |
+| pop                  | Pop a value from the top of the stack                                                                    |
+| add                  | Pop two values a and b, calculate the sum b + a, and push the result into the stack                      |
+| sub                  | Pop two values a and b, calculate the difference b - a, and push the result into the stack               |
+| mul                  | Pop two values a and b, calculate the product b * a, and push the result into the stack                  |
+| div                  | Pop two values a and b, calculate the quotient b / a, and push the result into the stack                 |
+| mod                  | Pop two values a and b, calculate the modulo b % a, and push the result into the stack                   |
+| assert "Value"       | Check if the top value of the stack is equal to "Value"                                                  |
+| dump                 | Pritnt all the content of the stack                                                                      |
+| print                | Check if the top value of the stack is of type int8, et print the code ASCII corresponding on the stdout |
+| exit                 | Exit the program                                                                                         |
 
-## Mise en route
+## Build and Run
 
-- ***make***
-- ***export LD_LIBRARY_PATH=.***
-- ***./abstractvm file.avm***
+- ***$> export LD_LIBRARY_PATH=.***
+- ***$> make***
+- ***$> ./abstractvm \<file.avm\>***
 
