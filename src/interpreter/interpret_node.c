@@ -10,7 +10,7 @@
 #include <stdlib.h>
 
 static ast_node_t *interpret_type(ast_node_t *ast, ast_node_t *left_result
-                                , type_t type_list[NB_TYPES])
+                                  ,type_t type_list[NB_TYPES])
 {
     if (ast == NULL || left_result == NULL )
         return (NULL);
@@ -24,10 +24,10 @@ static ast_node_t *interpret_type(ast_node_t *ast, ast_node_t *left_result
     return (ast);
 }
 
-static ast_node_t *interpret_instruction(ast_node_t *ast,
-                                        ast_node_t *left_result,
-                                        stack_node_t **stack,
-                                        instruct_t instruct_list[NB_INSTRUCT])
+static ast_node_t *interpret_instruction(ast_node_t *ast
+                                         ,ast_node_t *left_result
+                                         ,stack_node_t **stack
+                                         ,instruct_t instruct_list[NB_INSTRUCT])
 {
     if (ast == NULL || left_result == NULL )
         return (NULL);
@@ -42,8 +42,8 @@ static ast_node_t *interpret_instruction(ast_node_t *ast,
     return (ast);
 }
 
-static ast_node_t *interpret_plus(ast_node_t *ast, ast_node_t *left_result,
-                                    ast_node_t *right_result)
+static ast_node_t *interpret_plus(ast_node_t *ast, ast_node_t *left_result
+                                  ,ast_node_t *right_result)
 {
     if (ast == NULL || left_result == NULL || right_result == NULL)
         return (NULL);
@@ -59,8 +59,8 @@ static ast_node_t *interpret_plus(ast_node_t *ast, ast_node_t *left_result,
     return (ast);
 }
 
-static ast_node_t *interpret_mul(ast_node_t *ast, ast_node_t *left_result,
-                                    ast_node_t *right_result)
+static ast_node_t *interpret_mul(ast_node_t *ast, ast_node_t *left_result
+                                 ,ast_node_t *right_result)
 {
     if (ast == NULL || left_result == NULL || right_result == NULL)
         return (NULL);
@@ -76,9 +76,9 @@ static ast_node_t *interpret_mul(ast_node_t *ast, ast_node_t *left_result,
     return (ast);
 }
 
-ast_node_t      *interpret_node(ast_node_t *ast, stack_node_t **stack,
-                            type_t type_list[NB_TYPES],
-                            instruct_t instruct_list[NB_INSTRUCT])
+ast_node_t      *interpret_node(ast_node_t *ast, stack_node_t **stack
+                                ,type_t type_list[NB_TYPES]
+                                ,instruct_t instruct_list[NB_INSTRUCT])
 {
     ast_node_t  *left;
     ast_node_t  *right;

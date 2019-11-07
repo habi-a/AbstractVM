@@ -24,8 +24,8 @@ unsigned int    my_isdigit(char c);
 unsigned int    my_isprintable(char c);
 unsigned int    my_isspace(char c);
 unsigned int    my_long_nbrlen(long n);
-void            my_long_nbrlen_base(long n, const char *base,
-                                    unsigned int *buffer);
+void            my_long_nbrlen_base(long n, const char *base
+                                    ,unsigned int *buffer);
 char            my_lowcase(char c);
 unsigned int    my_nbrlen(int n);
 void            my_nbrlen_base(int n, const char *base, unsigned int *buffer);
@@ -56,7 +56,7 @@ unsigned int    my_strlen(const char *str);
 char            *my_strcpy(char *dest, const char *src);
 char            *my_trim(const char *str);
 unsigned int    my_un_nbrlen(unsigned int n);
-void            my_un_nbrlen_base(unsigned int n, const char *base,
-                                    unsigned int *buffer);
+void            my_un_nbrlen_base(unsigned int n, const char *base
+                                  ,unsigned int *buffer);
 
 #endif  /* _MY_H */

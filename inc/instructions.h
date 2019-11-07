@@ -14,8 +14,8 @@
 
 # define                    NB_INSTRUCT     10
 
-typedef stack_node_t        *(*t_ptr_instruction)(ast_node_t *ast_node1,
-                                                stack_node_t *stack);
+typedef stack_node_t        *(*t_ptr_instruction)(ast_node_t *ast_node1
+                                                  ,stack_node_t *stack);
 
 typedef struct              s_instruct {
     const char              *instruct_name;
@@ -24,8 +24,8 @@ typedef struct              s_instruct {
 }                           instruct_t;
 
 
-instruct_t      *get_instruction(instruct_t instruct_list[NB_INSTRUCT],
-                                const char *instruct_name);
+instruct_t      *get_instruction(instruct_t instruct_list[NB_INSTRUCT]
+                                 ,const char *instruct_name);
 void            free_list_instructions(instruct_t instruct_list[NB_INSTRUCT]);
 
 stack_node_t    *instruct_push(ast_node_t *ast_node1, stack_node_t *stack);

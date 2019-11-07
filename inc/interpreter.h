@@ -13,11 +13,11 @@
 # include   <types.h>
 # include   <stack.h>
 
-ast_node_t  *interpreter(ast_node_t *ast, stack_node_t **stack,
-                        type_t type_list[NB_TYPES],
-                        instruct_t instruct_list[NB_INSTRUCT]);
-ast_node_t  *interpret_node(ast_node_t *ast, stack_node_t **stack,
-                            type_t type_list[NB_TYPES],
-                            instruct_t instruct_list[NB_INSTRUCT]);
+ast_node_t  *interpreter(ast_node_t *ast, stack_node_t **stack
+                        ,type_t type_list[NB_TYPES]
+                        ,instruct_t instruct_list[NB_INSTRUCT]);
+ast_node_t  *interpret_node(ast_node_t *ast, stack_node_t **stack
+                            ,type_t type_list[NB_TYPES]
+                            ,instruct_t instruct_list[NB_INSTRUCT]);
 
 #endif      /* _INTERPRETER_H_ */

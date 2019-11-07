@@ -12,8 +12,8 @@
 #include <stack.h>
 
 
-ast_node_t          *expression(parse_utils_t *parse_utils,
-                                unsigned short *is_instruction)
+ast_node_t          *expression(parse_utils_t *parse_utils
+                                ,unsigned short *is_instruction)
 {
     stack_data_t    tmp_stack_node = {T_INT8, 0, 0, 0, 0, 0};
     ast_node_t      *expr1_ast_node;
@@ -24,8 +24,8 @@ ast_node_t          *expression(parse_utils_t *parse_utils,
     return (create_node_binary(AST_PLUS, term_ast_node, expr1_ast_node));
 }
 
-ast_node_t          *term(parse_utils_t *parse_utils,
-                            unsigned short *is_instruction)
+ast_node_t          *term(parse_utils_t *parse_utils
+                          ,unsigned short *is_instruction)
 {
     stack_data_t    tmp_stack_node = {T_INT8, 1, 1, 1, 1, 1};
     ast_node_t      *fact_ast_node;

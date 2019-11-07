@@ -40,8 +40,8 @@ static void get_float(parse_utils_t *parse_utils, char result_buffer[64])
     parse_utils->current_token.value_double = (double)result_float;
 }
 
-static bool_t       get_number_type(parse_utils_t *parse_utils,
-                                    unsigned int old_index)
+static bool_t       get_number_type(parse_utils_t *parse_utils
+                                    ,unsigned int old_index)
 {
     if (parse_utils->line[parse_utils->index] == '.') {
         parse_utils->current_token.var_type = T_FLOAT;
