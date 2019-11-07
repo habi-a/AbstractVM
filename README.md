@@ -8,7 +8,7 @@
 
 AbstractVM is a stack machine that evaluates simple arithmetic expressions. These expressions are supplied to the machine by programs written in a language similar to the assembler.
 
-## Les Instructions
+## Instructions
 
 | Instruction          |  Description                                                                                             |
 | -------------------- | -------------------------------------------------------------------------------------------------------- |
@@ -21,8 +21,21 @@ AbstractVM is a stack machine that evaluates simple arithmetic expressions. Thes
 | mod                  | Pop two values a and b, calculate the modulo b % a, and push the result into the stack                   |
 | assert "Value"       | Check if the top value of the stack is equal to "Value"                                                  |
 | dump                 | Pritnt all the content of the stack                                                                      |
-| print                | Check if the top value of the stack is of type int8, et print the code ASCII corresponding on the stdout |
+| print                | Check if the top value of the stack is of int8 type, and print the corresponding ASCII code              |
 | exit                 | Exit the program                                                                                         |
+
+## Types
+- int8
+- int16
+- int32
+- float
+- double
+
+## Example AVM File
+File test.avm:
+```
+
+```
 
 ## Build and Run
 
