@@ -29,7 +29,7 @@ ast_node_t      *create_node_null(void)
     return (ast_node);
 }
 
-void    destruct_astnode(ast_node_t *ast_node)
+void            destruct_astnode(ast_node_t *ast_node)
 {
     if (ast_node == NULL)
         return ;
