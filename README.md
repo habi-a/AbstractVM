@@ -1,5 +1,4 @@
 # AbstractVM
-#
 ## Required
 - **Build-essential**
 - **Make**
@@ -34,12 +33,28 @@ AbstractVM is a stack machine that evaluates simple arithmetic expressions. Thes
 ## Example AVM File
 File test.avm:
 ```
-
+; exemple.avm
+push int32(42)
+push int32(33)
+add
+push float(44.55)
+mul
+push double(42.42)
+push int32(42)
+pop
+assert double(42.42)
+pop
+dump
+exit
 ```
 
 ## Build and Run
-
-- ***$> export LD_LIBRARY_PATH=.***
-- ***$> make***
-- ***$> ./abstractvm \<file.avm\>***
-
+<code>
+$> export LD_LIBRARY_PATH=.
+</code>
+<code>
+$> make
+</code>
+<code>
+$> ./abstractvm \<file.avm\>
+</code>
