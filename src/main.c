@@ -41,6 +41,8 @@ static void loop_reader(stack_node_t **stack, type_t type_list[NB_TYPES]
         free(cin);
     }
     free(cin);
+    if (!repl_exit)
+        my_printf("WARNING: no 'exit' instruction founded\n");
 }
 
 static void abstractvm(type_t type_list[NB_TYPES]
