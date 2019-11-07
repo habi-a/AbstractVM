@@ -49,12 +49,12 @@ exit
 ```
 
 ## Build and Run
-<code>
+<code>  
 $> export LD_LIBRARY_PATH=.
 </code>
-<code>
+<code>  
 $> make
 </code>
-<code>
+<code>  
 $> ./abstractvm \<file.avm\>
 </code>
