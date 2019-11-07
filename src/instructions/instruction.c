@@ -9,10 +9,10 @@
 #include <instructions.h>
 #include <stdlib.h>
 
-instruct_t          *get_instruction(instruct_t instruct_list[NB_INSTRUCT],
-                                        const char *instruct_name)
+instruct_t *get_instruction(instruct_t instruct_list[NB_INSTRUCT]
+                            , const char *instruct_name)
 {
-    unsigned short  i = 0;
+    unsigned short i = 0;
 
     for (i = 0; i < NB_INSTRUCT; i++)
         if (!my_strcmp(instruct_list[i].instruct_name, instruct_name))
@@ -20,7 +20,7 @@ instruct_t          *get_instruction(instruct_t instruct_list[NB_INSTRUCT],
     return (NULL);
 }
 
-void                free_list_instructions(instruct_t instrct_list[NB_INSTRUCT])
+void free_list_instructions(instruct_t instrct_list[NB_INSTRUCT])
 {
     unsigned short i = 0;
 

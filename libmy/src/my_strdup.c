@@ -2,16 +2,16 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
 #include <my.h>
 #include <stdlib.h>
 
-char                *my_strdup(const char *src)
+char *my_strdup(const char *src)
 {
-    char            *dest;
-    unsigned int    len;
+    char *dest;
+    unsigned int len;
 
     if (src == NULL)
         return (0);
@@ -23,9 +23,9 @@ char                *my_strdup(const char *src)
     return (dest);
 }
 
-char        *my_strndup(char *str, unsigned int n)
+char *my_strndup(char *str, unsigned int n)
 {
-    char    *dest;
+    char *dest;
 
     if (str == NULL)
         return (NULL);
@@ -36,10 +36,10 @@ char        *my_strndup(char *str, unsigned int n)
     return (dest);
 }
 
-char                *my_strrdup(char *str, unsigned int r)
+char *my_strrdup(char *str, unsigned int r)
 {
-    char            *dest;
-    unsigned int    len;
+    char *dest;
+    unsigned int len;
 
     if (str == NULL)
         return (NULL);

@@ -2,17 +2,17 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
 #include <my.h>
 #include <my_puts.h>
 #include <stdlib.h>
 
-unsigned int        my_put_b(va_list variables, unsigned int count)
+unsigned int my_put_b(va_list variables, unsigned int count)
 {
-    unsigned int    var;
-    unsigned int    *buffer_size;
+    unsigned int var;
+    unsigned int *buffer_size;
 
     buffer_size = malloc(sizeof(unsigned int));
     if (buffer_size == NULL)
@@ -26,7 +26,7 @@ unsigned int        my_put_b(va_list variables, unsigned int count)
     return (count);
 }
 
-static void my_putchar_S(const char c, unsigned int *buffer_size)
+static void my_putchar_ss(const char c, unsigned int *buffer_size)
 {
     if (c < 10 && c > 0) {
         my_putstr("\\00");
@@ -41,9 +41,9 @@ static void my_putchar_S(const char c, unsigned int *buffer_size)
     *buffer_size = *buffer_size + 4;
 }
 
-static void         my_putstr_S(const char *str, unsigned int *buffer_size)
+static void my_putstr_ss(const char *str, unsigned int *buffer_size)
 {
-    unsigned int    i;
+    unsigned int i;
 
     i = 0;
     while (str[i] != '\0') {
@@ -51,15 +51,15 @@ static void         my_putstr_S(const char *str, unsigned int *buffer_size)
             my_putchar(str[i]);
             *buffer_size = *buffer_size + 1;
         } else
-            my_putchar_S(str[i], buffer_size);
+            my_putchar_ss(str[i], buffer_size);
         i++;
     }
 }
 
-unsigned int        my_put_S(va_list variables, unsigned int count)
+unsigned int my_put_ss(va_list variables, unsigned int count)
 {
-    char            *var_string;
-    unsigned int    *buffer_size;
+    char *var_string;
+    unsigned int *buffer_size;
 
     buffer_size = malloc(sizeof(unsigned int));
     if (buffer_size == NULL)
@@ -72,14 +72,14 @@ unsigned int        my_put_S(va_list variables, unsigned int count)
         free(buffer_size);
         return (count);
     }
-    my_putstr_S(var_string, buffer_size);
+    my_putstr_ss(var_string, buffer_size);
     count += *buffer_size;
     free(buffer_size);
     free(var_string);
     return (count);
 }
 
-unsigned int  my_put_l(va_list variables, unsigned int count)
+unsigned int my_put_l(va_list variables, unsigned int count)
 {
     long var;
 

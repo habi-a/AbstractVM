@@ -5,11 +5,10 @@
 **
 */
 
-unsigned int        my_long_nbrlen(long n)
+unsigned int my_long_nbrlen(long n)
 {
-    unsigned int    i;
+    unsigned int i = 1;
 
-    i = 1;
     while (n > 9) {
         n /= 10;
         i++;
@@ -17,11 +16,10 @@ unsigned int        my_long_nbrlen(long n)
     return (i);
 }
 
-unsigned int        my_un_nbrlen(unsigned int n)
+unsigned int my_un_nbrlen(unsigned int n)
 {
-    unsigned int    i;
+    unsigned int i = 1;
 
-    i = 1;
     while (n > 9) {
         n /= 10;
         i++;
@@ -29,11 +27,10 @@ unsigned int        my_un_nbrlen(unsigned int n)
     return (i);
 }
 
-unsigned int        my_nbrlen(int n)
+unsigned int my_nbrlen(int n)
 {
-    unsigned int    i;
+    unsigned int i = 1;
 
-    i = 1;
     while (n > 9) {
         n /= 10;
         i++;

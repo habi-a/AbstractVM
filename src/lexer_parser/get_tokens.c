@@ -10,9 +10,9 @@
 #include <stdlib.h>
 #include <token.h>
 
-static void         get_int(parse_utils_t *parse_utils, char result_buffer[64])
+static void get_int(parse_utils_t *parse_utils, char result_buffer[64])
 {
-    long long int   result_int = my_getnbrll(result_buffer);
+    long long int result_int = my_getnbrll(result_buffer);
 
     if (result_int >= -128 && result_int <= 127)
         parse_utils->current_token.var_type = T_INT8;
@@ -31,7 +31,7 @@ static void         get_int(parse_utils_t *parse_utils, char result_buffer[64])
 
 static void get_float(parse_utils_t *parse_utils, char result_buffer[64])
 {
-    float   result_float = (float)atof(result_buffer);
+    float result_float = (float)atof(result_buffer);
 
     parse_utils->current_token.value_int8 = (int)result_float;
     parse_utils->current_token.value_int16 = (int)result_float;
@@ -40,8 +40,8 @@ static void get_float(parse_utils_t *parse_utils, char result_buffer[64])
     parse_utils->current_token.value_double = (double)result_float;
 }
 
-static bool_t       get_number_type(parse_utils_t *parse_utils
-                                    ,unsigned int old_index)
+static bool_t get_number_type(parse_utils_t *parse_utils
+                                , unsigned int old_index)
 {
     if (parse_utils->line[parse_utils->index] == '.') {
         parse_utils->current_token.var_type = T_FLOAT;
@@ -62,10 +62,10 @@ static bool_t       get_number_type(parse_utils_t *parse_utils
     return (e_true);
 }
 
-bool_t              get_number(parse_utils_t *parse_utils)
+bool_t get_number(parse_utils_t *parse_utils)
 {
-    unsigned int    old_index;
-    char            result_buffer[64] = {0};
+    unsigned int old_index;
+    char result_buffer[64] = {0};
 
     skip_space(parse_utils);
     old_index = parse_utils->index;
@@ -85,10 +85,10 @@ bool_t              get_number(parse_utils_t *parse_utils)
     return (e_true);
 }
 
-const char  *get_variable_name(parse_utils_t *parse_utils)
+const char *get_variable_name(parse_utils_t *parse_utils)
 {
-    char            *result_buf;
-    unsigned int    old_index;
+    char *result_buf;
+    unsigned int old_index;
 
     skip_space(parse_utils);
     old_index = parse_utils->index;

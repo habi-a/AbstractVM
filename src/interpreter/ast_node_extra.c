@@ -9,9 +9,9 @@
 #include <my.h>
 #include <stdlib.h>
 
-ast_node_t      *create_node_null(void)
+ast_node_t *create_node_null(void)
 {
-    ast_node_t  *ast_node;
+    ast_node_t *ast_node;
 
     ast_node = malloc(sizeof(ast_node_t));
     if (ast_node == NULL)
@@ -29,7 +29,7 @@ ast_node_t      *create_node_null(void)
     return (ast_node);
 }
 
-void            destruct_astnode(ast_node_t *ast_node)
+void destruct_astnode(ast_node_t *ast_node)
 {
     if (ast_node == NULL)
         return ;

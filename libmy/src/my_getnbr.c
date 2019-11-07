@@ -2,13 +2,13 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
-static int          my_getsigne(const char *str, unsigned int *pointeur)
+static int my_getsigne(const char *str, unsigned int *pointeur)
 {
-    int             pos_neg;
-    unsigned int    k;
+    int pos_neg;
+    unsigned int k;
 
     k = 0;
     pos_neg = 1;
@@ -23,11 +23,11 @@ static int          my_getsigne(const char *str, unsigned int *pointeur)
     return (pos_neg);
 }
 
-int                 my_getnbr(const char *str)
+int my_getnbr(const char *str)
 {
-    int             signe;
-    unsigned int    n = 0;
-    unsigned int    i = 0;
+    int signe;
+    unsigned int n = 0;
+    unsigned int i = 0;
 
     signe = my_getsigne(str, &i);
     while (str[i]) {

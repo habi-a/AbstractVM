@@ -7,8 +7,8 @@
 
 static long long my_getsigne(const char *str, unsigned long long *pointeur)
 {
-    long long           pos_neg;
-    unsigned long long  k;
+    long long pos_neg;
+    unsigned long long k;
 
     k = 0;
     pos_neg = 1;
@@ -23,11 +23,11 @@ static long long my_getsigne(const char *str, unsigned long long *pointeur)
     return (pos_neg);
 }
 
-long long                 my_getnbrll(const char *str)
+long long my_getnbrll(const char *str)
 {
-    long long             signe;
-    unsigned long long    n = 0;
-    unsigned long long    i = 0;
+    long long signe;
+    unsigned long long n = 0;
+    unsigned long long i = 0;
 
     signe = my_getsigne(str, &i);
     while (str[i]) {

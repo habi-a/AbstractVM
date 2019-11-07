@@ -17,9 +17,9 @@ unsigned int my_put_percent(va_list variables, unsigned int count)
     return (count);
 }
 
-unsigned int    my_put_c(va_list variables, unsigned int count)
+unsigned int my_put_c(va_list variables, unsigned int count)
 {
-    char        var;
+    char var;
 
     var = (char) va_arg(variables, int);
     my_putchar(var);
@@ -27,9 +27,9 @@ unsigned int    my_put_c(va_list variables, unsigned int count)
     return (count);
 }
 
-unsigned int    my_put_d(va_list variables, unsigned int count)
+unsigned int my_put_d(va_list variables, unsigned int count)
 {
-    int         var;
+    int var;
 
     var = va_arg(variables, int);
     my_putnbr(var);
@@ -37,9 +37,9 @@ unsigned int    my_put_d(va_list variables, unsigned int count)
     return (count);
 }
 
-unsigned int    my_put_i(va_list variables, unsigned int count)
+unsigned int my_put_i(va_list variables, unsigned int count)
 {
-    int         var;
+    int var;
 
     var = va_arg(variables, int);
     my_putnbr(var);
@@ -47,9 +47,9 @@ unsigned int    my_put_i(va_list variables, unsigned int count)
     return (count);
 }
 
-unsigned int    my_put_s(va_list variables, unsigned int count)
+unsigned int my_put_s(va_list variables, unsigned int count)
 {
-    char        *var;
+    char *var;
 
     var = my_strdup(va_arg(variables, char *));
     if (var == NULL) {

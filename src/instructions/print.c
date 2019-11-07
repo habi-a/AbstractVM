@@ -9,9 +9,9 @@
 #include <instructions.h>
 #include <stdlib.h>
 
-stack_node_t        *instruct_print(ast_node_t *ast_node1, stack_node_t *stack)
+stack_node_t *instruct_print(ast_node_t *ast_node1, stack_node_t *stack)
 {
-    stack_data_t    data1;
+    stack_data_t data1;
 
     if (ast_node1->node_type != AST_NULL) {
         my_printf("print: too many arguments\n");

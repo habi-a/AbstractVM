@@ -9,7 +9,7 @@
 #include <instructions.h>
 #include <stdlib.h>
 
-static void         print_value_by_type(stack_data_t *data)
+static void print_value_by_type(stack_data_t *data)
 {
     switch (data->var_type) {
         case T_INT8:
@@ -32,9 +32,9 @@ static void         print_value_by_type(stack_data_t *data)
     }
 }
 
-static void         dump_helper(stack_node_t* head)
+static void dump_helper(stack_node_t* head)
 {
-    stack_node_t    *current;
+    stack_node_t *current;
 
     current = head;
     if (current!= NULL) {
@@ -50,7 +50,7 @@ static void         dump_helper(stack_node_t* head)
 
 }
 
-stack_node_t        *instruct_dump(ast_node_t *ast_node1, stack_node_t *stack)
+stack_node_t *instruct_dump(ast_node_t *ast_node1, stack_node_t *stack)
 {
     if (ast_node1->node_type != AST_NULL) {
         my_printf("dump: too many arguments\n");

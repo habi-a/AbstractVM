@@ -11,8 +11,8 @@
 
 static char *new_line(char *str, char c)
 {
-    int     i = 0;
-    char    *newstr = malloc(sizeof(char) * (my_strlen(str) + 2));
+    int i = 0;
+    char *newstr = malloc(sizeof(char) * (my_strlen(str) + 2));
 
     if (newstr == NULL)
         return (NULL);
@@ -28,7 +28,7 @@ static char *new_line(char *str, char c)
 
 static char *reader(int fd, char *line, int i, int len)
 {
-    char    c;
+    char c;
 
     while (i) {
         if ((i = read(fd, &c, 1)) == -1)
@@ -46,11 +46,11 @@ static char *reader(int fd, char *line, int i, int len)
     return (NULL);
 }
 
-char        *my_getline(int fd)
+char *my_getline(int fd)
 {
-    int     i = 1;
-    int     len = 0;
-    char    *line = malloc(sizeof(char) * 2);
+    int i = 1;
+    int len = 0;
+    char *line = malloc(sizeof(char) * 2);
 
     if (line == NULL)
         return (NULL);

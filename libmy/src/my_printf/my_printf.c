@@ -19,19 +19,19 @@ static const flags_t g_flags[] = {
     {'o', &my_put_o},
     {'u', &my_put_u},
     {'x', &my_put_x},
-    {'X', &my_put_X},
+    {'X', &my_put_xx},
     {'p', &my_put_p},
     {'b', &my_put_b},
-    {'S', &my_put_S},
+    {'S', &my_put_ss},
     {'l', &my_put_l},
     {'f', &my_put_f},
     {'t', &my_put_t}
 };
 
-static flags_t      get_flag(char key)
+static flags_t get_flag(char key)
 {
-    unsigned int    i;
-    flags_t         flag_error;
+    unsigned int i;
+    flags_t flag_error;
 
     i = 0;
     while (i < NB_FLAGS) {
@@ -44,17 +44,16 @@ static flags_t      get_flag(char key)
     return (flag_error);
 }
 
-int   my_printf(const char *format, ...)
+int my_printf(const char *format, ...)
 {
     unsigned int i = 0;
     unsigned int count = 0;
-    va_list  variables;
+    va_list variables;
 
     if (format == NULL)
         return (-1);
     va_start(variables, format);
-    while (format[i] != '\0')
-    {
+    while (format[i] != '\0') {
         if (format[i] == '%' && get_flag(format[i + 1]).key) {
             count = get_flag(format[i + 1]).p_my_put(variables, count);
             i++;

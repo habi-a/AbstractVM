@@ -7,10 +7,10 @@
 
 #include <my.h>
 
-void        my_put_long_nbr_base(long n, const char *base)
+void my_put_long_nbr_base(long n, const char *base)
 {
-    long    i;
-    long    j;
+    long i;
+    long j;
 
     if (n < 0) {
         my_putchar('-');
@@ -23,10 +23,10 @@ void        my_put_long_nbr_base(long n, const char *base)
     my_putchar(base[j]);
 }
 
-void                my_put_un_nbr_base(unsigned int n, const char *base)
+void my_put_un_nbr_base(unsigned int n, const char *base)
 {
-    unsigned int    i;
-    unsigned int    j;
+    unsigned int i;
+    unsigned int j;
 
     j = n % my_strlen(base);
     i = n / my_strlen(base);
@@ -35,10 +35,10 @@ void                my_put_un_nbr_base(unsigned int n, const char *base)
     my_putchar(base[j]);
 }
 
-void        my_putnbr_base(int n, const char *base)
+void my_putnbr_base(int n, const char *base)
 {
-    int     i;
-    int     j;
+    int i;
+    int j;
 
     if (n < 0) {
         my_putchar('-');

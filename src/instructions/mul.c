@@ -9,7 +9,7 @@
 #include <instructions.h>
 #include <stdlib.h>
 
-static void         mul_helper(stack_data_t *data1, stack_data_t *data2)
+static void mul_helper(stack_data_t *data1, stack_data_t *data2)
 {
     if (data1->var_type > data2->var_type)
         data2->var_type = data1->var_type;
@@ -20,10 +20,10 @@ static void         mul_helper(stack_data_t *data1, stack_data_t *data2)
     data2->value_double *= data1->value_double;
 }
 
-stack_node_t        *instruct_mul(ast_node_t *ast_node1, stack_node_t *stack)
+stack_node_t *instruct_mul(ast_node_t *ast_node1, stack_node_t *stack)
 {
-    stack_data_t    data1;
-    stack_data_t    data2;
+    stack_data_t data1;
+    stack_data_t data2;
 
     if (ast_node1->node_type != AST_NULL) {
         my_printf("mul: too many arguments\n");

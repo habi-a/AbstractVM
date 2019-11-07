@@ -10,7 +10,7 @@
 
 static char *get_str_after_point(const char *str)
 {
-    char    *str_after;
+    char *str_after;
 
     while (*str && *str != '.')
         ++str;
@@ -20,12 +20,12 @@ static char *get_str_after_point(const char *str)
     return (str_after);
 }
 
-float           my_getnbr_float(const char *str)
+float my_getnbr_float(const char *str)
 {
     signed char multiplicator = (-1);
-    float       nbr = (float)my_getnbr(str);
-    char        *str_after_point = get_str_after_point(str);
-    float       decimal = (float)my_getnbr(str_after_point);
+    float nbr = (float)my_getnbr(str);
+    char *str_after_point = get_str_after_point(str);
+    float decimal = (float)my_getnbr(str_after_point);
 
     if (nbr >= 0)
         multiplicator = 1;
@@ -35,12 +35,12 @@ float           my_getnbr_float(const char *str)
     return (nbr);
 }
 
-double          my_getnbr_double(const char *str)
+double my_getnbr_double(const char *str)
 {
     signed char multiplicator = (-1);
-    double      nbr = (double)my_getnbr(str);
-    char        *str_after_point = get_str_after_point(str);
-    double      decimal = (double)my_getnbr(str_after_point);
+    double nbr = (double)my_getnbr(str);
+    char *str_after_point = get_str_after_point(str);
+    double decimal = (double)my_getnbr(str_after_point);
 
     if (nbr >= 0)
         multiplicator = 1;

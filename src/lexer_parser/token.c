@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <token.h>
 
-void    init_token(token_t *token)
+void init_token(token_t *token)
 {
     if (token->var_name != NULL)
         free((char *)token->var_name);
@@ -56,7 +56,7 @@ bool_t set_token(parse_utils_t *parse_utils)
     return (set_token_extra(parse_utils));
 }
 
-void    pop_token(parse_utils_t *parse_utils)
+void pop_token(parse_utils_t *parse_utils)
 {
     skip_space(parse_utils);
     init_token(&parse_utils->current_token);

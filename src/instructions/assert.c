@@ -28,9 +28,9 @@ static unsigned short assert_helper(ast_node_t *ast_node1, stack_data_t *data1)
     return (0);
 }
 
-stack_node_t        *instruct_assert(ast_node_t *ast_node1, stack_node_t *stack)
+stack_node_t *instruct_assert(ast_node_t *ast_node1, stack_node_t *stack)
 {
-    stack_data_t    data1;
+    stack_data_t data1;
 
     if (ast_node1->node_type == AST_NULL) {
         my_printf("assert: too few arguments\n");

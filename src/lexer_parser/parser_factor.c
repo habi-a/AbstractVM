@@ -11,10 +11,10 @@
 #include <stdlib.h>
 #include <stack.h>
 
-static ast_node_t   *factor_number(parse_utils_t *parse_utils
-                                   ,unsigned short *is_instruction)
+static ast_node_t *factor_number(parse_utils_t *parse_utils
+                                , unsigned short *is_instruction)
 {
-    stack_data_t    tmp_stack_node;
+    stack_data_t tmp_stack_node;
 
     if (!*is_instruction) {
         my_printf("Parse Error: Unexpected number at position %lu\n",
@@ -31,12 +31,12 @@ static ast_node_t   *factor_number(parse_utils_t *parse_utils
     return (create_node_number(&tmp_stack_node));
 }
 
-static ast_node_t   *factor_instruction(parse_utils_t *parse_utils
-                                        ,unsigned short *is_instruction
-                                        ,ast_node_t *ast_node
-                                        ,ast_node_t *ast_node1)
+static ast_node_t *factor_instruction(parse_utils_t *parse_utils
+                                        , unsigned short *is_instruction
+                                        , ast_node_t *ast_node
+                                        , ast_node_t *ast_node1)
 {
-    const char      *tmp_var_name;
+    const char *tmp_var_name;
 
     *is_instruction = 1;
     tmp_var_name = my_strdup(parse_utils->current_token.var_name);
@@ -51,8 +51,8 @@ static ast_node_t   *factor_instruction(parse_utils_t *parse_utils
 }
 
 static ast_node_t *factor_type(parse_utils_t *parse_utils
-                               ,unsigned short *is_instrct
-                               ,ast_node_t *ast_node, ast_node_t *ast_node1)
+                               , unsigned short *is_instrct
+                               , ast_node_t *ast_node, ast_node_t *ast_node1)
 {
     const char *tmp_var_name = my_strdup(parse_utils->current_token.var_name);
 
@@ -76,11 +76,11 @@ static ast_node_t *factor_type(parse_utils_t *parse_utils
     return (ast_node);
 }
 
-ast_node_t          *factor(parse_utils_t *parse_utils
-                            ,unsigned short *is_instruction)
+ast_node_t *factor(parse_utils_t *parse_utils
+                    , unsigned short *is_instruction)
 {
-    ast_node_t      *ast_node = NULL;
-    ast_node_t      *ast_node1 = NULL;
+    ast_node_t *ast_node = NULL;
+    ast_node_t *ast_node1 = NULL;
 
     switch (parse_utils->current_token.token_type) {
         case TOK_NUMBER:

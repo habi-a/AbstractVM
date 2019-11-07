@@ -33,8 +33,6 @@ SRC	=	src/my_getline.c \
 		src/my_putnbr.c \
 		src/my_putnbr_base.c \
 		src/my_putstr.c \
-		src/my_revert_tab.c \
-		src/my_sort_str_tab.c \
 		src/my_strcat.c \
 		src/my_strcmp.c \
 		src/my_strcpy.c \

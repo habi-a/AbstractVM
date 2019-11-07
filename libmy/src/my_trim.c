@@ -8,16 +8,14 @@
 #include <stdlib.h>
 #include <my.h>
 
-char                *my_trim(const char *str)
+char *my_trim(const char *str)
 {
-    unsigned int    offset1;
-    unsigned int    offset2;
-    char            *res;
+    unsigned int offset1 = 0;
+    unsigned int offset2 = 0;
+    char *res;
 
     if (str == NULL)
         return (NULL);
-    offset1 = 0;
-    offset2 = 0;
     res = malloc(sizeof(char *) * (my_strlen(str) + 1));
     if (res == NULL)
         return (NULL);

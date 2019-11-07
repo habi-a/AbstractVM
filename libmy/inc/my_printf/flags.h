@@ -5,15 +5,15 @@
 **
 */
 
-#ifndef         _FLAGS_H_
-# define        _FLAGS_H_
+#ifndef _FLAGS_H_
+#define _FLAGS_H_
 
-# define        NB_FLAGS 15
-# include       <my_puts.h>
+#define NB_FLAGS 15
+#include <my_puts.h>
 
-typedef struct      s_flags {
-    char            key;
-    ptr_my_put_t    p_my_put;
-}                   flags_t;
+typedef struct s_flags {
+    char key;
+    ptr_my_put_t p_my_put;
+} flags_t;
 
-#endif   /* _FLAGS_H_ */
+#endif /* _FLAGS_H_ */

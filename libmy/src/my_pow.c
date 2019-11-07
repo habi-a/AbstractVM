@@ -5,7 +5,7 @@
 **
 */
 
-int     my_pow(int nb, int pow)
+int my_pow(int nb, int pow)
 {
     int p = 1;
     int result = 1;

@@ -25,10 +25,10 @@ static bool_t div_helper(stack_data_t *data1, stack_data_t *data2)
     return (e_true);
 }
 
-stack_node_t        *instruct_div(ast_node_t *ast_node1, stack_node_t *stack)
+stack_node_t *instruct_div(ast_node_t *ast_node1, stack_node_t *stack)
 {
-    stack_data_t    data1;
-    stack_data_t    data2;
+    stack_data_t data1;
+    stack_data_t data2;
 
     if (ast_node1->node_type != AST_NULL) {
         my_printf("div: too many arguments\n");

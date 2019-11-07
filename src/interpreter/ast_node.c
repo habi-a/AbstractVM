@@ -92,7 +92,7 @@ ast_node_t *create_node_call_func(const char *var_name, ast_node_t *ast_node1)
 
 ast_node_t *create_node_instruction(const char *var_name, ast_node_t *ast_node1)
 {
-    ast_node_t  *ast_node;
+    ast_node_t *ast_node;
 
     ast_node = malloc(sizeof(ast_node_t));
     if (ast_node == NULL)

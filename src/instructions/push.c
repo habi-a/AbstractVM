@@ -9,9 +9,9 @@
 #include <instructions.h>
 #include <stdlib.h>
 
-stack_node_t        *instruct_push(ast_node_t *ast_node1, stack_node_t *stack)
+stack_node_t *instruct_push(ast_node_t *ast_node1, stack_node_t *stack)
 {
-    stack_data_t    data_to_push;
+    stack_data_t data_to_push;
 
     if (ast_node1->node_type == AST_NULL) {
         my_printf("push: too few arguments\n");

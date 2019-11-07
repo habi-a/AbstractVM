@@ -7,10 +7,9 @@
 
 #include <my.h>
 
-void        my_long_nbrlen_base(long n, const char *base
-                                ,unsigned int *buffer)
+void my_long_nbrlen_base(long n, const char *base, unsigned int *buffer)
 {
-    long    i;
+    long i;
 
     if (n < 0) {
         *buffer = *buffer + 1;
@@ -22,21 +21,18 @@ void        my_long_nbrlen_base(long n, const char *base
     *buffer = *buffer + 1;
 }
 
-void                my_un_nbrlen_base(unsigned int n, const char *base
-                                      ,unsigned int *buffer)
+void my_un_nbrlen_base(unsigned int n, const char *base, unsigned int *buffer)
 {
-    unsigned int    i;
+    unsigned int i = n / my_strlen(base);
 
-    i = n / my_strlen(base);
     if (i > 0)
         my_un_nbrlen_base(i, base, buffer);
     *buffer = *buffer + 1;
 }
 
-void                my_nbrlen_base(int n, const char *base
-                                   ,unsigned int *buffer)
+void my_nbrlen_base(int n, const char *base, unsigned int *buffer)
 {
-    unsigned int    i;
+    unsigned int i;
 
     if (n < 0) {
         *buffer = *buffer + 1;

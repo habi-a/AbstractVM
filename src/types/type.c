@@ -9,9 +9,9 @@
 #include <types.h>
 #include <stdlib.h>
 
-type_t              *get_type(type_t type_list[NB_TYPES], const char *type_name)
+type_t *get_type(type_t type_list[NB_TYPES], const char *type_name)
 {
-    unsigned short  i = 0;
+    unsigned short i = 0;
 
     for (i = 0; i < NB_TYPES; i++)
         if (!my_strcmp(type_list[i].type_name, type_name))
@@ -19,9 +19,9 @@ type_t              *get_type(type_t type_list[NB_TYPES], const char *type_name)
     return (NULL);
 }
 
-void			    free_list_types(type_t type_list[NB_TYPES])
+void free_list_types(type_t type_list[NB_TYPES])
 {
-    unsigned short  i = 0;
+    unsigned short i = 0;
 
     for (i = 0; i < NB_TYPES; i++)
         free((char *)type_list[i].type_name);

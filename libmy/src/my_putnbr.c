@@ -2,15 +2,15 @@
 ** ETNA PROJECT, 31/10/2019 by courta_f
 ** c:\Users\Fr4nck\Desktop\group-716039
 ** File description:
-**      
+**
 */
 
 #include <my.h>
 
-void                my_put_un_long_nbr(const unsigned long n)
+void my_put_un_long_nbr(const unsigned long n)
 {
-    unsigned long   i;
-    unsigned long   divisible;
+    unsigned long i;
+    unsigned long divisible;
 
     divisible = n / 10;
     i = n % 10;
@@ -19,7 +19,7 @@ void                my_put_un_long_nbr(const unsigned long n)
     my_putchar((char)i + (char)'0');
 }
 
-void                my_put_long_nbr(long n)
+void my_put_long_nbr(long n)
 {
     if (n < 0) {
         my_putchar('-');
@@ -28,10 +28,10 @@ void                my_put_long_nbr(long n)
     my_put_un_long_nbr((unsigned long)n);
 }
 
-void                my_put_un_nbr(const unsigned int n)
+void my_put_un_nbr(const unsigned int n)
 {
-    int             i;
-    unsigned int    divisible;
+    int i;
+    unsigned int divisible;
 
     divisible = n / 10;
     i = n % 10;

@@ -10,9 +10,9 @@
 #include <stdlib.h>
 
 static ast_node_t *interpret_type(ast_node_t *ast, ast_node_t *left_result
-                                  ,type_t type_list[NB_TYPES])
+                                  , type_t type_list[NB_TYPES])
 {
-    if (ast == NULL || left_result == NULL )
+    if (ast == NULL || left_result == NULL)
         return (NULL);
     if (!get_type(type_list, ast->var_name)) {
         my_printf("Parse Error: Unknown type '%s'\n"
@@ -25,11 +25,11 @@ static ast_node_t *interpret_type(ast_node_t *ast, ast_node_t *left_result
 }
 
 static ast_node_t *interpret_instruction(ast_node_t *ast
-                                         ,ast_node_t *left_result
-                                         ,stack_node_t **stack
-                                         ,instruct_t instruct_list[NB_INSTRUCT])
+                                        , ast_node_t *left_result
+                                        , stack_node_t **stack
+                                        , instruct_t instruct_list[NB_INSTRUCT])
 {
-    if (ast == NULL || left_result == NULL )
+    if (ast == NULL || left_result == NULL)
         return (NULL);
     if (!get_instruction(instruct_list, ast->var_name)) {
         my_printf("Parse Error: Unknown instruction '%s'\n",
@@ -43,7 +43,7 @@ static ast_node_t *interpret_instruction(ast_node_t *ast
 }
 
 static ast_node_t *interpret_plus(ast_node_t *ast, ast_node_t *left_result
-                                  ,ast_node_t *right_result)
+                                  , ast_node_t *right_result)
 {
     if (ast == NULL || left_result == NULL || right_result == NULL)
         return (NULL);
@@ -60,7 +60,7 @@ static ast_node_t *interpret_plus(ast_node_t *ast, ast_node_t *left_result
 }
 
 static ast_node_t *interpret_mul(ast_node_t *ast, ast_node_t *left_result
-                                 ,ast_node_t *right_result)
+                                 , ast_node_t *right_result)
 {
     if (ast == NULL || left_result == NULL || right_result == NULL)
         return (NULL);
@@ -76,12 +76,12 @@ static ast_node_t *interpret_mul(ast_node_t *ast, ast_node_t *left_result
     return (ast);
 }
 
-ast_node_t      *interpret_node(ast_node_t *ast, stack_node_t **stack
-                                ,type_t type_list[NB_TYPES]
-                                ,instruct_t instruct_list[NB_INSTRUCT])
+ast_node_t *interpret_node(ast_node_t *ast, stack_node_t **stack
+                            , type_t type_list[NB_TYPES]
+                            , instruct_t instruct_list[NB_INSTRUCT])
 {
-    ast_node_t  *left;
-    ast_node_t  *right;
+    ast_node_t *left;
+    ast_node_t *right;
 
     if (ast->node_type == AST_NUMBER || ast->node_type == AST_NULL)
         return (ast);

@@ -9,7 +9,7 @@
 #include <types.h>
 #include <stdlib.h>
 
-void    my_int8(ast_node_t *ast_node, ast_node_t *ast_node1)
+void my_int8(ast_node_t *ast_node, ast_node_t *ast_node1)
 {
     if (ast_node1->node_type == AST_NULL) {
         my_printf("int8(): too few arguments\n");
@@ -26,7 +26,7 @@ void    my_int8(ast_node_t *ast_node, ast_node_t *ast_node1)
     ast_node->value_double = ast_node1->value_double;
 }
 
-void    my_int16(ast_node_t *ast_node, ast_node_t *ast_node1)
+void my_int16(ast_node_t *ast_node, ast_node_t *ast_node1)
 {
     if (ast_node1->node_type == AST_NULL) {
         my_printf("int16(): too few arguments\n");
@@ -43,7 +43,7 @@ void    my_int16(ast_node_t *ast_node, ast_node_t *ast_node1)
     ast_node->value_double = ast_node1->value_double;
 }
 
-void    my_int32(ast_node_t *ast_node, ast_node_t *ast_node1)
+void my_int32(ast_node_t *ast_node, ast_node_t *ast_node1)
 {
     if (ast_node1->node_type == AST_NULL) {
         my_printf("int32(): too few arguments\n");
@@ -60,7 +60,7 @@ void    my_int32(ast_node_t *ast_node, ast_node_t *ast_node1)
     ast_node->value_double = ast_node1->value_double;
 }
 
-void    my_float(ast_node_t *ast_node, ast_node_t *ast_node1)
+void my_float(ast_node_t *ast_node, ast_node_t *ast_node1)
 {
     if (ast_node1->node_type == AST_NULL) {
         my_printf("float(): too few arguments\n");
@@ -77,7 +77,7 @@ void    my_float(ast_node_t *ast_node, ast_node_t *ast_node1)
     ast_node->value_double = ast_node1->value_double;
 }
 
-void    my_double(ast_node_t *ast_node, ast_node_t *ast_node1)
+void my_double(ast_node_t *ast_node, ast_node_t *ast_node1)
 {
     if (ast_node1->node_type == AST_NULL) {
         my_printf("double(): too few arguments\n");

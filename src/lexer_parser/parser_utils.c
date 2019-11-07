@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <token.h>
 
-void        init_parse_utils(parse_utils_t *parse_utils, const char *line)
+void init_parse_utils(parse_utils_t *parse_utils, const char *line)
 {
     parse_utils->index = 0;
     parse_utils->line = line;
@@ -17,9 +17,9 @@ void        init_parse_utils(parse_utils_t *parse_utils, const char *line)
     parse_utils->decla_type = T_UNDEFINED;
 }
 
-bool_t              is_white_line(const char *line)
+bool_t is_white_line(const char *line)
 {
-    unsigned int    i = 0;
+    unsigned int i = 0;
 
     while (line[i] != '\0') {
         if (line[i] == ';')
@@ -31,20 +31,20 @@ bool_t              is_white_line(const char *line)
     return (e_true);
 }
 
-void        skip_space(parse_utils_t *parse_utils)
+void skip_space(parse_utils_t *parse_utils)
 {
     while (my_isspace(parse_utils->line[parse_utils->index]))
         parse_utils->index++;
 }
 
-void            pop_line(parse_utils_t *parse_utils)
+void pop_line(parse_utils_t *parse_utils)
 {
     while (parse_utils->line[parse_utils->index] != '\0')
         parse_utils->index++;
     pop_token(parse_utils);
 }
 
-void        expect(char expected, parse_utils_t *parse_utils)
+void expect(char expected, parse_utils_t *parse_utils)
 {
     if (parse_utils->line[parse_utils->index - 1] == expected)
         pop_token(parse_utils);

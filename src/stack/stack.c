@@ -8,14 +8,14 @@
 #include <stack.h>
 #include <stdlib.h>
 
-unsigned short      is_empty(stack_node_t *stack)
+unsigned short is_empty(stack_node_t *stack)
 {
     return (!stack);
 }
 
-stack_node_t        *push(stack_node_t *stack, stack_data_t data)
+stack_node_t *push(stack_node_t *stack, stack_data_t data)
 {
-    stack_node_t    *stack_node = (stack_node_t *)malloc(sizeof(stack_node_t));
+    stack_node_t *stack_node = (stack_node_t *)malloc(sizeof(stack_node_t));
 
     stack_node->data = data;
     stack_node->next = stack;
@@ -23,9 +23,9 @@ stack_node_t        *push(stack_node_t *stack, stack_data_t data)
     return (stack);
 }
 
-stack_node_t        *pop(stack_node_t *stack, stack_data_t *data)
+stack_node_t *pop(stack_node_t *stack, stack_data_t *data)
 {
-    stack_node_t    *tmp = NULL;
+    stack_node_t *tmp = NULL;
 
     if (is_empty(stack)) {
         data->var_type = T_NULL;
@@ -38,18 +38,18 @@ stack_node_t        *pop(stack_node_t *stack, stack_data_t *data)
     return (stack);
 }
 
-stack_data_t        peek(stack_node_t *stack)
+stack_data_t peek(stack_node_t *stack)
 {
-    stack_data_t    empty_data = {T_VOID, 0, 0, 0, 0, 0};
+    stack_data_t empty_data = {T_VOID, 0, 0, 0, 0, 0};
 
     if (is_empty(stack))
         return (empty_data);
     return (stack->data);
 }
 
-void                free_stack(stack_node_t *stack)
+void free_stack(stack_node_t *stack)
 {
-    stack_node_t    *tmp;
+    stack_node_t *tmp;
 
     while (stack != NULL) {
         tmp = stack;

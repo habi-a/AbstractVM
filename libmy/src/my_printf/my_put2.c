@@ -9,10 +9,10 @@
 #include <my_puts.h>
 #include <stdlib.h>
 
-unsigned int        my_put_o(va_list variables, unsigned int count)
+unsigned int my_put_o(va_list variables, unsigned int count)
 {
-    unsigned int    var;
-    unsigned int    *buffer_size;
+    unsigned int var;
+    unsigned int *buffer_size;
 
     buffer_size = malloc(sizeof(unsigned int));
     if (buffer_size == NULL)
@@ -26,9 +26,9 @@ unsigned int        my_put_o(va_list variables, unsigned int count)
     return (count);
 }
 
-unsigned int        my_put_u(va_list variables, unsigned int count)
+unsigned int my_put_u(va_list variables, unsigned int count)
 {
-    unsigned int    var;
+    unsigned int var;
 
     var = va_arg(variables, unsigned int);
     my_put_un_nbr(var);
@@ -36,10 +36,10 @@ unsigned int        my_put_u(va_list variables, unsigned int count)
     return (count);
 }
 
-unsigned int        my_put_x(va_list variables, unsigned int count)
+unsigned int my_put_x(va_list variables, unsigned int count)
 {
-    unsigned int    var;
-    unsigned int    *buffer_size;
+    unsigned int var;
+    unsigned int *buffer_size;
 
     buffer_size = malloc(sizeof(unsigned int));
     if (buffer_size == NULL)
@@ -53,10 +53,10 @@ unsigned int        my_put_x(va_list variables, unsigned int count)
     return (count);
 }
 
-unsigned int        my_put_X(va_list variables, unsigned int count)
+unsigned int my_put_xx(va_list variables, unsigned int count)
 {
-    unsigned int    var;
-    unsigned int    *buffer_size;
+    unsigned int var;
+    unsigned int *buffer_size;
 
     buffer_size = malloc(sizeof(unsigned int));
     if (buffer_size == NULL)
@@ -70,10 +70,10 @@ unsigned int        my_put_X(va_list variables, unsigned int count)
     return (count);
 }
 
-unsigned int        my_put_p(va_list variables, unsigned int count)
+unsigned int my_put_p(va_list variables, unsigned int count)
 {
-    long            var;
-    unsigned int    *buffer_size = malloc(sizeof(unsigned int));
+    long var;
+    unsigned int *buffer_size = malloc(sizeof(unsigned int));
 
     if (buffer_size == NULL)
         return (count);
