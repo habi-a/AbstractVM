@@ -39,8 +39,8 @@ ast_node_t *create_node_unary(ast_node_t* left);
 ast_node_t *create_node_number(stack_data_t *tmp_stack_node);
 ast_node_t *create_node_instruction(const char *var_name
                                     , ast_node_t *ast_node1);
-ast_node_t *create_node_call_func(const char *var_name
-                                    , ast_node_t *ast_node1);
+ast_node_t *create_node_type(const char *var_name
+                            , ast_node_t *ast_node1);
 ast_node_t *create_node_null(void);
 void destruct_astnode(ast_node_t *ast_node);
 
