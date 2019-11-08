@@ -71,7 +71,7 @@ static ast_node_t *factor_type(parse_utils_t *parse_utils
         destruct_astnode(ast_node1);
         return (NULL);
     }
-    ast_node = create_node_call_func(tmp_var_name, ast_node1);
+    ast_node = create_node_type(tmp_var_name, ast_node1);
     free((char *)tmp_var_name);
     return (ast_node);
 }
