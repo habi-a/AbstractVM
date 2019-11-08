@@ -70,7 +70,7 @@ ast_node_t *create_node_number(stack_data_t *tmp_stack_node)
     return (ast_node);
 }
 
-ast_node_t *create_node_call_func(const char *var_name, ast_node_t *ast_node1)
+ast_node_t *create_node_type(const char *var_name, ast_node_t *ast_node1)
 {
     ast_node_t *ast_node;
 
